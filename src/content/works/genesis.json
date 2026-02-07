@@ -1,0 +1,20 @@
+{
+  "title": {
+    "de": "Genesis",
+    "en": "Genesis"
+  },
+  "description": {
+    "de": "Genesis ist eine Skulptur aus dem 6-teiligen Skulpturenensemble in Göttingen. Das Werk setzt sich mit dem Thema der Entstehung und Schöpfung auseinander.",
+    "en": "Genesis is a sculpture from the 6-piece sculpture ensemble in Göttingen. The work explores the theme of creation and origin."
+  },
+  "category": "kunstwerk",
+  "model": {
+    "glb": "/goettingen-denkmal/models/Genesis/Genesis.glb"
+  },
+  "photos": [],
+  "location": {
+    "lat": 51.5340,
+    "lng": 9.9350,
+    "address": "Göttingen, Niedersachsen"
+  }
+}

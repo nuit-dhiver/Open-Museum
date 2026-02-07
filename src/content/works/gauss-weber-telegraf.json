@@ -1,0 +1,22 @@
+{
+  "title": {
+    "de": "Gauß-Weber Telegraf",
+    "en": "Gauss-Weber Telegraph"
+  },
+  "description": {
+    "de": "Der Gauß-Weber Telegraf erinnert an den ersten elektromagnetischen Telegrafen, den Carl Friedrich Gauß und Wilhelm Eduard Weber 1833 in Göttingen entwickelten — eine Pionierleistung der Kommunikationstechnik.",
+    "en": "The Gauss-Weber Telegraph commemorates the first electromagnetic telegraph, developed by Carl Friedrich Gauss and Wilhelm Eduard Weber in Göttingen in 1833 — a pioneering achievement in communication technology."
+  },
+  "category": "denkmal",
+  "model": {
+    "glb": "/goettingen-denkmal/models/Gauss-Weber-Telegraf/Gauss-Weber-Telegraf.glb"
+  },
+  "photos": [],
+  "location": {
+    "lat": 51.5336,
+    "lng": 9.9370,
+    "address": "Göttingen, Niedersachsen"
+  },
+  "artist": "Nach Gauß & Weber",
+  "year": "1833"
+}

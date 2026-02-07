@@ -1,0 +1,21 @@
+{
+  "title": {
+    "de": "Verbundenheit",
+    "en": "Connectedness"
+  },
+  "description": {
+    "de": "Verbundenheit ist eine Skulptur aus dem 6-teiligen Skulpturenensemble. Das Werk symbolisiert die Verbindung zwischen Menschen und Orten in der Stadt Göttingen.",
+    "en": "Connectedness is a sculpture from the 6-piece sculpture ensemble. The work symbolizes the connection between people and places in the city of Göttingen."
+  },
+  "category": "kunstwerk",
+  "model": {
+    "glb": "/goettingen-denkmal/models/Verbundenheit/Verbundenheit.glb",
+    "usdz": "/goettingen-denkmal/models/Verbundenheit/Verbundenheit_RAW.usdz"
+  },
+  "photos": [],
+  "location": {
+    "lat": 51.5338,
+    "lng": 9.9355,
+    "address": "Göttingen, Niedersachsen"
+  }
+}

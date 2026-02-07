@@ -1,0 +1,21 @@
+{
+  "title": {
+    "de": "Stuhl",
+    "en": "Chair"
+  },
+  "description": {
+    "de": "Der Stuhl ist Teil des 6-teiligen Skulpturenensembles in Göttingen. Die Skulptur reflektiert über das Alltagsobjekt als künstlerische Ausdrucksform im öffentlichen Raum.",
+    "en": "The Chair is part of the 6-piece sculpture ensemble in Göttingen. The sculpture reflects on the everyday object as an artistic expression in public space."
+  },
+  "category": "kunstwerk",
+  "model": {
+    "glb": "/goettingen-denkmal/models/Stuhl/6-teiliges-Skulpturenensemble_Stuhl.glb",
+    "usdz": "/goettingen-denkmal/models/Stuhl/6-teiliges-Skulpturenensemble_Stuhl.usdz"
+  },
+  "photos": [],
+  "location": {
+    "lat": 51.5345,
+    "lng": 9.9348,
+    "address": "Göttingen, Niedersachsen"
+  }
+}

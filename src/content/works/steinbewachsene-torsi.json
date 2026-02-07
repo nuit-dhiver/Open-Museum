@@ -1,0 +1,21 @@
+{
+  "title": {
+    "de": "Steinbewachsene Torsi",
+    "en": "Stone-Grown Torsi"
+  },
+  "description": {
+    "de": "Die Steinbewachsenen Torsi sind Teil des 6-teiligen Skulpturenensembles in Göttingen. Die Skulpturen verbinden organische und steinerne Formen zu einer eindrucksvollen Komposition.",
+    "en": "The Stone-Grown Torsi are part of the 6-piece sculpture ensemble in Göttingen. The sculptures combine organic and stone forms into a striking composition."
+  },
+  "category": "kunstwerk",
+  "model": {
+    "glb": "/goettingen-denkmal/models/Steinbewachsene-Torsi/Steinbewachsene-Torsi_left.glb",
+    "usdz": "/goettingen-denkmal/models/Steinbewachsene-Torsi/Steinbewachsene-Torsi-left.usdz"
+  },
+  "photos": [],
+  "location": {
+    "lat": 51.5341,
+    "lng": 9.9352,
+    "address": "Göttingen, Niedersachsen"
+  }
+}

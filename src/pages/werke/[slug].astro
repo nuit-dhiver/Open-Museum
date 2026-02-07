@@ -1,0 +1,174 @@
+---
+import Base from '@/layouts/Base.astro';
+import ModelViewer from '@/components/ModelViewer.astro';
+import { useTranslations, getCategoryPath } from '@/i18n/ui';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const works = await getCollection('works');
+  return works.map((work) => ({
+    params: { slug: work.id },
+    props: { work },
+  }));
+}
+
+const { work } = Astro.props;
+const lang = 'de';
+const t = useTranslations(lang);
+const { data } = work;
+
+const categoryKey = `category.${data.category}` as const;
+---
+
+<Base title={`${data.title[lang]} — Göttingen Denkmale`} description={data.description[lang]} ogImage={data.poster}>
+  <!-- Breadcrumb -->
+  <div class="bg-off-white border-b-3 border-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <nav class="flex items-center gap-2 text-sm font-heading uppercase tracking-wider">
+        <a href={`${import.meta.env.BASE_URL}`} class="hover:text-brand-gold transition-colors">{t('nav.home')}</a>
+        <span class="text-black/30">→</span>
+        <a href={getCategoryPath(lang, data.category)} class="hover:text-brand-gold transition-colors">
+          {t(categoryKey)}
+        </a>
+        <span class="text-black/30">→</span>
+        <span class="text-black/50">{data.title[lang]}</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Work Header -->
+  <section class="bg-black text-white py-8 sm:py-12 border-b-[3px] border-brand-gold">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="font-heading text-3xl sm:text-5xl font-bold uppercase tracking-wider">
+        {data.title[lang]}
+      </h1>
+      {data.artist && (
+        <p class="mt-2 text-white/60 text-lg">
+          {t('work.artist')}: {data.artist}{data.year ? ` · ${data.year}` : ''}
+        </p>
+      )}
+    </div>
+  </section>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- Main content (2/3) -->
+      <div class="lg:col-span-2 space-y-8">
+        <!-- 3D Model -->
+        {data.model.glb && (
+          <div>
+            <h2 class="font-heading text-xl font-bold uppercase tracking-wider mb-4">
+              {t('work.view3d')}
+            </h2>
+            <div class="aspect-square">
+              <ModelViewer
+                src={data.model.glb}
+                iosSrc={data.model.usdz}
+                alt={data.title[lang]}
+                poster={data.poster}
+                class="h-full"
+              />
+            </div>
+          </div>
+        )}
+
+        <!-- Photo Gallery -->
+        {data.photos.length > 0 && (
+          <div>
+            <h2 class="font-heading text-xl font-bold uppercase tracking-wider mb-4">
+              {t('work.photos')}
+            </h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+              {data.photos.map((photo: string) => (
+                <div class="brutal-card overflow-hidden aspect-square">
+                  <img src={photo} alt={data.title[lang]} class="w-full h-full object-cover" loading="lazy" />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <!-- Description -->
+        <div>
+          <p class="text-lg leading-relaxed text-black/80">
+            {data.description[lang]}
+          </p>
+        </div>
+      </div>
+
+      <!-- Sidebar (1/3) -->
+      <aside class="space-y-6">
+        <!-- Metadata -->
+        <div class="brutal-card p-6">
+          <h3 class="font-heading text-lg font-bold uppercase tracking-wider mb-4 border-b-3 border-black pb-2">
+            Info
+          </h3>
+          <dl class="space-y-3 text-sm">
+            {data.artist && (
+              <div>
+                <dt class="font-semibold uppercase tracking-wider text-black/50">{t('work.artist')}</dt>
+                <dd class="mt-0.5">{data.artist}</dd>
+              </div>
+            )}
+            {data.year && (
+              <div>
+                <dt class="font-semibold uppercase tracking-wider text-black/50">{t('work.year')}</dt>
+                <dd class="mt-0.5">{data.year}</dd>
+              </div>
+            )}
+            {data.material && (
+              <div>
+                <dt class="font-semibold uppercase tracking-wider text-black/50">{t('work.material')}</dt>
+                <dd class="mt-0.5">{data.material[lang]}</dd>
+              </div>
+            )}
+            {data.location.address && (
+              <div>
+                <dt class="font-semibold uppercase tracking-wider text-black/50">{t('work.location')}</dt>
+                <dd class="mt-0.5">{data.location.address}</dd>
+              </div>
+            )}
+          </dl>
+        </div>
+
+        <!-- Map -->
+        {data.location.myMapsEmbedUrl ? (
+          <div class="brutal-card overflow-hidden">
+            <h3 class="font-heading text-lg font-bold uppercase tracking-wider p-4 border-b-3 border-black">
+              {t('work.location')}
+            </h3>
+            <iframe
+              src={data.location.myMapsEmbedUrl}
+              width="100%"
+              height="300"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        ) : (
+          <div class="brutal-card overflow-hidden">
+            <h3 class="font-heading text-lg font-bold uppercase tracking-wider p-4 border-b-3 border-black">
+              {t('work.location')}
+            </h3>
+            <iframe
+              src={`https://www.google.com/maps?q=${data.location.lat},${data.location.lng}&z=16&output=embed`}
+              width="100%"
+              height="300"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        )}
+
+        <!-- Back link -->
+        <a href={getCategoryPath(lang, data.category)} class="brutal-btn brutal-btn-black w-full justify-center">
+          ← {t('work.back')}
+        </a>
+      </aside>
+    </div>
+  </div>
+</Base>

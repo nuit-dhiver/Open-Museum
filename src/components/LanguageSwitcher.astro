@@ -1,0 +1,20 @@
+---
+import { getAlternateLanguagePath, languages, type Lang } from '@/i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const otherLang: Lang = lang === 'de' ? 'en' : 'de';
+const alternatePath = getAlternateLanguagePath(Astro.url.pathname, lang);
+---
+
+<a
+  href={alternatePath}
+  class="inline-flex items-center gap-1.5 px-3 py-1 text-sm font-heading font-semibold uppercase tracking-wider border-2 border-white/30 hover:border-brand-gold hover:text-brand-gold transition-colors"
+  aria-label={`Switch to ${languages[otherLang]}`}
+>
+  <span class="text-xs">{otherLang === 'de' ? '🇩🇪' : '🇬🇧'}</span>
+  {languages[otherLang]}
+</a>

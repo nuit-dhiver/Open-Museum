@@ -1,0 +1,73 @@
+---
+import Base from '@/layouts/Base.astro';
+import CategoryCard from '@/components/CategoryCard.astro';
+import Slideshow from '@/components/Slideshow.astro';
+import FeaturedWork from '@/components/FeaturedWork.astro';
+import { useTranslations, getCategoryPath } from '@/i18n/ui';
+
+const lang = 'en';
+const t = useTranslations(lang);
+
+const slideshowImages = [
+  { src: `${import.meta.env.BASE_URL}images/slideshow/placeholder-1.jpg`, alt: 'Göttingen Monument' },
+  { src: `${import.meta.env.BASE_URL}images/slideshow/placeholder-2.jpg`, alt: 'Göttingen Sculpture' },
+  { src: `${import.meta.env.BASE_URL}images/slideshow/placeholder-3.jpg`, alt: 'Göttingen Fountain' },
+];
+---
+
+<Base title={t('home.title')} description={t('home.tagline')}>
+  <!-- Hero -->
+  <section class="bg-black text-white py-20 sm:py-32 border-b-[3px] border-brand-gold">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="font-heading text-5xl sm:text-7xl font-bold uppercase tracking-wider mb-6">
+        Göttingen<br />
+        <span class="text-brand-gold">Monuments</span>
+      </h1>
+      <p class="text-lg sm:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
+        {t('home.tagline')}
+      </p>
+    </div>
+  </section>
+
+  <!-- Category Cards -->
+  <section class="py-16 sm:py-24 bg-off-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <CategoryCard
+          title={t('category.brunnen')}
+          description={t('category.brunnen.desc')}
+          href={getCategoryPath(lang, 'brunnen')}
+          icon="fountain"
+          accentColor="blue"
+        />
+        <CategoryCard
+          title={t('category.denkmal')}
+          description={t('category.denkmal.desc')}
+          href={getCategoryPath(lang, 'denkmal')}
+          icon="monument"
+          accentColor="red"
+        />
+        <CategoryCard
+          title={t('category.kunstwerk')}
+          description={t('category.kunstwerk.desc')}
+          href={getCategoryPath(lang, 'kunstwerk')}
+          icon="artwork"
+          accentColor="gold"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Slideshow -->
+  <section class="py-16 sm:py-24 bg-white border-y-3 border-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="font-heading text-3xl sm:text-4xl font-bold uppercase tracking-wider mb-8 text-center">
+        {t('home.slideshow.title')}
+      </h2>
+      <Slideshow images={slideshowImages} />
+    </div>
+  </section>
+
+  <!-- Featured 3D Work -->
+  <FeaturedWork lang={lang} />
+</Base>

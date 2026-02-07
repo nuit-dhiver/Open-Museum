@@ -1,0 +1,52 @@
+---
+import { getWorkPath, type Lang } from '@/i18n/ui';
+
+interface Props {
+  slug: string;
+  title: string;
+  poster?: string;
+  category: 'brunnen' | 'denkmal' | 'kunstwerk';
+  lang: Lang;
+}
+
+const { slug, title, poster, category, lang } = Astro.props;
+const href = getWorkPath(lang, slug);
+
+const accentColors = {
+  brunnen: 'border-brand-blue shadow-brutal-blue',
+  denkmal: 'border-brand-red shadow-brutal-red',
+  kunstwerk: 'border-brand-gold shadow-brutal-gold',
+};
+---
+
+<a href={href} class="group block">
+  <article
+    class={`border-3 bg-white overflow-hidden transition-all duration-150 hover:-translate-x-0.5 hover:-translate-y-0.5 ${accentColors[category]}`}
+  >
+    <!-- Thumbnail -->
+    <div class="aspect-[4/3] bg-gray-100 overflow-hidden">
+      {poster ? (
+        <img
+          src={poster}
+          alt={title}
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          loading="lazy"
+        />
+      ) : (
+        <div class="w-full h-full flex items-center justify-center bg-gray-200">
+          <svg class="w-16 h-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+          </svg>
+        </div>
+      )}
+    </div>
+
+    <!-- Title -->
+    <div class="p-4 border-t-3 border-black">
+      <h3 class="font-heading text-lg font-bold uppercase tracking-wider group-hover:text-brand-gold transition-colors">
+        {title}
+      </h3>
+    </div>
+  </article>
+</a>

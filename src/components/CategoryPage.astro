@@ -1,0 +1,59 @@
+---
+import Base from '@/layouts/Base.astro';
+import WorkCard from '@/components/WorkCard.astro';
+import { useTranslations, type Lang } from '@/i18n/ui';
+import { getCollection } from 'astro:content';
+
+interface Props {
+  lang: Lang;
+  category: 'brunnen' | 'denkmal' | 'kunstwerk';
+}
+
+const { lang, category } = Astro.props;
+const t = useTranslations(lang);
+
+const categoryKey = `category.${category}` as const;
+const categoryDescKey = `category.${category}.desc` as const;
+
+const allWorks = await getCollection('works');
+const works = allWorks.filter((w) => w.data.category === category);
+---
+
+<Base title={`${t(categoryKey)} — Göttingen Denkmale`} description={t(categoryDescKey)}>
+  <!-- Page header -->
+  <section class="bg-black text-white py-12 sm:py-16 border-b-[3px] border-brand-gold">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="font-heading text-4xl sm:text-5xl font-bold uppercase tracking-wider mb-3">
+        {t(categoryKey)}
+      </h1>
+      <p class="text-white/70 text-lg">
+        {t(categoryDescKey)}
+      </p>
+    </div>
+  </section>
+
+  <!-- Works grid -->
+  <section class="py-12 sm:py-16 bg-off-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {works.length > 0 ? (
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {works.map((work) => (
+            <WorkCard
+              slug={work.id}
+              title={work.data.title[lang]}
+              poster={work.data.poster}
+              category={work.data.category}
+              lang={lang}
+            />
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-16">
+          <p class="text-lg text-black/50 font-heading uppercase tracking-wider">
+            {t('noworks')}
+          </p>
+        </div>
+      )}
+    </div>
+  </section>
+</Base>

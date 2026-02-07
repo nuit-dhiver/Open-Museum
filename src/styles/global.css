@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════
+   Göttingen Denkmale — Neo-Brutalism Theme
+   ═══════════════════════════════════════════ */
+
+@theme {
+  /* Brand palette */
+  --color-brand-gold: #D4A017;
+  --color-brand-red: #E63946;
+  --color-brand-blue: #1D3557;
+  --color-off-white: #FAFAFA;
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+
+  /* Shadows — neo-brutalist hard shadows */
+  --shadow-brutal: 4px 4px 0px 0px #000000;
+  --shadow-brutal-sm: 2px 2px 0px 0px #000000;
+  --shadow-brutal-lg: 6px 6px 0px 0px #000000;
+  --shadow-brutal-gold: 4px 4px 0px 0px #D4A017;
+  --shadow-brutal-red: 4px 4px 0px 0px #E63946;
+  --shadow-brutal-blue: 4px 4px 0px 0px #1D3557;
+
+  /* Typography */
+  --font-heading: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  /* Border */
+  --border-width-brutal: 3px;
+}
+
+/* ═══ Base styles ═══ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-off-white);
+  color: var(--color-black);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* ═══ Neo-brutal utility components ═══ */
+
+.brutal-card {
+  border: var(--border-width-brutal) solid var(--color-black);
+  box-shadow: var(--shadow-brutal);
+  background: var(--color-white);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.brutal-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-brutal-lg);
+}
+
+.brutal-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: var(--border-width-brutal) solid var(--color-black);
+  box-shadow: var(--shadow-brutal);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.brutal-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-brutal-lg);
+}
+
+.brutal-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+.brutal-btn-gold {
+  background-color: var(--color-brand-gold);
+  color: var(--color-black);
+}
+
+.brutal-btn-red {
+  background-color: var(--color-brand-red);
+  color: var(--color-white);
+}
+
+.brutal-btn-blue {
+  background-color: var(--color-brand-blue);
+  color: var(--color-white);
+}
+
+.brutal-btn-black {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+/* ═══ Model viewer styling ═══ */
+
+model-viewer {
+  width: 100%;
+  height: 100%;
+  --poster-color: transparent;
+}
+
+/* ═══ Scrollbar (subtle) ═══ */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-off-white);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-black);
+  border: 1px solid var(--color-off-white);
+}

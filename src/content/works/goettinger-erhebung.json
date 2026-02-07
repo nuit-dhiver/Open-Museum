@@ -1,0 +1,23 @@
+{
+  "title": {
+    "de": "Göttinger Erhebung",
+    "en": "Göttingen Elevation"
+  },
+  "description": {
+    "de": "Die Göttinger Erhebung ist Teil des 6-teiligen Skulpturenensembles im Göttinger Stadtgebiet. Die Skulptur thematisiert die geologische und kulturelle Erhebung der Stadt.",
+    "en": "The Göttingen Elevation is part of the 6-piece sculpture ensemble across the city of Göttingen. The sculpture addresses the geological and cultural elevation of the city."
+  },
+  "category": "kunstwerk",
+  "model": {
+    "glb": "/goettingen-denkmal/models/Goettinger-Erhebung/Goettinger-Erhebung.glb",
+    "usdz": "/goettingen-denkmal/models/Goettinger-Erhebung/Goettinger-Erhebung.usdz"
+  },
+  "photos": [],
+  "location": {
+    "lat": 51.5339,
+    "lng": 9.9356,
+    "address": "Göttingen, Niedersachsen"
+  },
+  "artist": "Unbekannt",
+  "year": ""
+}

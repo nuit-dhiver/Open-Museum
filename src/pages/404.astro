@@ -1,0 +1,26 @@
+---
+import Base from '@/layouts/Base.astro';
+import { getLangFromUrl, useTranslations } from '@/i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Base title={t('404.title')}>
+  <section class="flex-1 flex items-center justify-center py-24 sm:py-32">
+    <div class="text-center">
+      <h1 class="font-heading text-8xl sm:text-9xl font-bold text-brand-gold mb-4">
+        404
+      </h1>
+      <p class="font-heading text-2xl sm:text-3xl uppercase tracking-wider mb-2">
+        {t('404.title')}
+      </p>
+      <p class="text-black/50 mb-8">
+        {t('404.message')}
+      </p>
+      <a href={`${import.meta.env.BASE_URL}`} class="brutal-btn brutal-btn-gold">
+        ← {t('404.back')}
+      </a>
+    </div>
+  </section>
+</Base>

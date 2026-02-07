@@ -1,0 +1,92 @@
+---
+interface Props {
+  images: { src: string; alt: string }[];
+}
+
+const { images } = Astro.props;
+---
+
+{images.length > 0 && (
+  <div class="brutal-card overflow-hidden">
+    <div class="relative">
+      <!-- Slides container -->
+      <div id="slideshow" class="relative overflow-hidden aspect-[16/9]">
+        {images.map((img, i) => (
+          <div
+            class={`slideshow-slide absolute inset-0 transition-opacity duration-500 ${i === 0 ? 'opacity-100' : 'opacity-0'}`}
+            data-index={i}
+          >
+            <img
+              src={img.src}
+              alt={img.alt}
+              class="w-full h-full object-cover"
+              loading={i === 0 ? 'eager' : 'lazy'}
+            />
+          </div>
+        ))}
+      </div>
+
+      <!-- Controls -->
+      <button
+        id="slide-prev"
+        class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black text-white border-2 border-white flex items-center justify-center hover:bg-brand-gold hover:text-black transition-colors z-10"
+        aria-label="Previous slide"
+      >
+        ←
+      </button>
+      <button
+        id="slide-next"
+        class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-black text-white border-2 border-white flex items-center justify-center hover:bg-brand-gold hover:text-black transition-colors z-10"
+        aria-label="Next slide"
+      >
+        →
+      </button>
+
+      <!-- Dots -->
+      <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+        {images.map((_, i) => (
+          <button
+            class={`slideshow-dot w-3 h-3 border-2 border-white transition-colors ${i === 0 ? 'bg-brand-gold' : 'bg-black/50'}`}
+            data-index={i}
+            aria-label={`Go to slide ${i + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  </div>
+)}
+
+<script>
+  let current = 0;
+  const slides = document.querySelectorAll('.slideshow-slide');
+  const dots = document.querySelectorAll('.slideshow-dot');
+  const total = slides.length;
+
+  if (total > 0) {
+    function goTo(index: number) {
+      slides[current]?.classList.remove('opacity-100');
+      slides[current]?.classList.add('opacity-0');
+      dots[current]?.classList.remove('bg-brand-gold');
+      dots[current]?.classList.add('bg-black/50');
+
+      current = ((index % total) + total) % total;
+
+      slides[current]?.classList.remove('opacity-0');
+      slides[current]?.classList.add('opacity-100');
+      dots[current]?.classList.remove('bg-black/50');
+      dots[current]?.classList.add('bg-brand-gold');
+    }
+
+    document.getElementById('slide-prev')?.addEventListener('click', () => goTo(current - 1));
+    document.getElementById('slide-next')?.addEventListener('click', () => goTo(current + 1));
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const index = parseInt(dot.getAttribute('data-index') || '0');
+        goTo(index);
+      });
+    });
+
+    // Auto-advance every 5s
+    setInterval(() => goTo(current + 1), 5000);
+  }
+</script>

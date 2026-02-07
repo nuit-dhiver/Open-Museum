@@ -1,2 +1,19 @@
+# macOS
 .DS_Store
 **/.DS_Store
+
+# Dependencies
+node_modules/
+
+# Astro build output
+dist/
+.astro/
+
+# Environment
+.env
+.env.*
+
+# Editor
+.vscode/
+*.swp
+*.swo

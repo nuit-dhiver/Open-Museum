@@ -1,0 +1,21 @@
+{
+  "title": {
+    "de": "Lichtenberg-Denkmal (Markt)",
+    "en": "Lichtenberg Monument (Market)"
+  },
+  "description": {
+    "de": "Das Lichtenberg-Denkmal am Marktplatz ehrt Georg Christoph Lichtenberg, den berühmten Göttinger Physiker und Schriftsteller. Es befindet sich im Herzen der Altstadt.",
+    "en": "The Lichtenberg Monument at the marketplace honors Georg Christoph Lichtenberg, the famous Göttingen physicist and writer. It stands in the heart of the old town."
+  },
+  "category": "denkmal",
+  "model": {
+    "glb": "/goettingen-denkmal/models/Lichtenberg-Denkmal-Markt/Lichtenberg-Denkmal-Markt.glb",
+    "usdz": "/goettingen-denkmal/models/Lichtenberg-Denkmal-Markt/Lichtenberg-Denkmal-Markt.usdz"
+  },
+  "photos": [],
+  "location": {
+    "lat": 51.5329,
+    "lng": 9.9348,
+    "address": "Marktplatz, 37073 Göttingen"
+  }
+}

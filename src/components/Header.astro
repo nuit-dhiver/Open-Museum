@@ -1,0 +1,95 @@
+---
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { useTranslations, getCategoryPath, type Lang } from '@/i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const base = import.meta.env.BASE_URL;
+const homePath = lang === 'en' ? `${base}en/` : `${base}`;
+---
+
+<header class="bg-black text-white border-b-[3px] border-brand-gold sticky top-0 z-50">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo / Site name -->
+      <a href={homePath} class="font-heading text-xl font-bold tracking-wider hover:text-brand-gold transition-colors">
+        GÖ DENKMALE
+      </a>
+
+      <!-- Desktop nav links -->
+      <div class="hidden md:flex items-center gap-1">
+        <a
+          href={getCategoryPath(lang, 'brunnen')}
+          class="px-4 py-2 font-heading text-sm font-semibold uppercase tracking-wider hover:bg-brand-gold hover:text-black transition-colors"
+        >
+          {t('nav.brunnen')}
+        </a>
+        <a
+          href={getCategoryPath(lang, 'denkmal')}
+          class="px-4 py-2 font-heading text-sm font-semibold uppercase tracking-wider hover:bg-brand-gold hover:text-black transition-colors"
+        >
+          {t('nav.denkmale')}
+        </a>
+        <a
+          href={getCategoryPath(lang, 'kunstwerk')}
+          class="px-4 py-2 font-heading text-sm font-semibold uppercase tracking-wider hover:bg-brand-gold hover:text-black transition-colors"
+        >
+          {t('nav.kunstwerke')}
+        </a>
+        <div class="ml-4 border-l border-white/30 pl-4">
+          <LanguageSwitcher lang={lang} />
+        </div>
+      </div>
+
+      <!-- Mobile menu button -->
+      <button
+        id="mobile-menu-btn"
+        class="md:hidden p-2 hover:bg-brand-gold hover:text-black transition-colors"
+        aria-label="Menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden pb-4 border-t border-white/20 mt-2 pt-4">
+      <div class="flex flex-col gap-2">
+        <a
+          href={getCategoryPath(lang, 'brunnen')}
+          class="px-4 py-2 font-heading text-sm font-semibold uppercase tracking-wider hover:bg-brand-gold hover:text-black transition-colors"
+        >
+          {t('nav.brunnen')}
+        </a>
+        <a
+          href={getCategoryPath(lang, 'denkmal')}
+          class="px-4 py-2 font-heading text-sm font-semibold uppercase tracking-wider hover:bg-brand-gold hover:text-black transition-colors"
+        >
+          {t('nav.denkmale')}
+        </a>
+        <a
+          href={getCategoryPath(lang, 'kunstwerk')}
+          class="px-4 py-2 font-heading text-sm font-semibold uppercase tracking-wider hover:bg-brand-gold hover:text-black transition-colors"
+        >
+          {t('nav.kunstwerke')}
+        </a>
+        <div class="mt-2 pt-2 border-t border-white/20">
+          <LanguageSwitcher lang={lang} />
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+</script>

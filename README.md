@@ -24,4 +24,14 @@ Your support means a lot! Here’s how you can help:
 - Make a donation
 - Share the project with others
 
+
+## License
+
+### Code (website / software)
+All source code (Astro/TypeScript/CSS/JavaScript) in this repository is licensed under the MIT License. See `LICENSE`.
+
+### 3D models and media
+All 3D models, scans, textures, and other non-code assets in this repository (for example in `models/` and/or `assets/`) are licensed under **Creative Commons Attribution 4.0 International (CC BY 4.0)**.
+
+
 Thank you for your interest in GoeODM!

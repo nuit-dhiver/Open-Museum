@@ -9,8 +9,8 @@
   },
   "category": "kunstwerk",
   "model": {
-    "glb": "/goettingen-denkmal/models/Steinbewachsene-Torsi/Steinbewachsene-Torsi_left.glb",
-    "usdz": "/goettingen-denkmal/models/Steinbewachsene-Torsi/Steinbewachsene-Torsi-left.usdz"
+    "glb": "/GoeODM/models/Steinbewachsene-Torsi/Steinbewachsene-Torsi_left.glb",
+    "usdz": "/GoeODM/models/Steinbewachsene-Torsi/Steinbewachsene-Torsi-left.usdz"
   },
   "photos": [],
   "location": {

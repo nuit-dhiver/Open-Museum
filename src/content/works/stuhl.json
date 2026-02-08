@@ -9,8 +9,8 @@
   },
   "category": "kunstwerk",
   "model": {
-    "glb": "/goettingen-denkmal/models/Stuhl/6-teiliges-Skulpturenensemble_Stuhl.glb",
-    "usdz": "/goettingen-denkmal/models/Stuhl/6-teiliges-Skulpturenensemble_Stuhl.usdz"
+    "glb": "/GoeODM/models/Stuhl/6-teiliges-Skulpturenensemble_Stuhl.glb",
+    "usdz": "/GoeODM/models/Stuhl/6-teiliges-Skulpturenensemble_Stuhl.usdz"
   },
   "photos": [],
   "location": {

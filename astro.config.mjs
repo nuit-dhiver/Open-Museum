@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://nuit-dhiver.github.io',
-  base: '/GoeODM',
+  base: '/GoeODM/',
   output: 'static',
   i18n: {
     defaultLocale: 'de',

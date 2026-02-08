@@ -9,8 +9,8 @@
   },
   "category": "kunstwerk",
   "model": {
-    "glb": "/goettingen-denkmal/models/Verbundenheit/Verbundenheit.glb",
-    "usdz": "/goettingen-denkmal/models/Verbundenheit/Verbundenheit_RAW.usdz"
+    "glb": "/GoeODM/models/Verbundenheit/Verbundenheit.glb",
+    "usdz": "/GoeODM/models/Verbundenheit/Verbundenheit_RAW.usdz"
   },
   "photos": [],
   "location": {

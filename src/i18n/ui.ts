@@ -116,8 +116,10 @@ export type UIKey = keyof typeof ui.de;
  * Get the current locale from a URL pathname.
  */
 export function getLangFromUrl(url: URL): Lang {
-  const [, lang] = url.pathname.split('/');
-  if (lang in ui) return lang as Lang;
+  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+  const path = url.pathname.replace(base, '').replace(/^\//, '');
+  const [firstSegment] = path.split('/');
+  if (firstSegment in ui) return firstSegment as Lang;
   return defaultLang;
 }
 
@@ -164,7 +166,7 @@ export function getWorkPath(lang: Lang, slug: string): string {
  */
 export function getAlternateLanguagePath(currentPath: string, currentLang: Lang): string {
   const base = import.meta.env.BASE_URL;
-  const path = currentPath.replace(base, '');
+  const path = currentPath.replace(base, '').replace(/^\//, '');
 
   if (currentLang === 'de') {
     // DE -> EN

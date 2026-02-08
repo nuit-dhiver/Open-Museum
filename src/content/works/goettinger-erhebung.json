@@ -9,8 +9,8 @@
   },
   "category": "kunstwerk",
   "model": {
-    "glb": "/goettingen-denkmal/models/Goettinger-Erhebung/Goettinger-Erhebung.glb",
-    "usdz": "/goettingen-denkmal/models/Goettinger-Erhebung/Goettinger-Erhebung.usdz"
+    "glb": "/GoeODM/models/Goettinger-Erhebung/Goettinger-Erhebung.glb",
+    "usdz": "/GoeODM/models/Goettinger-Erhebung/Goettinger-Erhebung.usdz"
   },
   "photos": [],
   "location": {

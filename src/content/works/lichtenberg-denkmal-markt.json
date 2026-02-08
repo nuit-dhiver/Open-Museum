@@ -9,8 +9,8 @@
   },
   "category": "denkmal",
   "model": {
-    "glb": "/goettingen-denkmal/models/Lichtenberg-Denkmal-Markt/Lichtenberg-Denkmal-Markt.glb",
-    "usdz": "/goettingen-denkmal/models/Lichtenberg-Denkmal-Markt/Lichtenberg-Denkmal-Markt.usdz"
+    "glb": "/GoeODM/models/Lichtenberg-Denkmal-Markt/Lichtenberg-Denkmal-Markt.glb",
+    "usdz": "/GoeODM/models/Lichtenberg-Denkmal-Markt/Lichtenberg-Denkmal-Markt.usdz"
   },
   "photos": [],
   "location": {

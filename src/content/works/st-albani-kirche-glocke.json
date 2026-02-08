@@ -9,8 +9,8 @@
   },
   "category": "denkmal",
   "model": {
-    "glb": "/goettingen-denkmal/models/St-Albani-Kirche/St-Albani-Kirche_Glocke_V01.glb",
-    "usdz": "/goettingen-denkmal/models/St-Albani-Kirche/St-Albani-Kirche_Glocke_Raw_Clean.usdz"
+    "glb": "/GoeODM/models/St-Albani-Kirche/St-Albani-Kirche_Glocke_V01.glb",
+    "usdz": "/GoeODM/models/St-Albani-Kirche/St-Albani-Kirche_Glocke_Raw_Clean.usdz"
   },
   "photos": [],
   "location": {

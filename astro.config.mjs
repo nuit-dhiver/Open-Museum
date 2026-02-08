@@ -3,8 +3,8 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://your-username.github.io',
-  base: '/goettingen-denkmal',
+  site: 'https://nuit-dhiver.github.io',
+  base: '/GoeODM',
   output: 'static',
   i18n: {
     defaultLocale: 'de',

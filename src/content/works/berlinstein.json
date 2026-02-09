@@ -1,0 +1,33 @@
+{
+  "title": {
+    "de": "Berlinstein",
+    "en": "Berlin Stone"
+  },
+  "description": {
+    "de": "Der Stein ist durch eine Stiftung des Rates der Stadt gesetzt und am 17. Juni 1960 eingeweiht worden. Auf dem Stein ist das Berliner Wappen, ein aufrecht gehender Bär, eingemeißelt. Darunter steht die Inschrift: “Berlin - 325 km”.",
+    "en": "The stone was commissioned by a foundation of the City Council and inaugurated on June 17, 1960. Carved into the stone is the Berlin coat of arms, a bear walking upright. Below it is the inscription: “Berlin - 325 km”."
+  },
+  "category": "denkmal",
+  "model": {
+    "glb": "/GoeODM/models/berlinstein/berlinstein.glb",
+    "usdz": "/GoeODM/models/berlinstein/berlinstein.usdz"
+  },
+  "photos": [
+    "/GoeODM/images/works/berlinstein/berlinstein-front.jpeg",
+    "/GoeODM/images/works/berlinstein/berlinstein-back.jpeg",
+    "/GoeODM/images/works/berlinstein/berlinstein-front-up-left.jpeg"
+  ],
+  "poster": "/GoeODM/images/works/berlinstein/berlinstein-front.jpeg",
+  "location": {
+    "lat": 51.5340,
+    "lng": 9.9350,
+    "address": "Berliner Straße / Ecke Weender Straße",
+    "myMapsEmbedUrl": "https://www.google.com/maps/d/embed?mid=YOUR_MAP_ID"
+  },
+  "artist": "Georg Schorn",
+  "year": "1960",
+  "material": {
+    "de": "Stein",
+    "en": "Stone"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "title": {
+    "de": "Butt im Griff",
+    "en": "Butt in Griff"
+  },
+  "description": {
+    "de": "Die Skulptur ist circa 2,30 Meter hoch. Sie entstand nach einem Ton-Entwurf von Günter Grass aus dem Jahre 1982 und wurde anlässlich der Ausstellung Günter Grass. Bronzen - Terrakotten. Arbeiten auf Papier (2004, in der Paulinerkirche) aufgestellt.",
+    "en": "Die Skulptur ist circa 2,30 Meter hoch. Sie entstand nach einem Ton-Entwurf von Günter Grass aus dem Jahre 1982 und wurde anlässlich der Ausstellung Günter Grass. Bronzen - Terrakotten. Arbeiten auf Papier (2004, in der Paulinerkirche) aufgestellt."
+  },
+  "category": "kunstwerk",
+  "model": {
+    "glb": "/GoeODM/models/Butt-im-Griff/Butt-im-Griff.glb",
+    "usdz": "/GoeODM/models/Butt-im-Griff/Butt-im-Griff.usdz"
+  },
+  "photos": [
+    "/GoeODM/images/works/butt-im-griff/butt-im-griff.jpeg"
+  ],
+  "poster": "/GoeODM/images/works/butt-im-griff/butt-im-griff.jpeg",
+  "location": {
+    "lat": 51.5340,
+    "lng": 9.9350,
+    "address": "Göttingen, Niedersachsen",
+    "myMapsEmbedUrl": "https://www.google.com/maps/d/embed?mid=YOUR_MAP_ID"
+  },
+  "artist": "Günter Grass (1927-2015)",
+  "year": "1982",
+  "material": {
+    "de": "Bronzeguss",
+    "en": "Bronze casting"
+  }
+}

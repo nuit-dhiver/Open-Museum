@@ -5,13 +5,12 @@ GoeODM (Göttingen Open Digital Museum ) is a project dedicated to capturing and
 ## Project Goals
 The primary aim of this project is to document and preserve 3D models of Göttingen's cultural and artistic heritage. By leveraging modern photogrammetry techniques, we hope to make high-quality 3D models of monuments and public art widely accessible.
 
-## Explore the Models
-You can browse the 3D models on Sketchfab or download them here if you require more precise formats.
+## Explore & Download the Models
+All 3D models are available in the [`public/models/`](public/models/) folder. You can download individual models in various formats directly from the repository:
 
-## How We Work
-There is no strict standard but most of the models so far made this way:
-- **Photo Capture**: All photos are captured using an iPhone.
-- **Processing**: The images are processed using Apple's Object Capture API (Reality Composer Pro).
+- **Browse models**: Visit [public/models/](public/models/)
+- Each monument and artwork folder contains model files ready for download
+- Models are available in multiple formats for different platforms and applications
 
 ## How to Contribute
 Feel free to contribute to this project in any way you can. Whether it's capturing new models, improving existing ones, or sharing feedback, your help is greatly appreciated!
@@ -20,10 +19,11 @@ If you have any questions or suggestions, don’t hesitate to contact me.
 
 ## Support Us
 Your support means a lot! Here’s how you can help:
+- Make a donation.
 - Star this repository ⭐
-- Make a donation
+- Make a donation.
 - Share the project with others
-
+- Make a donation.
 
 ## License
 

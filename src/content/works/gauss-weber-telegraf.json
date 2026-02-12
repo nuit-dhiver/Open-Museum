@@ -4,19 +4,27 @@
     "en": "Gauss-Weber Telegraph"
   },
   "description": {
-    "de": "Der Gauß-Weber Telegraf erinnert an den ersten elektromagnetischen Telegrafen, den Carl Friedrich Gauß und Wilhelm Eduard Weber 1833 in Göttingen entwickelten — eine Pionierleistung der Kommunikationstechnik.",
-    "en": "The Gauss-Weber Telegraph commemorates the first electromagnetic telegraph, developed by Carl Friedrich Gauss and Wilhelm Eduard Weber in Göttingen in 1833 — a pioneering achievement in communication technology."
+    "de": "Bis ins 19. Jahrhundert war die Kommunikation oft sehr langsam. Im Jahr 1833 versuchten Carl Friedrich Gauss und Wilhelm Weber, die Kommunikation mithilfe von Elektrizität und Magnetismus zu beschleunigen. Die beiden spannten ein 1,9 Meilen langes (drei Kilometer) Kabel zwischen Gauss’ Sternwarte und Webers Labor und stellten an beiden Enden eine spezielle Vorrichtung auf. Die Idee war, dass auf der einen Seite ein Nutzer hochspannende Pulse senden konnte, die sich am anderen Ende in kurze magnetische Feldstöße umsetzten. Diese Felder konnten wiederum beobachtet werden, indem man die Bewegung einer winzigen Kompassnadel verfolgte. Obwohl sie Geschwindigkeit anstrebten, war ihre Erfindung jedoch langsam und umständlich. Das von ihnen verwendete Alphabet war nicht so durchdacht wie der spätere Morsecode, sodass es mehrere Minuten dauern konnte, eine kurze Nachricht zu entschlüsseln. Die Universität entschied sich gegen eine Finanzierung der Erfindung, weshalb sie nie weiterentwickelt wurde. Wenige Jahre später wurden Geräte mit Morsecode erfunden, die den Gauss-Weber-Telegraphen schnell überflüssig machten.",
+    "en": "Up until the 19th century, communication was often slow. In 1833, Carl Friedrich Gauss and Wilhelm Weber attempted to speed up communication using electricity and magnetism. The two spun a 1.9-mile-long (three-kilometer) wire between Gauss’s observatory and Weber’s lab and placed a special machine on both sides. The idea was that on one side, a user could send high voltage pulses that would translate into short magnetic field bursts on the other side. These fields, in turn, could be seen by observing a tiny compass needle move. However, though they wanted speed, their invention was slow and clumsy. The alphabet they used wasn’t as well thought out as Morse code, meaning it could take them several minutes to decode a short message. The university decided not to fund the invention, so it was never developed further. A few years later, devices using Morse code were invented, rendering the Gauss-Weber telegraph obsolete."
   },
   "category": "denkmal",
   "model": {
-    "glb": "/GoeODM/models/Gauss-Weber-Telegraf/Gauss-Weber-Telegraf.glb"
+    "glb": "/GoeODM/models/Gauss-Weber-Telegraf/Gauss-Weber-Telegraf.glb",
+    "usdz": "/GoeODM/models/Gauss-Weber-Telegraf/Gauss-Weber-Telegraf.usdz"
   },
-  "photos": [],
+  "photos": [
+    "/GoeODM/images/works/gauss-weber-telegraf/gauss-weber-telegraf-ftr.png",
+    "/GoeODM/images/works/gauss-weber-telegraf/gauss-weber-telegraf-r.png",
+    "/GoeODM/images/works/gauss-weber-telegraf/gauss-weber-telegraf-l.png",
+    "/GoeODM/images/works/gauss-weber-telegraf/gauss-weber-telegraf-b.png",
+    "/GoeODM/images/works/gauss-weber-telegraf/gauss-weber-telegraf-t.png"
+  ],
+    "poster": "/GoeODM/images/works/gauss-weber-telegraf/gauss-weber-telegraf-ftr.png",
   "location": {
-    "lat": 51.5336,
-    "lng": 9.9370,
+    "lat": 51.533879772515846,
+    "lng": 9.931909227257883,
     "address": "Göttingen, Niedersachsen"
   },
-  "artist": "Nach Gauß & Weber",
+  "artist": "Carl Friedrich Gauß (1777–1855) & Wilhelm Eduard Weber (1804–1891)",
   "year": "1833"
 }

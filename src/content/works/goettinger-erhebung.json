@@ -19,9 +19,10 @@
     "/GoeODM/images/works/goettinger-erhebung/goettinger-erhebung-front-up-right.jpeg",
     "/GoeODM/images/works/goettinger-erhebung/goettinger-erhebung-bottom.jpeg"
   ],
+  "poster": "/GoeODM/images/works/goettinger-erhebung/goettinger-erhebung-front.jpeg",
   "location": {
-    "lat": 51.5339,
-    "lng": 9.9356,
+    "lat": 51.532608406082524,
+    "lng": 9.93494448091561,
     "address": "Marktplatz 7/8, Eingang Kornmarktpassage, 37073 Göttingen, Niedersachsen"
   },
   "artist": "Andreas Welzenbach (*1965), Hüttlingen",

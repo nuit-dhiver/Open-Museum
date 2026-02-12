@@ -19,10 +19,9 @@
   ],
   "poster": "/GoeODM/images/works/berlinstein/berlinstein-front.jpeg",
   "location": {
-    "lat": 51.5340,
-    "lng": 9.9350,
-    "address": "Berliner Straße / Ecke Weender Straße",
-    "myMapsEmbedUrl": "https://www.google.com/maps/d/embed?mid=YOUR_MAP_ID"
+    "lat": 51.53784300322187,
+    "lng": 9.93399834094424,
+    "address": "Berliner Straße / Ecke Weender Straße"
   },
   "artist": "Georg Schorn",
   "year": "1960",

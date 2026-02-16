@@ -81,12 +81,23 @@ const categoryKey = `category.${data.category}` as const;
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
               {data.photos.map((photo: string) => (
                 <div class="brutal-card overflow-hidden aspect-square">
-                  <img src={photo} alt={data.title[lang]} class="w-full h-full object-cover" loading="lazy" />
+                  <img src={photo} alt={data.title[lang]} class="w-full h-full object-cover cursor-pointer photo-gallery-thumb" data-full={photo} loading="lazy" />
                 </div>
               ))}
             </div>
           </div>
         )}
+
+        <!-- Photo Lightbox -->
+        <div id="photo-lightbox" class="photo-lightbox" aria-hidden="true">
+          <button class="photo-lightbox-close" aria-label="Close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+          <img class="photo-lightbox-img" src="" alt="" />
+        </div>
 
         <!-- Description -->
         <div>
@@ -171,4 +182,43 @@ const categoryKey = `category.${data.category}` as const;
       </aside>
     </div>
   </div>
+
+  <script>
+    function initLightbox() {
+      const lightbox = document.getElementById('photo-lightbox');
+      const lightboxImg = lightbox?.querySelector('.photo-lightbox-img') as HTMLImageElement | null;
+      const closeBtn = lightbox?.querySelector('.photo-lightbox-close');
+      if (!lightbox || !lightboxImg) return;
+
+      document.querySelectorAll('.photo-gallery-thumb').forEach((thumb) => {
+        thumb.addEventListener('click', () => {
+          const src = (thumb as HTMLElement).dataset.full || (thumb as HTMLImageElement).src;
+          const alt = (thumb as HTMLImageElement).alt || '';
+          lightboxImg.src = src;
+          lightboxImg.alt = alt;
+          lightbox.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      closeBtn?.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.getAttribute('aria-hidden') === 'false') closeLightbox();
+      });
+
+      function closeLightbox() {
+        lightbox!.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initLightbox);
+    } else {
+      initLightbox();
+    }
+  </script>
 </Base>

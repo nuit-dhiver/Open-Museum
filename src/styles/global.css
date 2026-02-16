@@ -196,3 +196,74 @@ model-viewer {
   transform: scale(1.03);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
+
+/* ═══ Prose (Markdown descriptions) ═══ */
+
+.prose {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.prose p {
+  margin-bottom: 1em;
+}
+
+.prose p:last-child {
+  margin-bottom: 0;
+}
+
+.prose strong {
+  font-weight: 700;
+  color: var(--color-black);
+}
+
+.prose em {
+  font-style: italic;
+}
+
+.prose a {
+  color: var(--color-brand-blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose a:hover {
+  color: var(--color-brand-gold);
+}
+
+.prose ul,
+.prose ol {
+  margin: 0.75em 0;
+  padding-left: 1.5em;
+}
+
+.prose ul {
+  list-style-type: disc;
+}
+
+.prose ol {
+  list-style-type: decimal;
+}
+
+.prose li {
+  margin-bottom: 0.35em;
+}
+
+.prose h2,
+.prose h3,
+.prose h4 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  color: var(--color-black);
+}
+
+.prose blockquote {
+  border-left: 3px solid var(--color-brand-gold);
+  padding-left: 1em;
+  margin: 1em 0;
+  color: rgba(0, 0, 0, 0.6);
+  font-style: italic;
+}

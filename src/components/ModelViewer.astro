@@ -10,7 +10,7 @@ interface Props {
 const { src, iosSrc, alt, poster, class: className = '' } = Astro.props;
 ---
 
-<div class={`brutal-card overflow-hidden ${className}`}>
+<div class={`brutal-card overflow-hidden model-viewer-container ${className}`}>
   <model-viewer
     src={src}
     ios-src={iosSrc}
@@ -36,4 +36,128 @@ const { src, iosSrc, alt, poster, class: className = '' } = Astro.props;
       )}
     </div>
   </model-viewer>
+
+  <button class="fullscreen-btn" aria-label="Toggle fullscreen" title="Fullscreen">
+    <!-- Expand icon -->
+    <svg class="icon-expand" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 3 21 3 21 9"></polyline>
+      <polyline points="9 21 3 21 3 15"></polyline>
+      <line x1="21" y1="3" x2="14" y2="10"></line>
+      <line x1="3" y1="21" x2="10" y2="14"></line>
+    </svg>
+    <!-- Compress icon -->
+    <svg class="icon-compress" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="4 14 10 14 10 20"></polyline>
+      <polyline points="20 10 14 10 14 4"></polyline>
+      <line x1="14" y1="10" x2="21" y2="3"></line>
+      <line x1="3" y1="21" x2="10" y2="14"></line>
+    </svg>
+  </button>
 </div>
+
+<style>
+  .model-viewer-container {
+    position: relative;
+  }
+
+  .fullscreen-btn {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.65);
+    color: #fff;
+    border: 2px solid #000;
+    border-radius: 6px;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+
+  .fullscreen-btn:hover {
+    background: rgba(0, 0, 0, 0.85);
+    transform: translateY(-1px);
+  }
+
+  .fullscreen-btn:active {
+    transform: translateY(1px);
+  }
+
+  .fullscreen-btn .icon-compress {
+    display: none;
+  }
+
+  /* When the container is fullscreen, swap icons and adjust layout */
+  .model-viewer-container:fullscreen {
+    width: 100vw;
+    height: 100vh;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    background: #000;
+  }
+
+  .model-viewer-container:fullscreen .icon-expand {
+    display: none;
+  }
+
+  .model-viewer-container:fullscreen .icon-compress {
+    display: block;
+  }
+
+  /* Safari */
+  .model-viewer-container:-webkit-full-screen {
+    width: 100vw;
+    height: 100vh;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    background: #000;
+  }
+
+  .model-viewer-container:-webkit-full-screen .icon-expand {
+    display: none;
+  }
+
+  .model-viewer-container:-webkit-full-screen .icon-compress {
+    display: block;
+  }
+</style>
+
+<script>
+  function initFullscreenButtons() {
+    document.querySelectorAll('.model-viewer-container').forEach((container) => {
+      const btn = container.querySelector('.fullscreen-btn');
+      if (!btn || btn.hasAttribute('data-fs-init')) return;
+      btn.setAttribute('data-fs-init', '');
+
+      btn.addEventListener('click', () => {
+        const fsElement = document.fullscreenElement || (document as any).webkitFullscreenElement;
+        if (!fsElement) {
+          if (container.requestFullscreen) {
+            container.requestFullscreen();
+          } else if ((container as any).webkitRequestFullscreen) {
+            (container as any).webkitRequestFullscreen();
+          }
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          } else if ((document as any).webkitExitFullscreen) {
+            (document as any).webkitExitFullscreen();
+          }
+        }
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFullscreenButtons);
+  } else {
+    initFullscreenButtons();
+  }
+</script>

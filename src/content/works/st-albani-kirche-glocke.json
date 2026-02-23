@@ -12,7 +12,11 @@
     "glb": "/GoeODM/models/St-Albani-Kirche/St-Albani-Kirche_Glocke_V01.glb",
     "usdz": "/GoeODM/models/St-Albani-Kirche/St-Albani-Kirche_Glocke_Raw_Clean.usdz"
   },
-  "photos": [],
+"photos": [
+    "/GoeODM/images/works/st-albani-kirche-glocke/st-albani-kirche-glocke-1.png",
+    "/GoeODM/images/works/st-albani-kirche-glocke/st-albani-kirche-glocke-2.png"
+  ],
+  "poster": "/GoeODM/images/works/st-albani-kirche-glocke/st-albani-kirche-glocke-poster.png",
   "location": {
     "lat": 51.5312,
     "lng": 9.9361,

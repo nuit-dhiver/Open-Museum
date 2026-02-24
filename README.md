@@ -19,9 +19,7 @@ If you have any questions or suggestions, don’t hesitate to contact me.
 
 ## Support Us
 Your support means a lot! Here’s how you can help:
-- Make a donation.
 - Star this repository ⭐
-- Make a donation.
 - Share the project with others
 - Make a donation.
 

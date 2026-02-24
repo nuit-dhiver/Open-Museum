@@ -71,6 +71,34 @@ const descriptionHtml = await marked.parse(data.description[lang]);
                 class="h-full"
               />
             </div>
+            <!-- Download Section -->
+            <div class="mt-4">
+              <h3 class="font-heading text-lg font-bold uppercase tracking-wider mb-3">
+                {t('work.download')}
+              </h3>
+              <div class="flex flex-col sm:flex-row gap-3">
+                <a
+                  href={data.model.glb}
+                  download={`${work.id}.glb`}
+                  class="brutal-btn brutal-btn-black flex-1 justify-center"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {t('work.downloadGLB')}
+                </a>
+                {data.model.usdz && (
+                  <a
+                    href={data.model.usdz}
+                    download={`${work.id}.usdz`}
+                    class="brutal-btn brutal-btn-black flex-1 justify-center"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {t('work.downloadUSDZ')}
+                  </a>
+                )}
+              </div>
+            </div>
           </div>
         )}
 

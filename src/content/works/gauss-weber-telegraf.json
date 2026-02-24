@@ -9,17 +9,17 @@
   },
   "category": "denkmal",
   "model": {
-    "glb": "/GoeODM/models/Gauss-Weber-Telegraf/Gauss-Weber-Telegraf.glb",
-    "usdz": "/GoeODM/models/Gauss-Weber-Telegraf/Gauss-Weber-Telegraf.usdz"
+    "glb": "/models/Gauss-Weber-Telegraf/Gauss-Weber-Telegraf.glb",
+    "usdz": "/models/Gauss-Weber-Telegraf/Gauss-Weber-Telegraf.usdz"
   },
   "photos": [
-    "/GoeODM/images/works/gauss-weber-telegraf/gauss-weber-telegraf-ftr.png",
-    "/GoeODM/images/works/gauss-weber-telegraf/gauss-weber-telegraf-r.png",
-    "/GoeODM/images/works/gauss-weber-telegraf/gauss-weber-telegraf-l.png",
-    "/GoeODM/images/works/gauss-weber-telegraf/gauss-weber-telegraf-b.png",
-    "/GoeODM/images/works/gauss-weber-telegraf/gauss-weber-telegraf-t.png"
+    "/images/works/gauss-weber-telegraf/gauss-weber-telegraf-ftr.png",
+    "/images/works/gauss-weber-telegraf/gauss-weber-telegraf-r.png",
+    "/images/works/gauss-weber-telegraf/gauss-weber-telegraf-l.png",
+    "/images/works/gauss-weber-telegraf/gauss-weber-telegraf-b.png",
+    "/images/works/gauss-weber-telegraf/gauss-weber-telegraf-t.png"
   ],
-    "poster": "/GoeODM/images/works/gauss-weber-telegraf/gauss-weber-telegraf-ftr.png",
+    "poster": "/images/works/gauss-weber-telegraf/gauss-weber-telegraf-ftr.png",
   "location": {
     "lat": 51.533879772515846,
     "lng": 9.931909227257883,

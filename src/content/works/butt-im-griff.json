@@ -9,13 +9,13 @@
   },
   "category": "kunstwerk",
   "model": {
-    "glb": "/GoeODM/models/Butt-im-Griff/Butt-im-Griff.glb",
-    "usdz": "/GoeODM/models/Butt-im-Griff/Butt-im-Griff.usdz"
+    "glb": "/models/Butt-im-Griff/Butt-im-Griff.glb",
+    "usdz": "/models/Butt-im-Griff/Butt-im-Griff.usdz"
   },
   "photos": [
-    "/GoeODM/images/works/butt-im-griff/butt-im-griff.jpeg"
+    "/images/works/butt-im-griff/butt-im-griff.jpeg"
   ],
-  "poster": "/GoeODM/images/works/butt-im-griff/butt-im-griff.jpeg",
+  "poster": "/images/works/butt-im-griff/butt-im-griff.jpeg",
   "location": {
     "lat": 51.53388041611314,
     "lng": 9.93181957855996,

@@ -3,8 +3,8 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://nuit-dhiver.github.io',
-  base: '/GoeODM/',
+  site: 'https://openmuseum.io',
+  base: '/',
   output: 'static',
   i18n: {
     defaultLocale: 'de',

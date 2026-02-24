@@ -9,14 +9,14 @@
   },
   "category": "kunstwerk",
   "model": {
-    "glb": "/GoeODM/models/Genesis/Genesis.glb"
+    "glb": "/models/Genesis/Genesis.glb"
   },
   "photos": [
-    "/GoeODM/images/works/genesis/genesis-fr.png",
-    "/GoeODM/images/works/genesis/genesis-l.png",
-    "/GoeODM/images/works/genesis/genesis-b.png"
+    "/images/works/genesis/genesis-fr.png",
+    "/images/works/genesis/genesis-l.png",
+    "/images/works/genesis/genesis-b.png"
   ],
-  "poster": "/GoeODM/images/works/genesis/genesis-poster.png",
+  "poster": "/images/works/genesis/genesis-poster.png",
   "location": {
     "lat": 51.52893235090022,
     "lng": 9.939885898868514,

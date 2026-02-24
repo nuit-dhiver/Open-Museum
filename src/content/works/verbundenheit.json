@@ -9,15 +9,15 @@
   },
   "category": "kunstwerk",
   "model": {
-    "glb": "/GoeODM/models/Verbundenheit/Verbundenheit.glb",
-    "usdz": "/GoeODM/models/Verbundenheit/Verbundenheit_RAW.usdz"
+    "glb": "/models/Verbundenheit/Verbundenheit.glb",
+    "usdz": "/models/Verbundenheit/Verbundenheit_RAW.usdz"
   },
   "photos": [
-    "/GoeODM/images/works/verbundenheit/verbundenheit.png",
-    "/GoeODM/images/works/verbundenheit/verbundenheit-2.png",
-    "/GoeODM/images/works/verbundenheit/verbundenheit-3.png"
+    "/images/works/verbundenheit/verbundenheit.png",
+    "/images/works/verbundenheit/verbundenheit-2.png",
+    "/images/works/verbundenheit/verbundenheit-3.png"
   ],
-  "poster": "/GoeODM/images/works/verbundenheit/verbundenheit-poster.png",
+  "poster": "/images/works/verbundenheit/verbundenheit-poster.png",
   "location": {
     "lat": 51.529056954659296, 
     "lng": 9.94002160844641,

@@ -37,6 +37,8 @@ jobs:
 
       - name: Build Astro
         run: pnpm build
+        env:
+          PUBLIC_ASSETS_BASE_URL: ${{ vars.PUBLIC_ASSETS_BASE_URL }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

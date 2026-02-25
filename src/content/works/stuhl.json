@@ -9,16 +9,16 @@
   },
   "category": "kunstwerk",
   "model": {
-    "glb": "/models/Stuhl/6-teiliges-Skulpturenensemble_Stuhl.glb",
-    "usdz": "/models/Stuhl/6-teiliges-Skulpturenensemble_Stuhl.usdz"
+    "glb": "/models/6-teiliges-Skulpturenensemble_Stuhl.glb",
+    "usdz": "/models/6-teiliges-Skulpturenensemble_Stuhl.usdz"
   },
   "photos": [
-    "/images/works/stuhl/stuhl.png",
-    "/images/works/stuhl/stuhl-2.png",
-    "/images/works/stuhl/stuhl-3.png",
-    "/images/works/stuhl/stuhl-4.png"
+    "/images/stuhl.png",
+    "/images/stuhl-2.png",
+    "/images/stuhl-3.png",
+    "/images/stuhl-4.png"
   ],
-  "poster": "/images/works/stuhl/stuhl-poster.png",
+  "poster": "/images/stuhl-poster.png",
   "location": {
     "lat": 51.535944932256676,
     "lng":9.94043245399882,

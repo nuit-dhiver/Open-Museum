@@ -9,15 +9,15 @@
   },
   "category": "denkmal",
   "model": {
-    "glb": "/models/berlinstein/berlinstein.glb",
-    "usdz": "/models/berlinstein/berlinstein.usdz"
+    "glb": "/models/berlinstein.glb",
+    "usdz": "/models/berlinstein.usdz"
   },
   "photos": [
-    "/images/works/berlinstein/berlinstein-front.jpeg",
-    "/images/works/berlinstein/berlinstein-back.jpeg",
-    "/images/works/berlinstein/berlinstein-front-up-left.jpeg"
+    "/images/berlinstein-front.jpeg",
+    "/images/berlinstein-back.jpeg",
+    "/images/berlinstein-fron-up-left.jpeg"
   ],
-  "poster": "/images/works/berlinstein/berlinstein-front.jpeg",
+  "poster": "/images/berlinstein-front.jpeg",
   "location": {
     "lat": 51.53784300322187,
     "lng": 9.93399834094424,

@@ -13,6 +13,11 @@ dist/
 .env
 .env.*
 
+# Large assets (served from external storage in production)
+public/models/
+public/images/works/
+public/images/slideshow/
+
 # Editor
 .vscode/
 *.swp

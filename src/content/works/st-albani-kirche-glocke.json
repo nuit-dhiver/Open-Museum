@@ -9,14 +9,14 @@
   },
   "category": "denkmal",
   "model": {
-    "glb": "/models/St-Albani-Kirche/St-Albani-Kirche_Glocke_V01.glb",
-    "usdz": "/models/St-Albani-Kirche/St-Albani-Kirche_Glocke_Raw_Clean.usdz"
+    "glb": "/models/St-Albani-Kirche_Glocke_V01.glb",
+    "usdz": "/models/St-Albani-Kirche_Glocke_Raw_Clean.usdz"
   },
 "photos": [
-    "/images/works/st-albani-kirche-glocke/st-albani-kirche-glocke-1.png",
-    "/images/works/st-albani-kirche-glocke/st-albani-kirche-glocke-2.png"
+    "/images/st-albani-kirche-glocke-1.png",
+    "/images/st-albani-kirche-glocke-2.png"
   ],
-  "poster": "/images/works/st-albani-kirche-glocke/st-albani-kirche-glocke-poster.png",
+  "poster": "/images/st-albani-kirche-glocke-poster.png",
   "location": {
     "lat": 51.5312,
     "lng": 9.9361,

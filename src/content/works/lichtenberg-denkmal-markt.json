@@ -9,16 +9,16 @@
   },
   "category": "denkmal",
   "model": {
-    "glb": "/models/Lichtenberg-Denkmal-Markt/Lichtenberg-Denkmal-Markt.glb",
-    "usdz": "/models/Lichtenberg-Denkmal-Markt/Lichtenberg-Denkmal-Markt.usdz"
+    "glb": "/models/Lichtenberg-Denkmal-Markt.glb",
+    "usdz": "/models/Lichtenberg-Denkmal-Markt.usdz"
   },
   "photos": [
-      "/images/works/lichtenberg-denkmal-markt/lichtenberg-denkmal-markt-f.png",
-      "/images/works/lichtenberg-denkmal-markt/lichtenberg-denkmal-markt-l.png",
-      "/images/works/lichtenberg-denkmal-markt/lichtenberg-denkmal-markt-b.png",
-      "/images/works/lichtenberg-denkmal-markt/lichtenberg-denkmal-markt-t.png"
+      "/images/lichtenberg-denkmal-markt-f.png",
+      "/images/lichtenberg-denkmal-markt-l.png",
+      "/images/lichtenberg-denkmal-markt-b.png",
+      "/images/lichtenberg-denkmal-markt-t.png"
   ],
-  "poster": "/images/works/lichtenberg-denkmal-markt/lichtenberg-denkmal-markt-poster.png",
+  "poster": "/images/lichtenberg-denkmal-markt-poster.png",
   "location": {
     "lat": 51.533076817152306,
     "lng": 9.934959032645615,

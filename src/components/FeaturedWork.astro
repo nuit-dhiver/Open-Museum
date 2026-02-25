@@ -2,6 +2,7 @@
 import ModelViewer from './ModelViewer.astro';
 import { getWorkPath, useTranslations, type Lang } from '@/i18n/ui';
 import { getCollection } from 'astro:content';
+import { getAssetUrl } from '@/utils/assets';
 
 interface Props {
   lang: Lang;
@@ -29,10 +30,10 @@ const featured = worksWithModels.length > 0
         <!-- 3D Viewer -->
         <div class="aspect-square">
           <ModelViewer
-            src={featured.data.model.glb!}
-            iosSrc={featured.data.model.usdz}
+            src={getAssetUrl(featured.data.model.glb!)}
+            iosSrc={featured.data.model.usdz ? getAssetUrl(featured.data.model.usdz) : undefined}
             alt={featured.data.title[lang]}
-            poster={featured.data.poster}
+            poster={featured.data.poster ? getAssetUrl(featured.data.poster) : undefined}
             class="h-full"
           />
         </div>

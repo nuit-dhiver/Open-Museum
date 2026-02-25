@@ -9,16 +9,16 @@
   },
   "category": "kunstwerk",
   "model": {
-    "glb": "/models/Steinbewachsene-Torsi/Steinbewachsene-Torsi_left.glb",
-    "usdz": "/models/Steinbewachsene-Torsi/Steinbewachsene-Torsi-left.usdz"
+    "glb": "/models/Steinbewachsene-Torsi_left.glb",
+    "usdz": "/models/Steinbewachsene-Torsi-left.usdz"
   },
 "photos": [
-    "/images/works/steinbewachsene-torsi/steinbewachsene-torsi-1.png",
-    "/images/works/steinbewachsene-torsi/steinbewachsene-torsi-2.png",
-    "/images/works/steinbewachsene-torsi/steinbewachsene-torsi-3.png",
-    "/images/works/steinbewachsene-torsi/steinbewachsene-torsi-4.png"
+    "/images/steinbewachsene-torsi-1.png",
+    "/images/steinbewachsene-torsi-2.png",
+    "/images/steinbewachsene-torsi-3.png",
+    "/images/steinbewachsene-torsi-4.png"
   ],
-  "poster": "/images/works/steinbewachsene-torsi/steinbewachsene-torsi-poster.png",
+  "poster": "/images/steinbewachsene-torsi-poster.png",
   "location": {
     "lat": 51.5341,
     "lng": 9.9352,

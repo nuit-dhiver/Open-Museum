@@ -9,17 +9,17 @@
   },
   "category": "kunstwerk",
   "model": {
-    "glb": "/models/Goettinger-Erhebung/Goettinger-Erhebung.glb",
-    "usdz": "/models/Goettinger-Erhebung/Goettinger-Erhebung.usdz"
+    "glb": "/models/Goettinger-Erhebung.glb",
+    "usdz": "/models/Goettinger-Erhebung.usdz"
   },
   "photos": [
-    "/images/works/goettinger-erhebung/goettinger-erhebung-front.jpeg",
-    "/images/works/goettinger-erhebung/goettinger-erhebung-left.jpeg",
-    "/images/works/goettinger-erhebung/goettinger-erhebung-back.jpeg",
-    "/images/works/goettinger-erhebung/goettinger-erhebung-front-up-right.jpeg",
-    "/images/works/goettinger-erhebung/goettinger-erhebung-bottom.jpeg"
+    "/images/goettinger-erhebung-front.jpeg",
+    "/images/goettinger-erhebung-left.jpeg",
+    "/images/goettinger-erhebung-back.jpeg",
+    "/images/goettinger-erhebung-front-up-right.jpeg",
+    "/images/goettinger-erhebung-bottom.jpeg"
   ],
-  "poster": "/images/works/goettinger-erhebung/goettinger-erhebung-front.jpeg",
+  "poster": "/images/goettinger-erhebung-front.jpeg",
   "location": {
     "lat": 51.532608406082524,
     "lng": 9.93494448091561,

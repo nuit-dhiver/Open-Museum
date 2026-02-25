@@ -4,6 +4,7 @@ import ModelViewer from '@/components/ModelViewer.astro';
 import { useTranslations, getCategoryPath } from '@/i18n/ui';
 import { getCollection } from 'astro:content';
 import { marked } from 'marked';
+import { getAssetUrl } from '@/utils/assets';
 
 export async function getStaticPaths() {
   const works = await getCollection('works');
@@ -22,7 +23,7 @@ const categoryKey = `category.${data.category}` as const;
 const descriptionHtml = await marked.parse(data.description[lang]);
 ---
 
-<Base title={`${data.title[lang]} — Göttingen Denkmale`} description={data.description[lang]} ogImage={data.poster}>
+<Base title={`${data.title[lang]} — Göttingen Denkmale`} description={data.description[lang]} ogImage={data.poster ? getAssetUrl(data.poster) : undefined}>
   <!-- Breadcrumb -->
   <div class="bg-off-white border-b-3 border-black">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
@@ -64,10 +65,10 @@ const descriptionHtml = await marked.parse(data.description[lang]);
             </h2>
             <div class="aspect-square">
               <ModelViewer
-                src={data.model.glb}
-                iosSrc={data.model.usdz}
+                src={getAssetUrl(data.model.glb)}
+                iosSrc={data.model.usdz ? getAssetUrl(data.model.usdz) : undefined}
                 alt={data.title[lang]}
-                poster={data.poster}
+                poster={data.poster ? getAssetUrl(data.poster) : undefined}
                 class="h-full"
               />
             </div>
@@ -83,7 +84,7 @@ const descriptionHtml = await marked.parse(data.description[lang]);
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
               {data.photos.map((photo: string) => (
                 <div class="brutal-card overflow-hidden aspect-square">
-                  <img src={photo} alt={data.title[lang]} class="w-full h-full object-cover cursor-pointer photo-gallery-thumb" data-full={photo} loading="lazy" />
+                  <img src={getAssetUrl(photo)} alt={data.title[lang]} class="w-full h-full object-cover cursor-pointer photo-gallery-thumb" data-full={getAssetUrl(photo)} loading="lazy" />
                 </div>
               ))}
             </div>

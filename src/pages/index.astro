@@ -4,15 +4,16 @@ import CategoryCard from '@/components/CategoryCard.astro';
 import Slideshow from '@/components/Slideshow.astro';
 import FeaturedWork from '@/components/FeaturedWork.astro';
 import { useTranslations, getCategoryPath } from '@/i18n/ui';
+import { getAssetUrl } from '@/utils/assets';
 
 const lang = 'de';
 const t = useTranslations(lang);
 
 // Placeholder slideshow images — replace with real photos
 const slideshowImages = [
-  { src: `${import.meta.env.BASE_URL}images/slideshow/placeholder-1.jpg`, alt: 'Göttingen Denkmal' },
-  { src: `${import.meta.env.BASE_URL}images/slideshow/placeholder-2.jpg`, alt: 'Göttingen Skulptur' },
-  { src: `${import.meta.env.BASE_URL}images/slideshow/placeholder-3.jpg`, alt: 'Göttingen Brunnen' },
+  { src: getAssetUrl('/images/slideshow/placeholder-1.jpg'), alt: 'Göttingen Denkmal' },
+  { src: getAssetUrl('/images/slideshow/placeholder-2.jpg'), alt: 'Göttingen Skulptur' },
+  { src: getAssetUrl('/images/slideshow/placeholder-3.jpg'), alt: 'Göttingen Brunnen' },
 ];
 ---
 

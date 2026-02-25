@@ -9,17 +9,17 @@
   },
   "category": "denkmal",
   "model": {
-    "glb": "/models/charlotte-mueller/charlotte-mueller.glb",
-    "usdz": "/models/charlotte-mueller/charlotte-mueller.usdz"
+    "glb": "/models/charlotte-mueller.glb",
+    "usdz": "/models/charlotte-mueller.usdz"
   },
   "photos": [
-    "/images/works/charlotte-mueller/charlotte-mueller-2.png",
-    "/images/works/charlotte-mueller/charlotte-mueller-3.png",
-    "/images/works/charlotte-mueller/charlotte-mueller-4.png",
-    "/images/works/charlotte-mueller/charlotte-mueller-5.png",
-    "/images/works/charlotte-mueller/charlotte-mueller-6.png"
+    "/images/charlotte-mueller-2.png",
+    "/images/charlotte-mueller-3.png",
+    "/images/charlotte-mueler-4.png",
+    "/images/charlotte-mueller-5.png",
+    "/images/charlotte-mueller-6.png"
   ],
-  "poster": "/images/works/charlotte-mueller/charlotte-mueller-poster.png",
+  "poster": "/images/charlotte-mueller-poster.png",
   "location": {
     "lat": 51.53614135252223,
     "lng": 9.927400769271406,

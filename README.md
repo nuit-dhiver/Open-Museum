@@ -6,11 +6,28 @@ GoeODM (Göttingen Open Digital Museum ) is a project dedicated to capturing and
 The primary aim of this project is to document and preserve 3D models of Göttingen's cultural and artistic heritage. By leveraging modern photogrammetry techniques, we hope to make high-quality 3D models of monuments and public art widely accessible.
 
 ## Explore & Download the Models
-All 3D models are available in the [`public/models/`](public/models/) folder. You can download individual models in various formats directly from the repository:
+All 3D models are available at our external storage and on the website. You can browse and interact with them directly:
 
-- **Browse models**: Visit [public/models/](public/models/)
-- Each monument and artwork folder contains model files ready for download
+- **Browse models**: Visit [openmuseum.io](https://openmuseum.io)
 - Models are available in multiple formats for different platforms and applications
+
+## Asset Storage
+Large files (3D models and images) are hosted on external storage to keep the repository lightweight.
+
+The storage URL is configured via the `PUBLIC_ASSETS_BASE_URL` environment variable:
+
+```bash
+# Copy the example env file
+cp .env.example .env
+
+# Set the storage URL (current: Firebase Storage)
+PUBLIC_ASSETS_BASE_URL=https://open-museum-885a1.firebasestorage.app
+```
+
+### Local Development
+- **With remote assets**: Set `PUBLIC_ASSETS_BASE_URL` in `.env` and assets load from Firebase
+- **With local assets**: Leave `PUBLIC_ASSETS_BASE_URL` empty and place asset files in `public/models/` and `public/images/works/` (these directories are gitignored)
+- **Switching providers**: Just change the URL — file paths are resolved at build time via [`src/utils/assets.ts`](src/utils/assets.ts)
 
 ## How to Contribute
 Feel free to contribute to this project in any way you can. Whether it's capturing new models, improving existing ones, or sharing feedback, your help is greatly appreciated!

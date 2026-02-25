@@ -73,29 +73,17 @@ const descriptionHtml = await marked.parse(data.description[lang]);
             </div>
             <!-- Download Section -->
             <div class="mt-4">
-              <h3 class="font-heading text-lg font-bold uppercase tracking-wider mb-3">
+              <button id="download-btn" class="brutal-btn brutal-btn-black w-full justify-center">
                 {t('work.download')}
-              </h3>
-              <div class="flex flex-col sm:flex-row gap-3">
-                <a
-                  href={data.model.glb}
-                  download={`${work.id}.glb`}
-                  class="brutal-btn brutal-btn-black flex-1 justify-center"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+              </button>
+              <div id="format-options" class="mt-3 hidden flex flex-col gap-3">
+                <button id="download-glb" class="brutal-btn brutal-btn-black w-full justify-center" data-href={data.model.glb} data-filename={`${work.id}.glb`}>
                   {t('work.downloadGLB')}
-                </a>
+                </button>
                 {data.model.usdz && (
-                  <a
-                    href={data.model.usdz}
-                    download={`${work.id}.usdz`}
-                    class="brutal-btn brutal-btn-black flex-1 justify-center"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <button id="download-usdz" class="brutal-btn brutal-btn-black w-full justify-center" data-href={data.model.usdz} data-filename={`${work.id}.usdz`}>
                     {t('work.downloadUSDZ')}
-                  </a>
+                  </button>
                 )}
               </div>
             </div>
@@ -245,6 +233,41 @@ const descriptionHtml = await marked.parse(data.description[lang]);
       document.addEventListener('DOMContentLoaded', initLightbox);
     } else {
       initLightbox();
+    }
+
+    // Download functionality
+    const downloadBtn = document.getElementById('download-btn');
+    const formatOptions = document.getElementById('format-options');
+    const downloadGlb = document.getElementById('download-glb');
+    const downloadUsdz = document.getElementById('download-usdz');
+
+    if (downloadBtn && formatOptions) {
+      downloadBtn.addEventListener('click', () => {
+        formatOptions.classList.toggle('hidden');
+      });
+    }
+
+    function createDownloadLink(href, filename) {
+      const link = document.createElement('a');
+      link.href = href;
+      link.download = filename;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    if (downloadGlb) {
+      downloadGlb.addEventListener('click', () => {
+        createDownloadLink(downloadGlb.dataset.href, downloadGlb.dataset.filename);
+      });
+    }
+
+    if (downloadUsdz) {
+      downloadUsdz.addEventListener('click', () => {
+        createDownloadLink(downloadUsdz.dataset.href, downloadUsdz.dataset.filename);
+      });
     }
   </script>
 </Base>

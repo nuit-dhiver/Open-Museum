@@ -78,11 +78,11 @@ const descriptionHtml = await marked.parse(data.description[lang]);
                 {t('work.download')}
               </button>
               <div id="format-options" class="mt-3 hidden flex flex-col gap-3">
-                <button id="download-glb" class="brutal-btn brutal-btn-black w-full justify-center" data-href={data.model.glb} data-filename={`${work.id}.glb`}>
+                <button id="download-glb" class="brutal-btn brutal-btn-black w-full justify-center" data-href={getAssetUrl(data.model.glb)} data-filename={`${work.id}.glb`}>
                   {t('work.downloadGLB')}
                 </button>
                 {data.model.usdz && (
-                  <button id="download-usdz" class="brutal-btn brutal-btn-black w-full justify-center" data-href={data.model.usdz} data-filename={`${work.id}.usdz`}>
+                  <button id="download-usdz" class="brutal-btn brutal-btn-black w-full justify-center" data-href={getAssetUrl(data.model.usdz)} data-filename={`${work.id}.usdz`}>
                     {t('work.downloadUSDZ')}
                   </button>
                 )}

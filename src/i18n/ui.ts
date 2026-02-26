@@ -39,6 +39,9 @@ export const ui = {
     'work.back': 'Zurück zur Kategorie',
     'work.view3d': '3D-Modell ansehen',
     'work.viewAR': 'In AR ansehen',
+    'work.download': 'Herunterladen',
+    'work.downloadGLB': 'GLB herunterladen',
+    'work.downloadUSDZ': 'USDZ herunterladen',
 
     // Footer
     'footer.contact': 'Kontakt',
@@ -89,6 +92,9 @@ export const ui = {
     'work.back': 'Back to category',
     'work.view3d': 'View 3D model',
     'work.viewAR': 'View in AR',
+    'work.download': 'Download',
+    'work.downloadGLB': 'Download GLB',
+    'work.downloadUSDZ': 'Download USDZ',
 
     // Footer
     'footer.contact': 'Contact',

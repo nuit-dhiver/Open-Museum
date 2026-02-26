@@ -22,3 +22,7 @@ public/images/slideshow/
 .vscode/
 *.swp
 *.swo
+
+# Lockfiles
+# Using pnpm in this repo — ignore npm's lockfile
+package-lock.json

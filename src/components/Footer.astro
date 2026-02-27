@@ -92,16 +92,17 @@ const t = useTranslations(lang);
 
     <!-- Bottom bar -->
     <div class="mt-8 pt-8 border-t border-white/20 text-center text-sm text-white/50">
-      {t('footer.rights')}
-    </div>
-
-    <div class="footer-bottom">
-      <p>&copy; 2026 Open Museum</p>
-      <p class="license">
+      <p>{t('footer.rights')}</p>
+      <p class="mt-2 text-xs text-white/40">
         {lang === 'de'
           ? '3D-Modelle & Medien lizenziert unter '
           : '3D models & media licensed under '}
-        <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>
+        <a 
+          href="https://creativecommons.org/licenses/by/4.0/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="underline hover:text-brand-gold transition-colors"
+        >CC BY 4.0</a>
       </p>
     </div>
   </div>

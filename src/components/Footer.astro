@@ -94,5 +94,15 @@ const t = useTranslations(lang);
     <div class="mt-8 pt-8 border-t border-white/20 text-center text-sm text-white/50">
       {t('footer.rights')}
     </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Open Museum</p>
+      <p class="license">
+        {lang === 'de'
+          ? '3D-Modelle & Medien lizenziert unter '
+          : '3D models & media licensed under '}
+        <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>
+      </p>
+    </div>
   </div>
 </footer>

@@ -16,8 +16,8 @@ export const ui = {
     'nav.kunstwerke': 'Kunstwerke',
 
     // Homepage
-    'home.title': 'Göttingen Denkmale',
-    'home.tagline': 'Entdecken Sie die Denkmäler, Brunnen und Kunstwerke der Universitätsstadt Göttingen — in 3D.',
+    'home.title': 'Open Museum',
+    'home.tagline': 'Entdecken Sie Denkmäler, Brunnen und Kunstwerke im öffentlichen Raum — in 3D.',
     'home.featured': 'Entdecken in 3D',
     'home.featured.cta': 'Werk ansehen',
     'home.slideshow.title': 'Impressionen',
@@ -49,8 +49,8 @@ export const ui = {
     'footer.phone': 'Telefon',
     'footer.email': 'E-Mail',
     'footer.social': 'Soziale Medien',
-    'footer.rights': '© 2026 Göttingen Denkmale. Alle Rechte vorbehalten.',
-    'footer.project': 'Ein Projekt zur digitalen Erfassung von Göttingens öffentlicher Kunst.',
+    'footer.rights': '© 2026 Open Museum. Alle Rechte vorbehalten.',
+    'footer.project': 'Ein Projekt zur digitalen Erfassung öffentlicher Kunst.',
 
     // 404
     '404.title': 'Seite nicht gefunden',
@@ -69,8 +69,8 @@ export const ui = {
     'nav.kunstwerke': 'Artworks',
 
     // Homepage
-    'home.title': 'Göttingen Monuments',
-    'home.tagline': 'Discover the monuments, fountains, and artworks of the university city of Göttingen — in 3D.',
+    'home.title': 'Open Museum',
+    'home.tagline': 'Discover monuments, fountains, and artworks in public spaces — in 3D.',
     'home.featured': 'Explore in 3D',
     'home.featured.cta': 'View work',
     'home.slideshow.title': 'Impressions',
@@ -102,8 +102,8 @@ export const ui = {
     'footer.phone': 'Phone',
     'footer.email': 'Email',
     'footer.social': 'Social Media',
-    'footer.rights': '© 2026 Göttingen Denkmale. All rights reserved.',
-    'footer.project': 'A project for digital preservation of Göttingen\'s public art.',
+    'footer.rights': '© 2026 Open Museum. All rights reserved.',
+    'footer.project': 'A project for digital preservation of public art.',
 
     // 404
     '404.title': 'Page not found',

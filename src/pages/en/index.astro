@@ -10,9 +10,9 @@ const lang = 'en';
 const t = useTranslations(lang);
 
 const slideshowImages = [
-  { src: getAssetUrl('/images/slideshow/placeholder-1.jpg'), alt: 'Göttingen Monument' },
-  { src: getAssetUrl('/images/slideshow/placeholder-2.jpg'), alt: 'Göttingen Sculpture' },
-  { src: getAssetUrl('/images/slideshow/placeholder-3.jpg'), alt: 'Göttingen Fountain' },
+  { src: getAssetUrl('/images/slideshow/placeholder-1.jpg'), alt: 'Monument' },
+  { src: getAssetUrl('/images/slideshow/placeholder-2.jpg'), alt: 'Sculpture' },
+  { src: getAssetUrl('/images/slideshow/placeholder-3.jpg'), alt: 'Fountain' },
 ];
 ---
 
@@ -21,8 +21,7 @@ const slideshowImages = [
   <section class="bg-black text-white py-20 sm:py-32 border-b-[3px] border-brand-gold">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h1 class="font-heading text-5xl sm:text-7xl font-bold uppercase tracking-wider mb-6">
-        Göttingen<br />
-        <span class="text-brand-gold">Monuments</span>
+        <span class="text-brand-gold">Open Museum</span>
       </h1>
       <p class="text-lg sm:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
         {t('home.tagline')}

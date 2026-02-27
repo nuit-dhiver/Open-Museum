@@ -23,7 +23,7 @@ const categoryKey = `category.${data.category}` as const;
 const descriptionHtml = await marked.parse(data.description[lang]);
 ---
 
-<Base title={`${data.title[lang]} — Göttingen Monuments`} description={data.description[lang]} ogImage={data.poster ? getAssetUrl(data.poster) : undefined}>
+<Base title={`${data.title[lang]} — Open Museum`} description={data.description[lang]} ogImage={data.poster ? getAssetUrl(data.poster) : undefined}>
   <!-- Breadcrumb -->
   <div class="bg-off-white border-b-3 border-black">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">

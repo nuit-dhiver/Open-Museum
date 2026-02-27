@@ -1,15 +1,15 @@
-# GoeODM
+# Open Museum
 
-GoeODM (Göttingen Open Digital Museum ) is a project dedicated to capturing and maintaining 3D models of monuments and public art in the city spaces of Göttingen using photogrammetry.
+Open Museum is a project dedicated to capturing and maintaining 3D models of monuments and public art using 3D reconstruction.
 
 ## Project Goals
-The primary aim of this project is to document and preserve 3D models of Göttingen's cultural and artistic heritage. By leveraging modern photogrammetry techniques, we hope to make high-quality 3D models of monuments and public art widely accessible.
+The primary aim of this project is to document and preserve 3D models of world's cultural and artistic heritage. By leveraging modern photogrammetry techniques, we hope to make high-quality 3D models of monuments and public art widely accessible.
 
 ## Explore & Download the Models
-All 3D models are available at our external storage and on the website. You can browse and interact with them directly:
+All 3D models are available on the website. You can browse and interact with them directly:
 
-- **Browse models**: Visit [openmuseum.io](https://openmuseum.io)
-- Models are available in multiple formats for different platforms and applications
+- **Browse & download models**: Visit [openmuseum.io](https://openmuseum.io)
+- Models are available in .GLB and .USDZ for different Web, Apple Ecosystem and Android
 
 ## Asset Storage
 Large files (3D models and images) are hosted on external storage to keep the repository lightweight.
@@ -48,7 +48,7 @@ Your support means a lot! Here’s how you can help:
 All source code (Astro/TypeScript/CSS/JavaScript) in this repository is licensed under the MIT License. See `LICENSE`.
 
 ### 3D models and media
-All 3D models, scans, textures, and other non-code assets in this repository (for example in `models/` and/or `assets/`) are licensed under **Creative Commons Attribution 4.0 International (CC BY 4.0)**.
+All 3D models, scans, textures, and other non-code assets in this project are licensed under **Creative Commons Attribution 4.0 International (CC BY 4.0)**.
 
 
-Thank you for your interest in GoeODM!
+Thank you for your interest in Open Museum!

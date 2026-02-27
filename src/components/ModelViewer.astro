@@ -60,12 +60,13 @@ const { src, iosSrc, alt, poster, class: className = '' } = Astro.props;
     position: relative;
   }
 
+  /* Hide on mobile — native AR/VR views already provide fullscreen */
   .fullscreen-btn {
     position: absolute;
     bottom: 12px;
     right: 12px;
     z-index: 10;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     width: 40px;
@@ -86,6 +87,13 @@ const { src, iosSrc, alt, poster, class: className = '' } = Astro.props;
 
   .fullscreen-btn:active {
     transform: translateY(1px);
+  }
+
+  /* Show fullscreen button only on non-touch / desktop devices */
+  @media (hover: hover) and (pointer: fine) {
+    .fullscreen-btn {
+      display: flex;
+    }
   }
 
   .fullscreen-btn .icon-compress {

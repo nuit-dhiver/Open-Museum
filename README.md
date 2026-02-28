@@ -48,7 +48,7 @@ Your support means a lot! Here’s how you can help:
 All source code (Astro/TypeScript/CSS/JavaScript) in this repository is licensed under the MIT License. See `LICENSE`.
 
 ### 3D models and media
-All 3D models, scans, textures, and other non-code assets in this project are licensed under **Creative Commons Attribution 4.0 International (CC BY 4.0)**.
+All 3D models, scans, textures, and other non-code assets in this project are licensed under **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)**.
 
 
 Thank you for your interest in Open Museum!

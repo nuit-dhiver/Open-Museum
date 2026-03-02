@@ -42,6 +42,11 @@ export const ui = {
     'work.download': 'Herunterladen',
     'work.downloadGLB': 'GLB herunterladen',
     'work.downloadUSDZ': 'USDZ herunterladen',
+    'work.licenseTitle': 'Lizenzhinweis',
+    'work.licenseNotice': 'Mit dem Herunterladen bestätige ich, dass diese Datei unter der',
+    'work.licenseLink': 'Creative Commons Namensnennung – Nicht kommerziell 4.0 (CC BY-NC 4.0)',
+    'work.licenseNoticeAfter': 'lizenziert ist und ausschließlich für nicht-kommerzielle Zwecke genutzt werden darf.',
+    'work.licenseDownloadWith': 'Herunterladen als',
 
     // Footer
     'footer.contact': 'Kontakt',
@@ -95,6 +100,11 @@ export const ui = {
     'work.download': 'Download',
     'work.downloadGLB': 'Download GLB',
     'work.downloadUSDZ': 'Download USDZ',
+    'work.licenseTitle': 'License Notice',
+    'work.licenseNotice': 'By downloading this file, I acknowledge it is released under',
+    'work.licenseLink': 'Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)',
+    'work.licenseNoticeAfter': 'and may only be used for non-commercial purposes.',
+    'work.licenseDownloadWith': 'Download as',
 
     // Footer
     'footer.contact': 'Contact',

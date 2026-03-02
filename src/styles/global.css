@@ -197,6 +197,73 @@ model-viewer {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
+/* ═══ License Modal ═══ */
+
+.license-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.license-modal[aria-hidden="false"] {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.license-modal-card {
+  background: var(--color-off-white);
+  border: 3px solid var(--color-black);
+  box-shadow: 6px 6px 0 var(--color-black);
+  max-width: 28rem;
+  width: 90vw;
+  padding: 2rem;
+  text-align: center;
+}
+
+.license-modal-card h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.license-modal-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.license-modal-card p a {
+  color: var(--color-brand-blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 600;
+}
+
+.license-modal-card p a:hover {
+  color: var(--color-brand-gold);
+}
+
+.license-modal-hint {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: rgba(0, 0, 0, 0.4);
+  margin-bottom: 0 !important;
+}
+
 /* ═══ Prose (Markdown descriptions) ═══ */
 
 .prose {

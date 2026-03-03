@@ -1,0 +1,33 @@
+{
+  "title": {
+    "de": "Schützenbrunnen",
+    "en": "Marksmen's Fountain"
+  },
+  "description": {
+    "de": "Der **Schützenbrunnen** in Duderstadt ist ein steinernes Zeugnis der tief verwurzelten Schützengilde-Tradition der Stadt. Die **Schützengilde Duderstadt**, deren Geschichte bis ins Mittelalter zurückreicht, prägte das gesellschaftliche und kulturelle Leben der Stadt über Jahrhunderte hinweg. Der Brunnen wurde als ehrendes Denkmal dieser Gemeinschaft errichtet und erinnert an die Bedeutung der Schützen als Hüter der städtischen Ordnung und als Träger bürgerlicher Festkultur – insbesondere des alljährlichen **Schützenfestes**, das bis heute in der Region gefeiert wird.\n\nAls **öffentliches Stadtmöbel** nimmt der Schützenbrunnen einen festen Platz im Herzen Duderstadts ein. Er steht in der historischen **Marktstraße**, einem der belebtesten Orte der Altstadt, und diente einst nicht nur als dekoratives Element, sondern auch als praktischer Wasserspender für Bürger und Händler. Seine Aufstellung um **ca. 1910** fällt in eine Zeit, in der viele deutsche Städte ihre öffentlichen Räume mit repräsentativen Brunnenanlagen aufwerteten – ein Ausdruck bürgerlichen Selbstbewusstseins und kommunaler Identität an der Schwelle zur Moderne.\n\nKünstlerisch vereint der Brunnen die für die Jahrhundertwende typische Formensprache aus **Sandstein und Bronze**: ein solider, bodenständiger Sockel aus regionalem Sandstein trägt plastischen Bronzeschmuck, der auf das Schützenwesen verweist. Die zurückhaltende, handwerklich sorgfältige Ausführung fügt sich harmonisch in das **mittelalterliche Stadtbild Duderstadts** ein – eine der besterhaltenen Fachwerkstädte Norddeutschlands. Inmitten von Fachwerkhäusern, Stadtmauer und historischem Rathaus bildet der Schützenbrunnen einen lebendigen Akzent, der Vergangenheit und Gegenwart miteinander verbindet.",
+    "en": "The **Schützenbrunnen** (Marksmen's Fountain) in Duderstadt stands as a stone testament to the town's deeply rooted marksmen's guild tradition. The **Schützengilde Duderstadt**, whose history stretches back to the Middle Ages, shaped the social and cultural life of the town for centuries. The fountain was erected as an honorific monument to this community, commemorating the role of the marksmen as guardians of civic order and as custodians of popular festival culture – most notably the annual **Schützenfest**, a celebration that continues to be observed across the region to this day.\n\nAs a piece of **public civic furniture**, the Marksmen's Fountain occupies a firm place at the heart of Duderstadt. Situated along the historic **Marktstraße**, one of the old town's most animated thoroughfares, it once served not only as a decorative focal point but also as a practical source of water for residents and merchants alike. Its installation around **ca. 1910** coincides with an era in which many German towns were enriching their public spaces with representative fountain works – an expression of bourgeois self-confidence and communal identity at the threshold of the modern age.\n\nArtistically, the fountain unites the formal vocabulary typical of the turn of the century, combining **sandstone and bronze**: a sturdy, grounded base of regional sandstone supports sculptural bronze ornamentation referencing the marksmen's heritage. The restrained, carefully crafted execution blends harmoniously into the **medieval townscape of Duderstadt** – one of the best-preserved half-timbered towns in northern Germany. Surrounded by timber-framed houses, the town wall, and the historic town hall, the Schützenbrunnen stands as a living accent that bridges past and present within this remarkably intact historic urban landscape."
+  },
+  "category": "",
+  "model": {
+    "glb": "/models/schuetzenbrunnen-duderstadt.glb",
+    "usdz": "/models/schuetzenbrunnen-duderstadt.usdz"
+  },
+  "photos": [
+    "/images/schuetzenbrunnen-duderstadt-2.png",
+    "/images/schuetzenbrunnen-duderstadt-3.png",
+    "/images/schuetzenbrunnen-duderstadt-4.png",
+    "/images/schuetzenbrunnen-duderstadt-5.png"
+  ],
+  "poster": "/images/schuetzenbrunnen-duderstadt-poster.png",
+  "location": {
+    "lat": 51.5130,
+    "lng": 10.2589,
+    "address": "Marktstraße, 37115 Duderstadt, Niedersachsen, Germany"
+  },
+  "artist": "Unbekannt / Unknown",
+  "year": "ca. 1910",
+  "material": {
+    "de": "Sandstein und Bronze (Brunnenbau)",
+    "en": "Sandstone and bronze (fountain construction)"
+  }
+}

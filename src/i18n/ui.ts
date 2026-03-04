@@ -60,7 +60,6 @@ export const ui = {
     // Footer
     'footer.contact': 'Kontakt',
     'footer.address': 'Adresse',
-    'footer.phone': 'Telefon',
     'footer.email': 'E-Mail',
     'footer.social': 'Soziale Medien',
     'footer.rights': '© 2026 Open Museum. Alle Rechte vorbehalten.',
@@ -127,7 +126,6 @@ export const ui = {
     // Footer
     'footer.contact': 'Contact',
     'footer.address': 'Address',
-    'footer.phone': 'Phone',
     'footer.email': 'Email',
     'footer.social': 'Social Media',
     'footer.rights': '© 2026 Open Museum. All rights reserved.',

@@ -8,6 +8,7 @@
     "en": "This small bronze monument honors Charlotte Müller (born October 18, 1840 – died April 8, 1935), known as the oldest street vendor in the world. She ran a popular fruit and sweets stand near the Göttingen train station from 1889 until her death at age 94. A beloved local figure, she was twice widowed, had three daughters, and became famous for her long career, later even noted in the Guinness Book of Records. The sculpture, created by American-born sculptor Katharine Hobson-Kraus, shows Charlotte in a kneeling pose as if selling her wares. Charlotte posed for the artist in 1932, three years before her passing."
   },
   "category": "denkmal",
+  "city": "Göttingen",
   "model": {
     "glb": "/models/charlotte-mueller.glb",
     "usdz": "/models/charlotte-mueller.usdz"

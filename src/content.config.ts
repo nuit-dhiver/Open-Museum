@@ -25,6 +25,7 @@ const works = defineCollection({
       address: z.string().optional(),
       myMapsEmbedUrl: z.string().optional(),
     }),
+    city: z.string().optional(),
     artist: z.string().optional(),
     year: z.string().optional(),
     material: z.object({

@@ -8,15 +8,16 @@
     "en": "A bronze monument of Georg Christoph Lichtenberg (1742-1799) crafted from melted-down busts of Enver Hoxha, Lenin, and Stalin. The monument was unveiled in July 1992 on the occasion of Lichtenberg’s 250th birthday. It stands just under 1.50 meters high without its pedestal. The Lichtenberg sculpture was officially gifted to the city of Göttingen by the monument’s initiator, Göttingen publisher Tete Böttger, on April 30, 2015, after it had previously been entrusted to the city as a permanent loan."
   },
   "category": "denkmal",
+  "city": "Göttingen",
   "model": {
     "glb": "/models/Lichtenberg-Denkmal-Markt.glb",
     "usdz": "/models/Lichtenberg-Denkmal-Markt.usdz"
   },
   "photos": [
-      "/images/lichtenberg-denkmal-markt-f.png",
-      "/images/lichtenberg-denkmal-markt-l.png",
-      "/images/lichtenberg-denkmal-markt-b.png",
-      "/images/lichtenberg-denkmal-markt-t.png"
+    "/images/lichtenberg-denkmal-markt-f.png",
+    "/images/lichtenberg-denkmal-markt-l.png",
+    "/images/lichtenberg-denkmal-markt-b.png",
+    "/images/lichtenberg-denkmal-markt-t.png"
   ],
   "poster": "/images/lichtenberg-denkmal-markt-poster.png",
   "location": {

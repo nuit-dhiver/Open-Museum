@@ -8,6 +8,7 @@
     "en": "Three highly stylized male figures reach across to join hands in a 2.2-meter-tall bronze statue called **Verbundenheit (Connectedness)**. Created by **Heinz Detlef Wüpper** and originally placed in the New Town Hall courtyard, the sculpture represents cooperation between the city council, citizens, and government. Before World War II, Wüpper focused on solid, traditional figures, but after 1946, he began creating art that interacts with the air around it. This piece sits on a square base and opens into a circle at the top, featuring a web of arms and legs with many openings that let light and space flow through. Even the details of the bodies, such as the ridges on the backs and the hollow eye sockets, show this unique style. Born in Münden in 1911, Wüpper trained as a potter before studying art in Kassel and Berlin; by the 1950s, his award-winning work was being exhibited internationally and placed in public squares throughout the Kassel and Göttingen regions."
   },
   "category": "kunstwerk",
+  "city": "Göttingen",
   "model": {
     "glb": "/models/Verbundenheit.glb",
     "usdz": "/models/Verbundenheit_RAW.usdz"
@@ -19,7 +20,7 @@
   ],
   "poster": "/images/verbundenheit-poster.png",
   "location": {
-    "lat": 51.529056954659296, 
+    "lat": 51.529056954659296,
     "lng": 9.94002160844641,
     "address": "Göttingen, Niedersachsen"
   }

@@ -48,6 +48,15 @@ export const ui = {
     'work.licenseNoticeAfter': 'lizenziert ist und ausschließlich für nicht-kommerzielle Zwecke genutzt werden darf.',
     'work.licenseDownloadWith': 'Herunterladen als',
 
+    // Stats section
+    'stats.title': 'Zahlen & Fakten',
+    'stats.models': 'Werke',
+    'stats.cities': 'Städte',
+    'stats.monuments': 'Denkmäler',
+    'stats.artworks': 'Kunstwerke',
+    'stats.fountains': 'Brunnen',
+    'stats.artists': 'Dokumentierte Künstler',
+
     // Footer
     'footer.contact': 'Kontakt',
     'footer.address': 'Adresse',
@@ -105,6 +114,15 @@ export const ui = {
     'work.licenseLink': 'Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)',
     'work.licenseNoticeAfter': 'and may only be used for non-commercial purposes.',
     'work.licenseDownloadWith': 'Download as',
+
+    // Stats section
+    'stats.title': 'By the Numbers',
+    'stats.models': 'Works',
+    'stats.cities': 'Cities',
+    'stats.monuments': 'Monuments',
+    'stats.artworks': 'Artworks',
+    'stats.fountains': 'Fountains',
+    'stats.artists': 'Documented Artists',
 
     // Footer
     'footer.contact': 'Contact',

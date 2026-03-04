@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+import { useTranslations } from '@/i18n/ui';
+import type { Lang } from '@/i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const works = await getCollection('works');
+
+const totalModels = works.length;
+const totalCities = new Set(works.map((w) => w.data.city).filter(Boolean)).size;
+const totalArtists = new Set(works.map((w) => w.data.artist).filter(Boolean)).size;
+
+const stats = [
+  { value: totalModels, label: t('stats.models') },
+  { value: totalCities, label: t('stats.cities') },
+  { value: totalArtists, label: t('stats.artists') },
+];
+---
+
+<section class="py-16 sm:py-24 bg-brand-blue border-y-[3px] border-black">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="font-heading text-3xl sm:text-4xl font-bold uppercase tracking-wider text-white text-center mb-12">
+      <span class="text-brand-gold">{t('stats.title')}</span>
+    </h2>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
+      {stats.map((stat) => (
+        <div class="border-[3px] border-black bg-white/5 p-6 text-center"
+             style="box-shadow: 4px 4px 0px 0px #000;">
+          <p class="font-heading text-5xl sm:text-6xl font-bold text-brand-gold leading-none mb-2">
+            {stat.value}
+          </p>
+          <p class="font-heading text-sm sm:text-base font-semibold uppercase tracking-wider text-white/80">
+            {stat.label}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

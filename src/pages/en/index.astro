@@ -3,6 +3,7 @@ import Base from '@/layouts/Base.astro';
 import CategoryCard from '@/components/CategoryCard.astro';
 import Slideshow from '@/components/Slideshow.astro';
 import FeaturedWork from '@/components/FeaturedWork.astro';
+import StatsSection from '@/components/StatsSection.astro';
 import { useTranslations, getCategoryPath } from '@/i18n/ui';
 import { getAssetUrl } from '@/utils/assets';
 
@@ -67,6 +68,9 @@ const slideshowImages = [
       <Slideshow images={slideshowImages} />
     </div>
   </section> -->
+
+  <!-- Stats / Insights -->
+  <StatsSection lang={lang} />
 
   <!-- Featured 3D Work -->
   <FeaturedWork lang={lang} />

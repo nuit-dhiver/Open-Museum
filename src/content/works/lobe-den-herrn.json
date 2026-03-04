@@ -8,6 +8,7 @@
     "en": "In the historic town of Duderstadt, Germany, the phrase **Lobe den Herrn** (Praise the Lord) is most notably associated with a modern bronze sculpture located on **Marktstraße**. Created by the artist **Bucco** (Hermann-Josef Bucco) and installed in 2010, the relief is mounted on the façade of the building at Marktstraße 69. The artwork serves as a visual expression of faith and gratitude, blending the town’s deep-rooted Christian heritage with contemporary artistic expression. Its presence on one of Duderstadt’s most central streets makes it a subtle yet significant landmark for both locals and visitors exploring the town's medieval architecture."
   },
   "category": "denkmal",
+  "city": "Duderstadt",
   "model": {
     "glb": "/models/lobe-den-herrn.glb",
     "usdz": "/models/lobe-den-herrn.usdz"
@@ -20,7 +21,7 @@
   ],
   "poster": "/images/lobe-den-herrn-poster.png",
   "location": {
-    "lat": 51.51235229836526, 
+    "lat": 51.51235229836526,
     "lng": 10.26085312086695,
     "address": "Marktstr 69, Duderstadt, Niedersachsen"
   },

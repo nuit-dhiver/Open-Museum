@@ -8,6 +8,7 @@
     "en": "The Schützenbrunnen (Scorers' Fountain) in Duderstadt's Marktstraße is a prominent monument celebrating the deep historical bond between the city and its shooting society. It was inaugurated in July 1997 to mark the 750th anniversary of the granting of Brunswick city rights and was entirely funded by private donations. The artwork serves as a symbol of the more than 700-year tradition of marksmanship in the region.\n\nA central element of the installation is the bronze figure of a female archer (Die Bogenschützin), which was added to complement the fountain in 2002. The sculpture represents a dynamic fusion of tradition and modernity, commemorating the founding of the shooting society's archery division in 1985. The fountain itself bears the programmatic inscription 'City and marksmen firmly united – an eternally strong bond,' highlighting the club's social significance.\n\nThe ensemble was designed by the sculptor Rudi Pabel from Kaiserslautern. It is situated in a prime location within the pedestrian zone between the Marian Column and St. Cyriacus Church. In addition to its artistic design, the fountain integrates city symbols such as the two Brunswick lions, which act as heraldic animals spitting water into the basin."
   },
   "category": "denkmal",
+  "city": "Duderstadt",
   "model": {
     "glb": "/models/schuetzenbrunnen-die-bogenschuetzin.glb",
     "usdz": "/models/schuetzenbrunnen-die-bogenschuetzin.usdz"

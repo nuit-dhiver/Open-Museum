@@ -8,6 +8,7 @@
     "en": "Up until the 19th century, communication was often slow. In 1833, Carl Friedrich Gauss and Wilhelm Weber attempted to speed up communication using electricity and magnetism. The two spun a 1.9-mile-long (three-kilometer) wire between Gauss’s observatory and Weber’s lab and placed a special machine on both sides. The idea was that on one side, a user could send high voltage pulses that would translate into short magnetic field bursts on the other side. These fields, in turn, could be seen by observing a tiny compass needle move. However, though they wanted speed, their invention was slow and clumsy. The alphabet they used wasn’t as well thought out as Morse code, meaning it could take them several minutes to decode a short message. The university decided not to fund the invention, so it was never developed further. A few years later, devices using Morse code were invented, rendering the Gauss-Weber telegraph obsolete."
   },
   "category": "denkmal",
+  "city": "Göttingen",
   "model": {
     "glb": "/models/Gauss-Weber-Telegraf.glb",
     "usdz": "/models/Gauss-Weber-Telegraf.usdz"
@@ -19,7 +20,7 @@
     "/images/gauss-weber-telegraf-b.png",
     "/images/gauss-weber-telegraf-t.png"
   ],
-    "poster": "/images/gauss-weber-telegraf-ftr.png",
+  "poster": "/images/gauss-weber-telegraf-ftr.png",
   "location": {
     "lat": 51.533879772515846,
     "lng": 9.931909227257883,

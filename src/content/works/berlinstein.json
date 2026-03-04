@@ -8,6 +8,7 @@
     "en": "The stone was commissioned by a foundation of the City Council and inaugurated on June 17, 1960. Carved into the stone is the Berlin coat of arms, a bear walking upright. Below it is the inscription: “Berlin - 325 km”."
   },
   "category": "denkmal",
+  "city": "Göttingen",
   "model": {
     "glb": "/models/berlinstein.glb",
     "usdz": "/models/berlinstein.usdz"

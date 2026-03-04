@@ -8,11 +8,12 @@
     "en": "The bell of St. Albani Church in Göttingen is a historical testament to the city's religious history. The 3D model shows the bell in its current state."
   },
   "category": "denkmal",
+  "city": "Göttingen",
   "model": {
     "glb": "/models/St-Albani-Kirche_Glocke_V01.glb",
     "usdz": "/models/St-Albani-Kirche_Glocke_Raw_Clean.usdz"
   },
-"photos": [
+  "photos": [
     "/images/st-albani-kirche-glocke-1.png",
     "/images/st-albani-kirche-glocke-2.png"
   ],

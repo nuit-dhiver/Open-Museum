@@ -8,6 +8,7 @@
     "en": "The Horse Fountain (Pferdebrunnen) in Duderstadt is located on the historic Horse Market (Pferdemarkt) directly in front of St. Servatius Church. It was erected in 1969 based on a design by artist Herbert Blaschke to commemorate the city's long tradition of horse trading. Since the 15th century, this site served as a hub for farmers and breeders who gathered here to buy and sell their draft animals.\n\nAs part of the inner-city redevelopment in 1994, the fountain complex was extensively renovated and expanded thanks to a generous donation from honorary citizen Max Näder. The sculpture features stylized horse figures rising from a central basin, with water flowing in graceful arcs. The design successfully bridges the gap between the site's rustic history and a clean, modern aesthetic using metallic materials.\n\nToday, the fountain is a popular meeting spot within the pedestrian zone of Marktstraße and serves as a vital symbol of local Eichsfeld identity. It marks the transition between sacred architecture and the bustling marketplace. Every year in spring, the reactivation of the fountain's water flow is a celebrated event, signaling the start of the summer season in the historic old town."
   },
   "category": "brunnen",
+  "city": "Duderstadt",
   "model": {
     "glb": "/models/pferdebrunnen.glb",
     "usdz": "/models/pferdebrunnen.usdz"

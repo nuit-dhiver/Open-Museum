@@ -11,7 +11,7 @@ const t = useTranslations(lang);
 
 <footer class="bg-black text-white border-t-[3px] border-brand-gold">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
       <!-- About -->
       <div>
         <h3 class="font-heading text-lg font-bold text-brand-gold mb-4 uppercase">
@@ -81,6 +81,27 @@ const t = useTranslations(lang);
             </svg>
           </a>
         </div>
+      </div>
+
+      <!-- Sponsor -->
+      <div>
+        <h3 class="font-heading text-lg font-bold text-brand-gold mb-4 uppercase">
+          {t('sponsor.title')}
+        </h3>
+        <p class="text-white/70 text-sm leading-relaxed mb-4">
+          {t('sponsor.body')}
+        </p>
+        <a
+          href="https://github.com/sponsors/nuit-dhiver"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 brutal-btn brutal-btn-gold text-sm px-4 py-2"
+        >
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 21.593c-.425.53-.595.533-.598.533-.08 0-.224-.085-.457-.267C9.028 20.089 2 14.675 2 9a6 6 0 0111.015-3.36A6 6 0 0122 9c0 5.675-7.028 11.089-8.945 12.326-.234.182-.378.267-.457.267z"/>
+          </svg>
+          {t('sponsor.cta')}
+        </a>
       </div>
     </div>
 

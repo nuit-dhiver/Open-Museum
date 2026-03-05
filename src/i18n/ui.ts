@@ -57,6 +57,11 @@ export const ui = {
     'stats.fountains': 'Brunnen',
     'stats.artists': 'Dokumentierte Künstler',
 
+    // Sponsor
+    'sponsor.title': 'Sponsor werden',
+    'sponsor.body': 'Open Museum ist kostenlos und quelloffen. Der Betrieb ist mit realen Kosten verbunden – für Hosting, Entwicklung und 3D-Digitalisierung. Jede Unterstützung hilft, das Projekt am Leben zu erhalten.',
+    'sponsor.cta': 'Auf GitHub sponsern',
+
     // Footer
     'footer.contact': 'Kontakt',
     'footer.address': 'Adresse',
@@ -122,6 +127,11 @@ export const ui = {
     'stats.artworks': 'Artworks',
     'stats.fountains': 'Fountains',
     'stats.artists': 'Documented Artists',
+
+    // Sponsor
+    'sponsor.title': 'Become a Sponsor',
+    'sponsor.body': 'Open Museum is free and open source. Running it has real costs — hosting, development, and 3D digitization. Your support helps keep the project alive.',
+    'sponsor.cta': 'Sponsor on GitHub',
 
     // Footer
     'footer.contact': 'Contact',

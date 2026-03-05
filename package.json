@@ -20,5 +20,10 @@
     "@tailwindcss/vite": "^4.0.0",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.9.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "yaml-language-server": "1.21.0"
+    }
   }
 }

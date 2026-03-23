@@ -9,6 +9,7 @@
   },
   "category": "kunstwerk",
   "city": "Göttingen",
+  "country": "Germany",
   "model": {
     "glb": "/models/Butt-im-Griff.glb",
     "usdz": "/models/Butt-im-Griff.usdz"

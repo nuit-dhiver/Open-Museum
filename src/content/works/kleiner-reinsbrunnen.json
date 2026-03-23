@@ -9,6 +9,7 @@
   },
   "category": "brunnen",
   "city": "Göttingen",
+  "country": "Germany",
   "model": {
     "glb": "/models/kleiner-reinsbrunnen.glb",
     "usdz": "/models/kleiner-reinsbrunnen.usdz"

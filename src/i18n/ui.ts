@@ -14,6 +14,7 @@ export const ui = {
     'nav.brunnen': 'Brunnen',
     'nav.denkmale': 'Denkmäler',
     'nav.kunstwerke': 'Kunstwerke',
+    'nav.cities': 'Städte',
 
     // Homepage
     'home.title': 'Open Museum',
@@ -78,6 +79,7 @@ export const ui = {
     // Misc
     'loading': 'Wird geladen…',
     'noworks': 'Noch keine Werke in dieser Kategorie.',
+    'noworks.city': 'Noch keine Werke in dieser Stadt.',
   },
   en: {
     // Navigation
@@ -85,6 +87,7 @@ export const ui = {
     'nav.brunnen': 'Fountains',
     'nav.denkmale': 'Monuments',
     'nav.kunstwerke': 'Artworks',
+    'nav.cities': 'Cities',
 
     // Homepage
     'home.title': 'Open Museum',
@@ -149,6 +152,7 @@ export const ui = {
     // Misc
     'loading': 'Loading…',
     'noworks': 'No works in this category yet.',
+    'noworks.city': 'No works in this city yet.',
   },
 } as const;
 
@@ -172,6 +176,29 @@ export function useTranslations(lang: Lang) {
   return function t(key: UIKey): string {
     return ui[lang][key] || ui[defaultLang][key];
   };
+}
+
+/**
+ * Convert a city display name to a URL slug.
+ * e.g. "Göttingen" → "goettingen"
+ */
+export function cityNameToSlug(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/ö/g, 'oe')
+    .replace(/ü/g, 'ue')
+    .replace(/ä/g, 'ae')
+    .replace(/ß/g, 'ss')
+    .replace(/\s+/g, '-');
+}
+
+/**
+ * Get the localized path for a city page.
+ */
+export function getCityPath(lang: Lang, citySlug: string): string {
+  const base = import.meta.env.BASE_URL;
+  if (lang === 'en') return `${base}en/cities/${citySlug}/`;
+  return `${base}staedte/${citySlug}/`;
 }
 
 /**
@@ -217,6 +244,7 @@ export function getAlternateLanguagePath(currentPath: string, currentLang: Lang)
     if (path.startsWith('denkmale')) return `${base}en/monuments/${path.slice('denkmale/'.length)}`;
     if (path.startsWith('kunstwerke')) return `${base}en/artworks/${path.slice('kunstwerke/'.length)}`;
     if (path.startsWith('werke/')) return `${base}en/works/${path.slice('werke/'.length)}`;
+    if (path.startsWith('staedte/')) return `${base}en/cities/${path.slice('staedte/'.length)}`;
     return `${base}en/${path}`;
   } else {
     // EN -> DE
@@ -226,6 +254,7 @@ export function getAlternateLanguagePath(currentPath: string, currentLang: Lang)
     if (enPath.startsWith('monuments')) return `${base}denkmale/${enPath.slice('monuments/'.length)}`;
     if (enPath.startsWith('artworks')) return `${base}kunstwerke/${enPath.slice('artworks/'.length)}`;
     if (enPath.startsWith('works/')) return `${base}werke/${enPath.slice('works/'.length)}`;
+    if (enPath.startsWith('cities/')) return `${base}staedte/${enPath.slice('cities/'.length)}`;
     return `${base}${enPath}`;
   }
 }

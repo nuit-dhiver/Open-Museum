@@ -9,6 +9,7 @@
   },
   "category": "brunnen",
   "city": "Duderstadt",
+  "country": "Germany",
   "model": {
     "glb": "/models/pferdebrunnen.glb",
     "usdz": "/models/pferdebrunnen.usdz"

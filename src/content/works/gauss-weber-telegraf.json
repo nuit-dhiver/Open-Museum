@@ -9,6 +9,7 @@
   },
   "category": "denkmal",
   "city": "Göttingen",
+  "country": "Germany",
   "model": {
     "glb": "/models/Gauss-Weber-Telegraf.glb",
     "usdz": "/models/Gauss-Weber-Telegraf.usdz"

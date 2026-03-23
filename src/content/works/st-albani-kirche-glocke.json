@@ -9,6 +9,7 @@
   },
   "category": "denkmal",
   "city": "Göttingen",
+  "country": "Germany",
   "model": {
     "glb": "/models/St-Albani-Kirche_Glocke_V01.glb",
     "usdz": "/models/St-Albani-Kirche_Glocke_Raw_Clean.usdz"

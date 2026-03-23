@@ -9,6 +9,7 @@
   },
   "category": "denkmal",
   "city": "Göttingen",
+  "country": "Germany",
   "model": {
     "glb": "/models/berlinstein.glb",
     "usdz": "/models/berlinstein.usdz"

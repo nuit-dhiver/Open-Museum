@@ -9,6 +9,7 @@
   },
   "category": "kunstwerk",
   "city": "Göttingen",
+  "country": "Germany",
   "model": {
     "glb": "/models/6-teiliges-Skulpturenensemble_Stuhl.glb",
     "usdz": "/models/6-teiliges-Skulpturenensemble_Stuhl.usdz"

@@ -2,6 +2,7 @@
 import ModelViewer from './ModelViewer.astro';
 import { getWorkPath, useTranslations, type Lang } from '@/i18n/ui';
 import { getCollection } from 'astro:content';
+import { marked } from 'marked';
 import { getAssetUrl } from '@/utils/assets';
 
 interface Props {
@@ -17,6 +18,10 @@ const worksWithModels = allWorks.filter((w) => w.data.model.glb);
 const featured = worksWithModels.length > 0
   ? worksWithModels[Math.floor(Math.random() * worksWithModels.length)]
   : null;
+
+const descriptionHtml = featured
+  ? await marked.parse(featured.data.description[lang])
+  : '';
 ---
 
 {featured && (
@@ -43,9 +48,7 @@ const featured = worksWithModels.length > 0
           <h3 class="font-heading text-2xl sm:text-3xl font-bold uppercase tracking-wider mb-4">
             {featured.data.title[lang]}
           </h3>
-          <p class="text-lg leading-relaxed mb-6 text-black/70">
-            {featured.data.description[lang]}
-          </p>
+          <div class="text-lg leading-relaxed mb-6 text-black/70 prose prose-sm max-w-none" set:html={descriptionHtml} />
           {featured.data.artist && (
             <p class="text-sm text-black/50 mb-6">
               <span class="font-semibold">{t('work.artist')}:</span> {featured.data.artist}

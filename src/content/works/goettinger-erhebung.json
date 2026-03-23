@@ -9,6 +9,7 @@
   },
   "category": "kunstwerk",
   "city": "Göttingen",
+  "country": "Germany",
   "model": {
     "glb": "/models/Goettinger-Erhebung.glb",
     "usdz": "/models/Goettinger-Erhebung.usdz"

@@ -9,6 +9,7 @@
   },
   "category": "denkmal",
   "city": "Göttingen",
+  "country": "Germany",
   "model": {
     "glb": "/models/charlotte-mueller.glb",
     "usdz": "/models/charlotte-mueller.usdz"

@@ -9,6 +9,7 @@
   },
   "category": "denkmal",
   "city": "Duderstadt",
+  "country": "Germany",
   "model": {
     "glb": "/models/lobe-den-herrn.glb",
     "usdz": "/models/lobe-den-herrn.usdz"

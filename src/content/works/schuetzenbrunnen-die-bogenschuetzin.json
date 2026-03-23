@@ -9,6 +9,7 @@
   },
   "category": "denkmal",
   "city": "Duderstadt",
+  "country": "Germany",
   "model": {
     "glb": "/models/schuetzenbrunnen-die-bogenschuetzin.glb",
     "usdz": "/models/schuetzenbrunnen-die-bogenschuetzin.usdz"

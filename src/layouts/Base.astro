@@ -1,7 +1,7 @@
 ---
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
-import { getLangFromUrl, useTranslations } from '@/i18n/ui';
+import { getLangFromUrl, useTranslations, getAlternateLanguagePath } from '@/i18n/ui';
 import '@/styles/global.css';
 import { getAssetUrl } from '@/utils/assets';
 
@@ -15,6 +15,11 @@ const { title, description = '', ogImage } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const alternatePath = getAlternateLanguagePath(Astro.url.pathname, lang);
+const alternateURL = new URL(alternatePath, Astro.site);
+const deURL = lang === 'de' ? canonicalURL : alternateURL;
+const enURL = lang === 'en' ? canonicalURL : alternateURL;
 
 // Resolve OG image to absolute URL for social media crawlers
 const resolvedOgImage = ogImage
@@ -31,6 +36,11 @@ const resolvedOgImage = ogImage
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
     <link rel="canonical" href={canonicalURL} />
+
+    <!-- hreflang -->
+    <link rel="alternate" hreflang="de" href={deURL} />
+    <link rel="alternate" hreflang="en" href={enURL} />
+    <link rel="alternate" hreflang="x-default" href={deURL} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />

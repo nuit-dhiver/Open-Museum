@@ -76,6 +76,9 @@ export const ui = {
     '404.message': 'Die angeforderte Seite existiert nicht.',
     '404.back': 'Zur Startseite',
 
+    // City page
+    'city.description': (city: string, count: number) => `Entdecken Sie ${count} Denkmäler, Brunnen und Kunstwerke in ${city} — interaktiv in 3D auf Open Museum.`,
+
     // Misc
     'loading': 'Wird geladen…',
     'noworks': 'Noch keine Werke in dieser Kategorie.',
@@ -149,6 +152,9 @@ export const ui = {
     '404.message': 'The requested page does not exist.',
     '404.back': 'Back to home',
 
+    // City page
+    'city.description': (city: string, count: number) => `Explore ${count} monuments, fountains, and artworks in ${city} — interactive in 3D on Open Museum.`,
+
     // Misc
     'loading': 'Loading…',
     'noworks': 'No works in this category yet.',
@@ -174,7 +180,7 @@ export function getLangFromUrl(url: URL): Lang {
  */
 export function useTranslations(lang: Lang) {
   return function t(key: UIKey): string {
-    return ui[lang][key] || ui[defaultLang][key];
+    return (ui[lang][key] || ui[defaultLang][key]) as string;
   };
 }
 

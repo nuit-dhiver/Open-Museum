@@ -1,7 +1,7 @@
 ---
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
-import { getLangFromUrl, useTranslations } from '@/i18n/ui';
+import { getLangFromUrl, useTranslations, languages, getAlternateLanguagePath, type Lang } from '@/i18n/ui';
 import '@/styles/global.css';
 import { getAssetUrl } from '@/utils/assets';
 
@@ -15,6 +15,13 @@ const { title, description = '', ogImage } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+// Build hreflang alternate URLs for all supported languages
+const otherLangs = Object.keys(languages).filter((l) => l !== lang) as Lang[];
+const alternateLinks = otherLangs.map((targetLang) => ({
+  lang: targetLang,
+  href: new URL(getAlternateLanguagePath(Astro.url.pathname, lang, targetLang), Astro.site).href,
+}));
 
 // Resolve OG image to absolute URL for social media crawlers
 const resolvedOgImage = ogImage
@@ -31,6 +38,13 @@ const resolvedOgImage = ogImage
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
     <link rel="canonical" href={canonicalURL} />
+
+    <!-- hreflang alternate links for SEO -->
+    {alternateLinks.map(({ lang: l, href }) => (
+      <link rel="alternate" hreflang={l} href={href} />
+    ))}
+    <link rel="alternate" hreflang={lang} href={canonicalURL} />
+    <link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site).href} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />

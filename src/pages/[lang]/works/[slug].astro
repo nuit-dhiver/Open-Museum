@@ -1,21 +1,27 @@
 ---
 import Base from '@/layouts/Base.astro';
 import ModelViewer from '@/components/ModelViewer.astro';
-import { useTranslations, getCategoryPath } from '@/i18n/ui';
+import { useTranslations, getCategoryPath, getHomePath, languages, type Lang } from '@/i18n/ui';
 import { getCollection } from 'astro:content';
 import { marked } from 'marked';
 import { getAssetUrl } from '@/utils/assets';
 
 export async function getStaticPaths() {
   const works = await getCollection('works');
-  return works.map((work) => ({
-    params: { slug: work.id },
-    props: { work },
-  }));
+  return Object.keys(languages).flatMap((lang) =>
+    works.map((work) => ({
+      params: { lang, slug: work.id },
+      props: { lang: lang as Lang, work },
+    }))
+  );
 }
 
-const { work } = Astro.props;
-const lang = 'en';
+interface Props {
+  lang: Lang;
+  work: Awaited<ReturnType<typeof getCollection<'works'>>>[number];
+}
+
+const { lang, work } = Astro.props;
 const t = useTranslations(lang);
 const { data } = work;
 
@@ -28,7 +34,7 @@ const descriptionHtml = await marked.parse(data.description[lang]);
   <div class="bg-off-white border-b-3 border-black">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
       <nav class="flex items-center gap-2 text-sm font-heading uppercase tracking-wider">
-        <a href={`${import.meta.env.BASE_URL}en/`} class="hover:text-brand-gold transition-colors">{t('nav.home')}</a>
+        <a href={getHomePath(lang)} class="hover:text-brand-gold transition-colors">{t('nav.home')}</a>
         <span class="text-black/30">→</span>
         <a href={getCategoryPath(lang, data.category)} class="hover:text-brand-gold transition-colors">
           {t(categoryKey)}
@@ -119,7 +125,7 @@ const descriptionHtml = await marked.parse(data.description[lang]);
             <h3>{t('work.licenseTitle')}</h3>
             <p>
               {t('work.licenseNotice')}{' '}
-              <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">
+              <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.de" target="_blank" rel="noopener noreferrer">
                 {t('work.licenseLink')}
               </a>{' '}
               {t('work.licenseNoticeAfter')}

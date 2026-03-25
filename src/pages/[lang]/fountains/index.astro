@@ -1,0 +1,19 @@
+---
+import CategoryPage from '@/components/CategoryPage.astro';
+import { languages, type Lang } from '@/i18n/ui';
+
+export async function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({
+    params: { lang },
+    props: { lang: lang as Lang },
+  }));
+}
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<CategoryPage lang={lang} category="brunnen" />

@@ -160,12 +160,14 @@ export type UIKey = keyof typeof ui.de;
 
 /**
  * Get the current locale from a URL pathname.
+ * New structure: /{lang}/... where lang is always the first segment.
+ * Root / falls back to defaultLang.
  */
 export function getLangFromUrl(url: URL): Lang {
   const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   const path = url.pathname.replace(base, '').replace(/^\//, '');
   const [firstSegment] = path.split('/');
-  if (firstSegment in ui) return firstSegment as Lang;
+  if (firstSegment in languages) return firstSegment as Lang;
   return defaultLang;
 }
 
@@ -193,68 +195,58 @@ export function cityNameToSlug(name: string): string {
 }
 
 /**
- * Get the localized path for a city page.
+ * Get the localized home path.
  */
-export function getCityPath(lang: Lang, citySlug: string): string {
+export function getHomePath(lang: Lang): string {
   const base = import.meta.env.BASE_URL;
-  if (lang === 'en') return `${base}en/cities/${citySlug}/`;
-  return `${base}staedte/${citySlug}/`;
+  return `${base}${lang}/`;
 }
 
 /**
+ * Get the localized path for a city page.
+ * New structure: /{lang}/cities/{citySlug}/
+ */
+export function getCityPath(lang: Lang, citySlug: string): string {
+  const base = import.meta.env.BASE_URL;
+  return `${base}${lang}/cities/${citySlug}/`;
+}
+
+/**
+ * Category slug mapping — same English slugs used in all language URLs.
+ */
+const categorySlugs: Record<'brunnen' | 'denkmal' | 'kunstwerk', string> = {
+  brunnen: 'fountains',
+  denkmal: 'monuments',
+  kunstwerk: 'artworks',
+};
+
+/**
  * Get the localized path for category pages.
+ * New structure: /{lang}/fountains/, /{lang}/monuments/, /{lang}/artworks/
  */
 export function getCategoryPath(lang: Lang, category: 'brunnen' | 'denkmal' | 'kunstwerk'): string {
   const base = import.meta.env.BASE_URL;
-  const paths = {
-    de: {
-      brunnen: 'brunnen',
-      denkmal: 'denkmale',
-      kunstwerk: 'kunstwerke',
-    },
-    en: {
-      brunnen: 'en/fountains',
-      denkmal: 'en/monuments',
-      kunstwerk: 'en/artworks',
-    },
-  };
-  return `${base}${paths[lang][category]}/`;
+  return `${base}${lang}/${categorySlugs[category]}/`;
 }
 
 /**
  * Get the localized path for a work detail page.
+ * New structure: /{lang}/works/{slug}/
  */
 export function getWorkPath(lang: Lang, slug: string): string {
   const base = import.meta.env.BASE_URL;
-  if (lang === 'en') return `${base}en/works/${slug}/`;
-  return `${base}werke/${slug}/`;
+  return `${base}${lang}/works/${slug}/`;
 }
 
 /**
- * Get the equivalent path in the other language.
+ * Get the equivalent path in another language.
+ * With the new uniform /{lang}/... structure, this is a simple prefix swap.
  */
-export function getAlternateLanguagePath(currentPath: string, currentLang: Lang): string {
+export function getAlternateLanguagePath(currentPath: string, currentLang: Lang, targetLang: Lang): string {
   const base = import.meta.env.BASE_URL;
+  // Strip base and leading slash
   const path = currentPath.replace(base, '').replace(/^\//, '');
-
-  if (currentLang === 'de') {
-    // DE -> EN
-    if (path === '' || path === '/') return `${base}en/`;
-    if (path.startsWith('brunnen')) return `${base}en/fountains/${path.slice('brunnen/'.length)}`;
-    if (path.startsWith('denkmale')) return `${base}en/monuments/${path.slice('denkmale/'.length)}`;
-    if (path.startsWith('kunstwerke')) return `${base}en/artworks/${path.slice('kunstwerke/'.length)}`;
-    if (path.startsWith('werke/')) return `${base}en/works/${path.slice('werke/'.length)}`;
-    if (path.startsWith('staedte/')) return `${base}en/cities/${path.slice('staedte/'.length)}`;
-    return `${base}en/${path}`;
-  } else {
-    // EN -> DE
-    if (path === 'en/' || path === 'en') return `${base}`;
-    const enPath = path.replace(/^en\//, '');
-    if (enPath.startsWith('fountains')) return `${base}brunnen/${enPath.slice('fountains/'.length)}`;
-    if (enPath.startsWith('monuments')) return `${base}denkmale/${enPath.slice('monuments/'.length)}`;
-    if (enPath.startsWith('artworks')) return `${base}kunstwerke/${enPath.slice('artworks/'.length)}`;
-    if (enPath.startsWith('works/')) return `${base}werke/${enPath.slice('works/'.length)}`;
-    if (enPath.startsWith('cities/')) return `${base}staedte/${enPath.slice('cities/'.length)}`;
-    return `${base}${enPath}`;
-  }
+  // Replace the leading lang segment with the target lang
+  const withoutLang = path.replace(new RegExp(`^${currentLang}(/|$)`), '');
+  return `${base}${targetLang}/${withoutLang}`;
 }

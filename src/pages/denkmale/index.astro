@@ -1,5 +1,15 @@
 ---
-import CategoryPage from '@/components/CategoryPage.astro';
+// SEO redirect: /denkmale/ → /de/monuments/
 ---
-
-<CategoryPage lang="de" category="denkmal" />
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting…</title>
+    <link rel="canonical" href="https://openmuseum.io/de/monuments/" />
+    <meta http-equiv="refresh" content="0;url=/de/monuments/" />
+  </head>
+  <body>
+    <p>Weiterleitung… <a href="/de/monuments/">Denkmäler</a></p>
+  </body>
+</html>

@@ -1,5 +1,5 @@
 ---
-import CityPage from '@/components/CityPage.astro';
+// SEO redirect: /staedte/{city}/ → /de/cities/{city}/
 import { getCollection } from 'astro:content';
 import { cityNameToSlug } from '@/i18n/ui';
 
@@ -8,15 +8,24 @@ export async function getStaticPaths() {
   const cityNames = [...new Set(works.map((w) => w.data.city).filter(Boolean))] as string[];
   return cityNames.map((cityName) => ({
     params: { city: cityNameToSlug(cityName) },
-    props: { cityName },
+    props: { city: cityNameToSlug(cityName) },
   }));
 }
 
-interface Props {
-  cityName: string;
-}
-
-const { cityName } = Astro.props;
+interface Props { city: string; }
+const { city } = Astro.props;
+const newUrl = `/de/cities/${city}/`;
+const canonicalHref = `https://openmuseum.io/de/cities/${city}/`;
 ---
-
-<CityPage lang="de" cityName={cityName} />
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting…</title>
+    <link rel="canonical" href={canonicalHref} />
+    <meta http-equiv="refresh" content={`0;url=${newUrl}`} />
+  </head>
+  <body>
+    <p>Weiterleitung… <a href={newUrl}>{newUrl}</a></p>
+  </body>
+</html>

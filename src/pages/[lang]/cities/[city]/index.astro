@@ -1,0 +1,25 @@
+---
+import CityPage from '@/components/CityPage.astro';
+import { getCollection } from 'astro:content';
+import { cityNameToSlug, languages, type Lang } from '@/i18n/ui';
+
+export async function getStaticPaths() {
+  const works = await getCollection('works');
+  const cityNames = [...new Set(works.map((w) => w.data.city).filter(Boolean))] as string[];
+  return Object.keys(languages).flatMap((lang) =>
+    cityNames.map((cityName) => ({
+      params: { lang, city: cityNameToSlug(cityName) },
+      props: { lang: lang as Lang, cityName },
+    }))
+  );
+}
+
+interface Props {
+  lang: Lang;
+  cityName: string;
+}
+
+const { lang, cityName } = Astro.props;
+---
+
+<CityPage lang={lang} cityName={cityName} />

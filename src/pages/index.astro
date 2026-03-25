@@ -1,78 +1,42 @@
 ---
-import Base from '@/layouts/Base.astro';
-import CategoryCard from '@/components/CategoryCard.astro';
-import Slideshow from '@/components/Slideshow.astro';
-import FeaturedWork from '@/components/FeaturedWork.astro';
-import StatsSection from '@/components/StatsSection.astro';
-import { useTranslations, getCategoryPath } from '@/i18n/ui';
-import { getAssetUrl } from '@/utils/assets';
-
-const lang = 'de';
-const t = useTranslations(lang);
-
-// Placeholder slideshow images — replace with real photos
-const slideshowImages = [
-  { src: getAssetUrl('/images/slideshow/placeholder-1.jpg'), alt: 'Denkmal' },
-  { src: getAssetUrl('/images/slideshow/placeholder-2.jpg'), alt: 'Skulptur' },
-  { src: getAssetUrl('/images/slideshow/placeholder-3.jpg'), alt: 'Brunnen' },
-];
+// Root entry point: detect visitor's preferred language and redirect.
+// German (/de/) is the fallback default.
+// True geo-based detection requires edge functions (not possible on GitHub Pages static hosting).
+const site = 'https://openmuseum.io';
 ---
 
-<Base title={t('home.title')} description={t('home.tagline')}>
-  <!-- Hero -->
-  <section class="bg-black text-white py-20 sm:py-32 border-b-[3px] border-brand-gold">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h1 class="font-heading text-5xl sm:text-7xl font-bold uppercase tracking-wider mb-6">
-        <span class="text-brand-gold">Open Museum</span>
-      </h1>
-      <p class="text-lg sm:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
-        {t('home.tagline')}
-      </p>
-    </div>
-  </section>
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Open Museum — Redirecting…</title>
 
-  <!-- Category Cards -->
-  <section class="py-16 sm:py-24 bg-off-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <CategoryCard
-          title={t('category.brunnen')}
-          description={t('category.brunnen.desc')}
-          href={getCategoryPath(lang, 'brunnen')}
-          icon="fountain"
-          accentColor="blue"
-        />
-        <CategoryCard
-          title={t('category.denkmal')}
-          description={t('category.denkmal.desc')}
-          href={getCategoryPath(lang, 'denkmal')}
-          icon="monument"
-          accentColor="red"
-        />
-        <CategoryCard
-          title={t('category.kunstwerk')}
-          description={t('category.kunstwerk.desc')}
-          href={getCategoryPath(lang, 'kunstwerk')}
-          icon="artwork"
-          accentColor="gold"
-        />
-      </div>
-    </div>
-  </section>
+    <!-- SEO: canonical points to German home, x-default stays here -->
+    <link rel="canonical" href={`${site}/de/`} />
+    <link rel="alternate" hreflang="x-default" href={`${site}/`} />
+    <link rel="alternate" hreflang="de" href={`${site}/de/`} />
+    <link rel="alternate" hreflang="en" href={`${site}/en/`} />
 
-  <!-- Photo Slideshow -->
-  <!-- <section class="py-16 sm:py-24 bg-white border-y-3 border-black">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="font-heading text-3xl sm:text-4xl font-bold uppercase tracking-wider mb-8 text-center">
-        {t('home.slideshow.title')}
-      </h2>
-      <Slideshow images={slideshowImages} />
-    </div>
-  </section> -->
+    <!-- Fallback meta-refresh for bots/no-JS: go to German -->
+    <meta http-equiv="refresh" content="0;url=/de/" />
 
-  <!-- Stats / Insights -->
-  <StatsSection lang={lang} />
-
-  <!-- Featured 3D Work -->
-  <FeaturedWork lang={lang} />
-</Base>
+    <script is:inline>
+      // Client-side language detection based on browser preference
+      (function () {
+        var preferred = (navigator.language || navigator.languages?.[0] || 'de').toLowerCase();
+        if (preferred.startsWith('en')) {
+          window.location.replace('/en/');
+        } else {
+          window.location.replace('/de/');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <p>
+      Redirecting… / Weiterleitung…<br />
+      <a href="/de/">Deutsch</a> · <a href="/en/">English</a>
+    </p>
+  </body>
+</html>

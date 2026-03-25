@@ -1,6 +1,6 @@
 ---
 import LanguageSwitcher from './LanguageSwitcher.astro';
-import { useTranslations, getCategoryPath, getCityPath, cityNameToSlug, type Lang } from '@/i18n/ui';
+import { useTranslations, getCategoryPath, getCityPath, cityNameToSlug, getHomePath, type Lang } from '@/i18n/ui';
 import { getCollection } from 'astro:content';
 
 interface Props {
@@ -9,8 +9,7 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
-const base = import.meta.env.BASE_URL;
-const homePath = lang === 'en' ? `${base}en/` : `${base}`;
+const homePath = getHomePath(lang);
 
 const allWorks = await getCollection('works');
 const cityNames = [...new Set(allWorks.map((w) => w.data.city).filter(Boolean))].sort() as string[];

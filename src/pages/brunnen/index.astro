@@ -1,5 +1,16 @@
 ---
-import CategoryPage from '@/components/CategoryPage.astro';
+// SEO redirect: /brunnen/ → /de/fountains/
+// Preserves link equity for the old German category URL.
 ---
-
-<CategoryPage lang="de" category="brunnen" />
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting…</title>
+    <link rel="canonical" href="https://openmuseum.io/de/fountains/" />
+    <meta http-equiv="refresh" content="0;url=/de/fountains/" />
+  </head>
+  <body>
+    <p>Weiterleitung… <a href="/de/fountains/">Brunnen</a></p>
+  </body>
+</html>

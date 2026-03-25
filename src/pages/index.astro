@@ -1,42 +1,154 @@
 ---
-// Root entry point: detect visitor's preferred language and redirect.
-// German (/de/) is the fallback default.
-// True geo-based detection requires edge functions (not possible on GitHub Pages static hosting).
+// Root entry point — international language selection page.
+// This is a real, indexable page (not a redirect).
+// x-default hreflang points here per Google's multi-regional guidelines.
 const site = 'https://openmuseum.io';
 ---
 
 <!doctype html>
-<html lang="de">
+<html lang="x-default">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Open Museum — Redirecting…</title>
+    <title>Open Museum — Choose Language / Sprache wählen</title>
+    <meta name="description" content="Open Museum — Discover public art, monuments and fountains in 3D. / Entdecken Sie Kunst im öffentlichen Raum in 3D." />
 
-    <!-- SEO: canonical points to German home, x-default stays here -->
-    <link rel="canonical" href={`${site}/de/`} />
+    <!-- Self-canonical — this IS the destination, not a redirect -->
+    <link rel="canonical" href={`${site}/`} />
     <link rel="alternate" hreflang="x-default" href={`${site}/`} />
     <link rel="alternate" hreflang="de" href={`${site}/de/`} />
     <link rel="alternate" hreflang="en" href={`${site}/en/`} />
 
-    <!-- Fallback meta-refresh for bots/no-JS: go to German -->
-    <meta http-equiv="refresh" content="0;url=/de/" />
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Open Museum" />
+    <meta property="og:description" content="Discover public art, monuments and fountains in 3D." />
+    <meta property="og:url" content={`${site}/`} />
 
+    <!-- Fonts (same as rest of site) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+        font-family: 'Space Grotesk', system-ui, sans-serif;
+        background: #000;
+        color: #fff;
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+
+      .logo {
+        font-size: clamp(2.5rem, 8vw, 5rem);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #D4A017;
+        text-align: center;
+        line-height: 1;
+        margin-bottom: 1rem;
+      }
+
+      .tagline {
+        font-size: clamp(0.85rem, 2vw, 1rem);
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: rgba(255,255,255,0.45);
+        text-align: center;
+        margin-bottom: 3rem;
+        max-width: 32rem;
+      }
+
+      .lang-buttons {
+        display: flex;
+        gap: 1.25rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .lang-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.875rem 2rem;
+        border: 3px solid #fff;
+        box-shadow: 4px 4px 0px 0px #D4A017;
+        font-family: inherit;
+        font-size: 1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        text-decoration: none;
+        color: #fff;
+        background: transparent;
+        cursor: pointer;
+        transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease, color 0.1s ease;
+      }
+
+      .lang-btn:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 6px 6px 0px 0px #D4A017;
+        background: #D4A017;
+        color: #000;
+        border-color: #D4A017;
+      }
+
+      .lang-btn:active {
+        transform: translate(2px, 2px);
+        box-shadow: none;
+      }
+
+      .lang-btn .flag {
+        font-size: 1.25rem;
+        line-height: 1;
+      }
+
+      .divider {
+        width: 3rem;
+        height: 3px;
+        background: #D4A017;
+        margin: 2.5rem auto;
+      }
+    </style>
+
+    <!-- Returning-visitor auto-redirect (runs before paint, no flash) -->
     <script is:inline>
-      // Client-side language detection based on browser preference
       (function () {
-        var preferred = (navigator.language || navigator.languages?.[0] || 'de').toLowerCase();
-        if (preferred.startsWith('en')) {
-          window.location.replace('/en/');
-        } else {
-          window.location.replace('/de/');
-        }
+        var saved = localStorage.getItem('om-lang');
+        if (saved === 'de') window.location.replace('/de/');
+        else if (saved === 'en') window.location.replace('/en/');
       })();
     </script>
   </head>
+
   <body>
-    <p>
-      Redirecting… / Weiterleitung…<br />
-      <a href="/de/">Deutsch</a> · <a href="/en/">English</a>
-    </p>
+    <p class="logo">Open Museum</p>
+    <p class="tagline">Discover public art in 3D &nbsp;·&nbsp; Kunst im öffentlichen Raum</p>
+
+    <div class="lang-buttons">
+      <a href="/de/" class="lang-btn" data-lang="de" aria-label="Deutsch — zur deutschen Version">
+        <span class="flag">🇩🇪</span> Deutsch
+      </a>
+      <a href="/en/" class="lang-btn" data-lang="en" aria-label="English — go to English version">
+        <span class="flag">🇬🇧</span> English
+      </a>
+    </div>
+
+    <script is:inline>
+      // Save language preference on click so returning visitors skip this page
+      document.querySelectorAll('.lang-btn[data-lang]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          localStorage.setItem('om-lang', this.getAttribute('data-lang'));
+        });
+      });
+    </script>
   </body>
 </html>

@@ -1,7 +1,7 @@
 ---
 import Base from '@/layouts/Base.astro';
 import WorkCard from '@/components/WorkCard.astro';
-import { useTranslations, ui, type Lang } from '@/i18n/ui';
+import { useTranslations, ui, type Lang, getWorkPath } from '@/i18n/ui';
 import { getCollection } from 'astro:content';
 import { getAssetUrl } from '@/utils/assets';
 
@@ -15,9 +15,36 @@ const t = useTranslations(lang);
 
 const allWorks = await getCollection('works');
 const works = allWorks.filter((w) => w.data.city === cityName);
+
+const siteUrl = Astro.site?.href.replace(/\/$/, '') ?? '';
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: cityName,
+  numberOfItems: works.length,
+  itemListElement: works.map((work, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    url: `${siteUrl}${getWorkPath(lang, work.id)}`,
+    name: work.data.title[lang],
+  })),
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: t('nav.home'), item: lang === 'en' ? `${siteUrl}/en/` : `${siteUrl}/` },
+    { '@type': 'ListItem', position: 2, name: t('nav.cities'), item: lang === 'en' ? `${siteUrl}/en/cities/` : `${siteUrl}/staedte/` },
+    { '@type': 'ListItem', position: 3, name: cityName },
+  ],
+};
 ---
 
-<Base title={`${cityName} — Open Museum`} description={ui[lang]['city.description'](cityName, works.length)}>
+<Base title={`${cityName} — Open Museum`} description={cityName}>
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <!-- Page header -->
   <section class="bg-black text-white py-12 sm:py-16 border-b-brutal border-brand-gold">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

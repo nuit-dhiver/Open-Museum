@@ -15,9 +15,28 @@ const slideshowImages = [
   { src: getAssetUrl('/images/slideshow/placeholder-2.jpg'), alt: 'Sculpture' },
   { src: getAssetUrl('/images/slideshow/placeholder-3.jpg'), alt: 'Fountain' },
 ];
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Open Museum',
+  url: 'https://openmuseum.io',
+  description: t('home.tagline'),
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Göttingen',
+    addressRegion: 'Niedersachsen',
+    addressCountry: 'DE',
+  },
+  sameAs: [
+    'https://github.com/nuit-dhiver/Open-Museum',
+    'https://sketchfab.com/alex-emami/collections/gottingen-open-digital-museum-c959f7b2b98e4b1d8619248bb8c831fd',
+  ],
+};
 ---
 
 <Base title={t('home.title')} description={t('home.tagline')}>
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
   <!-- Hero -->
   <section class="bg-black text-white py-20 sm:py-32 border-b-[3px] border-brand-gold">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

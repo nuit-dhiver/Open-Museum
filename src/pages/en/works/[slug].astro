@@ -1,7 +1,7 @@
 ---
 import Base from '@/layouts/Base.astro';
 import ModelViewer from '@/components/ModelViewer.astro';
-import { useTranslations, getCategoryPath } from '@/i18n/ui';
+import { useTranslations, getCategoryPath, getWorkPath } from '@/i18n/ui';
 import { getCollection } from 'astro:content';
 import { marked } from 'marked';
 import { getAssetUrl } from '@/utils/assets';
@@ -21,9 +21,44 @@ const { data } = work;
 
 const categoryKey = `category.${data.category}` as const;
 const descriptionHtml = await marked.parse(data.description[lang]);
+
+const siteUrl = Astro.site?.href.replace(/\/$/, '') ?? '';
+const workUrl = `${siteUrl}${getWorkPath(lang, work.id)}`;
+const categoryUrl = `${siteUrl}${getCategoryPath(lang, data.category)}`;
+
+const visualArtworkSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'VisualArtwork',
+  name: data.title[lang],
+  ...(data.artist && { creator: { '@type': 'Person', name: data.artist } }),
+  ...(data.year && { dateCreated: data.year }),
+  ...(data.material && { artMedium: data.material[lang] }),
+  ...(data.description[lang] && { description: data.description[lang] }),
+  ...(data.poster && { image: `${siteUrl}${getAssetUrl(data.poster)}` }),
+  ...(data.location.address && {
+    locationCreated: {
+      '@type': 'Place',
+      name: data.location.address,
+      geo: { '@type': 'GeoCoordinates', latitude: data.location.lat, longitude: data.location.lng },
+    },
+  }),
+  url: workUrl,
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: t('nav.home'), item: `${siteUrl}/en/` },
+    { '@type': 'ListItem', position: 2, name: t(categoryKey), item: categoryUrl },
+    { '@type': 'ListItem', position: 3, name: data.title[lang] },
+  ],
+};
 ---
 
 <Base title={`${data.title[lang]} — Open Museum`} description={data.description[lang]} ogImage={data.poster ? getAssetUrl(data.poster) : undefined}>
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(visualArtworkSchema)} />
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <!-- Breadcrumb -->
   <div class="bg-off-white border-b-3 border-black">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">

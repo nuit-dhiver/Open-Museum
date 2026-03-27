@@ -206,6 +206,12 @@ const breadcrumbSchema = {
                 <dd class="mt-0.5">{data.location.address}</dd>
               </div>
             )}
+            {data.modelCreator && (
+              <div>
+                <dt class="font-semibold uppercase tracking-wider text-black/50">{t('work.modelCreator')}</dt>
+                <dd class="mt-0.5">{data.modelCreator}</dd>
+              </div>
+            )}
           </dl>
         </div>
 

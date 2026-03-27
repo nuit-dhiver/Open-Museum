@@ -70,7 +70,7 @@ export const ui = {
     'footer.email': 'E-Mail',
     'footer.social': 'Soziale Medien',
     'footer.rights': '© 2026 Open Museum. Alle Rechte vorbehalten.',
-    'footer.project': 'Ein Projekt zur digitalen Erfassung öffentlicher Kunst.',
+    'footer.project': 'Open Museum ist ein innovatives Projekt mit dem Ziel, weltweites Kulturerbe als detaillierte 3D-Modelle zu erfassen und zu präsentieren.',
 
     // 404
     '404.title': 'Seite nicht gefunden',
@@ -147,7 +147,7 @@ export const ui = {
     'footer.email': 'Email',
     'footer.social': 'Social Media',
     'footer.rights': '© 2026 Open Museum. All rights reserved.',
-    'footer.project': 'A project for digital preservation of public art.',
+    'footer.project': 'Open Museum is an innovative project dedicated to capturing and displaying cultural heritage from around the world as detailed 3D models.',
 
     // 404
     '404.title': 'Page not found',

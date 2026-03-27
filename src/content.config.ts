@@ -28,6 +28,7 @@ const works = defineCollection({
     city: z.string().optional(),
     country: z.string().optional(),
     artist: z.string().optional(),
+    modelCreator: z.string().optional(),
     year: z.string().optional(),
     material: z.object({
       de: z.string(),

@@ -29,6 +29,24 @@ PUBLIC_ASSETS_BASE_URL=https://open-museum-885a1.firebasestorage.app
 - **With local assets**: Leave `PUBLIC_ASSETS_BASE_URL` empty and place asset files in `public/models/` and `public/images/works/` (these directories are gitignored)
 - **Switching providers**: Just change the URL — file paths are resolved at build time via [`src/utils/assets.ts`](src/utils/assets.ts)
 
+## CI Asset Health Check
+The deployment workflow includes an automated changed-page asset validation step:
+
+- Command: `pnpm test:assets:changed`
+- Script: `scripts/ci/asset-health-check.mjs`
+- Scope: validates only pages affected by changed content/routes in the current deployment diff
+- Checks:
+	- poster assets (e.g. `<model-viewer poster>` and `og:image`)
+	- photo assets (`<img src>`)
+	- 3D model sources (`<model-viewer src>` and `ios-src`)
+
+If validation fails, the workflow:
+
+- fails the build before deployment,
+- emits GitHub Actions error annotations per failed asset,
+- uploads `asset-health-report.md` as a workflow artifact,
+- writes the same report to the workflow step summary for quick triage.
+
 ## How to Contribute
 Feel free to contribute to this project in any way you can. Whether it's capturing new models, improving existing ones, or sharing feedback, your help is greatly appreciated!
 

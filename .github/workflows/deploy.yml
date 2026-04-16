@@ -40,6 +40,20 @@ jobs:
         env:
           PUBLIC_ASSETS_BASE_URL: ${{ vars.PUBLIC_ASSETS_BASE_URL }}
 
+      - name: Validate changed pages assets
+        run: pnpm test:assets:changed
+        env:
+          GITHUB_BASE_SHA: ${{ github.event.before }}
+          GITHUB_HEAD_SHA: ${{ github.sha }}
+
+      - name: Upload asset health report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: asset-health-report
+          path: asset-health-report.md
+          if-no-files-found: warn
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -4,7 +4,6 @@ import { getLangFromUrl, useTranslations } from '@/i18n/ui';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const homePath = `${import.meta.env.BASE_URL}${lang}/`;
 ---
 
 <Base title={t('404.title')}>
@@ -19,7 +18,7 @@ const homePath = `${import.meta.env.BASE_URL}${lang}/`;
       <p class="text-black/50 mb-8">
         {t('404.message')}
       </p>
-      <a href={homePath} class="brutal-btn brutal-btn-gold">
+      <a href={`${import.meta.env.BASE_URL}`} class="brutal-btn brutal-btn-gold">
         ← {t('404.back')}
       </a>
     </div>

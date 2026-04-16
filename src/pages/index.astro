@@ -7,13 +7,14 @@ import StatsSection from '@/components/StatsSection.astro';
 import { useTranslations, getCategoryPath } from '@/i18n/ui';
 import { getAssetUrl } from '@/utils/assets';
 
-const lang = 'en';
+const lang = 'de';
 const t = useTranslations(lang);
 
+// Placeholder slideshow images — replace with real photos
 const slideshowImages = [
-  { src: getAssetUrl('/images/slideshow/placeholder-1.jpg'), alt: 'Monument' },
-  { src: getAssetUrl('/images/slideshow/placeholder-2.jpg'), alt: 'Sculpture' },
-  { src: getAssetUrl('/images/slideshow/placeholder-3.jpg'), alt: 'Fountain' },
+  { src: getAssetUrl('/images/slideshow/placeholder-1.jpg'), alt: 'Denkmal' },
+  { src: getAssetUrl('/images/slideshow/placeholder-2.jpg'), alt: 'Skulptur' },
+  { src: getAssetUrl('/images/slideshow/placeholder-3.jpg'), alt: 'Brunnen' },
 ];
 
 const organizationSchema = {
@@ -36,25 +37,9 @@ const organizationSchema = {
 ---
 
 <Base title={t('home.title')} description={t('home.tagline')}>
-  <script is:inline slot="head">
-    try {
-      const redirectStorageKey = 'om-root-lang-checked';
-      const hasChecked = localStorage.getItem(redirectStorageKey) === '1';
-      if (!hasChecked) {
-        const langs = navigator.languages || [navigator.language || ''];
-        const prefersGerman = langs.some((value) => String(value).toLowerCase().startsWith('de'));
-        localStorage.setItem(redirectStorageKey, '1');
-        if (prefersGerman) {
-          window.location.replace(`${import.meta.env.BASE_URL}de/`);
-        }
-      }
-    } catch {
-      // Keep root page functional even if storage is blocked.
-    }
-  </script>
   <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
   <!-- Hero -->
-  <section class="bg-black text-white py-20 sm:py-32 border-b-brutal border-brand-gold">
+  <section class="bg-black text-white py-20 sm:py-32 border-b-[3px] border-brand-gold">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h1 class="font-heading text-5xl sm:text-7xl font-bold uppercase tracking-wider mb-6">
         <span class="text-brand-gold">Open Museum</span>

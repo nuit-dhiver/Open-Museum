@@ -5,7 +5,7 @@ export const languages = {
 
 export type Lang = keyof typeof languages;
 
-export const defaultLang: Lang = 'en';
+export const defaultLang: Lang = 'de';
 
 export const ui = {
   de: {
@@ -219,7 +219,8 @@ export function cityNameToSlug(name: string): string {
  */
 export function getCityPath(lang: Lang, citySlug: string): string {
   const base = import.meta.env.BASE_URL;
-  return `${base}${lang}/cities/${citySlug}/`;
+  if (lang === 'en') return `${base}en/cities/${citySlug}/`;
+  return `${base}staedte/${citySlug}/`;
 }
 
 /**
@@ -227,12 +228,19 @@ export function getCityPath(lang: Lang, citySlug: string): string {
  */
 export function getCategoryPath(lang: Lang, category: 'brunnen' | 'denkmal' | 'kunstwerk'): string {
   const base = import.meta.env.BASE_URL;
-  const categorySlugs = {
-    brunnen: 'fountains',
-    denkmal: 'monuments',
-    kunstwerk: 'artworks',
+  const paths = {
+    de: {
+      brunnen: 'brunnen',
+      denkmal: 'denkmale',
+      kunstwerk: 'kunstwerke',
+    },
+    en: {
+      brunnen: 'en/fountains',
+      denkmal: 'en/monuments',
+      kunstwerk: 'en/artworks',
+    },
   };
-  return `${base}${lang}/${categorySlugs[category]}/`;
+  return `${base}${paths[lang][category]}/`;
 }
 
 /**
@@ -240,7 +248,8 @@ export function getCategoryPath(lang: Lang, category: 'brunnen' | 'denkmal' | 'k
  */
 export function getWorkPath(lang: Lang, slug: string): string {
   const base = import.meta.env.BASE_URL;
-  return `${base}${lang}/${slug}/`;
+  if (lang === 'en') return `${base}en/works/${slug}/`;
+  return `${base}werke/${slug}/`;
 }
 
 /**
@@ -252,24 +261,22 @@ export function getAlternateLanguagePath(currentPath: string, currentLang: Lang)
 
   if (currentLang === 'de') {
     // DE -> EN
-    if (path === 'de' || path === 'de/' || path === '' || path === '/') return `${base}en/`;
-    if (path.startsWith('de/')) return `${base}en/${path.slice('de/'.length)}`;
-
-    // Legacy paths
+    if (path === '' || path === '/') return `${base}en/`;
     if (path.startsWith('brunnen')) return `${base}en/fountains/${path.slice('brunnen/'.length)}`;
     if (path.startsWith('denkmale')) return `${base}en/monuments/${path.slice('denkmale/'.length)}`;
     if (path.startsWith('kunstwerke')) return `${base}en/artworks/${path.slice('kunstwerke/'.length)}`;
-    if (path.startsWith('werke/')) return `${base}en/${path.slice('werke/'.length)}`;
+    if (path.startsWith('werke/')) return `${base}en/works/${path.slice('werke/'.length)}`;
     if (path.startsWith('staedte/')) return `${base}en/cities/${path.slice('staedte/'.length)}`;
     return `${base}en/${path}`;
   } else {
     // EN -> DE
-    if (path === '' || path === '/' || path === 'en/' || path === 'en') return `${base}de/`;
-    if (path.startsWith('en/')) return `${base}de/${path.slice('en/'.length)}`;
-
-    // Legacy paths
-    if (path.startsWith('works/')) return `${base}de/${path.slice('works/'.length)}`;
-    if (path.startsWith('cities/')) return `${base}de/cities/${path.slice('cities/'.length)}`;
-    return `${base}de/${path}`;
+    if (path === 'en/' || path === 'en') return `${base}`;
+    const enPath = path.replace(/^en\//, '');
+    if (enPath.startsWith('fountains')) return `${base}brunnen/${enPath.slice('fountains/'.length)}`;
+    if (enPath.startsWith('monuments')) return `${base}denkmale/${enPath.slice('monuments/'.length)}`;
+    if (enPath.startsWith('artworks')) return `${base}kunstwerke/${enPath.slice('artworks/'.length)}`;
+    if (enPath.startsWith('works/')) return `${base}werke/${enPath.slice('works/'.length)}`;
+    if (enPath.startsWith('cities/')) return `${base}staedte/${enPath.slice('cities/'.length)}`;
+    return `${base}${enPath}`;
   }
 }

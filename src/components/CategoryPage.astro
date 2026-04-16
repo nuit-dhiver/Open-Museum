@@ -38,7 +38,7 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: t('nav.home'), item: lang === 'en' ? `${siteUrl}/en/` : `${siteUrl}/` },
+    { '@type': 'ListItem', position: 1, name: t('nav.home'), item: `${siteUrl}/${lang}/` },
     { '@type': 'ListItem', position: 2, name: t(categoryKey) },
   ],
 };
@@ -48,7 +48,7 @@ const breadcrumbSchema = {
   <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
   <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <!-- Page header -->
-  <section class="bg-black text-white py-12 sm:py-16 border-b-[3px] border-brand-gold">
+  <section class="bg-black text-white py-12 sm:py-16 border-b-brutal border-brand-gold">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h1 class="font-heading text-4xl sm:text-5xl font-bold uppercase tracking-wider mb-3">
         {t(categoryKey)}

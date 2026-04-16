@@ -1,0 +1,19 @@
+---
+import WorkPage from '@/components/WorkPage.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const reservedDeSlugs = new Set(['artworks', 'cities', 'fountains', 'monuments']);
+  const works = await getCollection('works');
+  return works
+    .filter((work) => !reservedDeSlugs.has(work.id))
+    .map((work) => ({
+      params: { slug: work.id },
+      props: { work },
+    }));
+}
+
+const { work } = Astro.props;
+---
+
+<WorkPage lang="de" work={work} />

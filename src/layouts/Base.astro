@@ -18,8 +18,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const alternatePath = getAlternateLanguagePath(Astro.url.pathname, lang);
 const alternateURL = new URL(alternatePath, Astro.site);
-const deURL = lang === 'de' ? canonicalURL : alternateURL;
-const enURL = lang === 'en' ? canonicalURL : alternateURL;
+const isRootPath = Astro.url.pathname === import.meta.env.BASE_URL;
+const deURL = isRootPath ? new URL(`${import.meta.env.BASE_URL}de/`, Astro.site) : (lang === 'de' ? canonicalURL : alternateURL);
+const enURL = isRootPath ? new URL(`${import.meta.env.BASE_URL}en/`, Astro.site) : (lang === 'en' ? canonicalURL : alternateURL);
+const xDefaultURL = new URL(import.meta.env.BASE_URL, Astro.site);
 
 // Strip markdown syntax and truncate for social meta descriptions
 const plainDescription = description
@@ -51,7 +53,7 @@ const resolvedOgImage = ogImage
     <!-- hreflang -->
     <link rel="alternate" hreflang="de" href={deURL} />
     <link rel="alternate" hreflang="en" href={enURL} />
-    <link rel="alternate" hreflang="x-default" href={deURL} />
+    <link rel="alternate" hreflang="x-default" href={xDefaultURL} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />

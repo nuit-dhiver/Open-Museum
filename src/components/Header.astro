@@ -10,13 +10,13 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const base = import.meta.env.BASE_URL;
-const homePath = lang === 'en' ? `${base}en/` : `${base}`;
+const homePath = `${base}${lang}/`;
 
 const allWorks = await getCollection('works');
 const cityNames = [...new Set(allWorks.map((w) => w.data.city).filter(Boolean))].sort() as string[];
 ---
 
-<header class="bg-black text-white border-b-[3px] border-brand-gold sticky top-0 z-50">
+<header class="bg-black text-white border-b-brutal border-brand-gold sticky top-0 z-50">
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <!-- Logo / Site name -->

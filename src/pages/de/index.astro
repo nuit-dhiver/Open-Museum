@@ -7,13 +7,13 @@ import StatsSection from '@/components/StatsSection.astro';
 import { useTranslations, getCategoryPath } from '@/i18n/ui';
 import { getAssetUrl } from '@/utils/assets';
 
-const lang = 'en';
+const lang = 'de';
 const t = useTranslations(lang);
 
 const slideshowImages = [
-  { src: getAssetUrl('/images/slideshow/placeholder-1.jpg'), alt: 'Monument' },
-  { src: getAssetUrl('/images/slideshow/placeholder-2.jpg'), alt: 'Sculpture' },
-  { src: getAssetUrl('/images/slideshow/placeholder-3.jpg'), alt: 'Fountain' },
+  { src: getAssetUrl('/images/slideshow/placeholder-1.jpg'), alt: 'Denkmal' },
+  { src: getAssetUrl('/images/slideshow/placeholder-2.jpg'), alt: 'Skulptur' },
+  { src: getAssetUrl('/images/slideshow/placeholder-3.jpg'), alt: 'Brunnen' },
 ];
 
 const organizationSchema = {
@@ -37,7 +37,6 @@ const organizationSchema = {
 
 <Base title={t('home.title')} description={t('home.tagline')}>
   <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
-  <!-- Hero -->
   <section class="bg-black text-white py-20 sm:py-32 border-b-brutal border-brand-gold">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h1 class="font-heading text-5xl sm:text-7xl font-bold uppercase tracking-wider mb-6">
@@ -49,7 +48,6 @@ const organizationSchema = {
     </div>
   </section>
 
-  <!-- Category Cards -->
   <section class="py-16 sm:py-24 bg-off-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -78,7 +76,6 @@ const organizationSchema = {
     </div>
   </section>
 
-  <!-- Photo Slideshow -->
   <!-- <section class="py-16 sm:py-24 bg-white border-y-3 border-black">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="font-heading text-3xl sm:text-4xl font-bold uppercase tracking-wider mb-8 text-center">
@@ -88,9 +85,7 @@ const organizationSchema = {
     </div>
   </section> -->
 
-  <!-- Stats / Insights -->
   <StatsSection lang={lang} />
 
-  <!-- Featured 3D Work -->
   <FeaturedWork lang={lang} />
 </Base>

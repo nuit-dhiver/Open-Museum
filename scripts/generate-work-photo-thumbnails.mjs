@@ -20,8 +20,8 @@ function stripQueryAndHash(value) {
 
 function getThumbnailPath(photoPath) {
   const cleanPath = stripQueryAndHash(photoPath).trim();
-  const normalizedPath = cleanPath.startsWith('/') ? cleanPath.slice(1) : cleanPath;
-  return `/images/thumbnails/works/${encodeURIComponent(normalizedPath)}.webp`;
+  const normalizedPath = cleanPath.replace(/^\/+/, '');
+  return `/images/thumbnails/works/${normalizedPath}.webp`;
 }
 
 function toRemoteAssetUrl(assetPath, baseUrl) {

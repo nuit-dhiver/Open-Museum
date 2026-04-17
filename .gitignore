@@ -17,6 +17,7 @@ dist/
 public/models/
 public/images/works/
 public/images/slideshow/
+public/images/thumbnails/works/
 
 # Editor
 .vscode/

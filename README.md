@@ -29,6 +29,25 @@ PUBLIC_ASSETS_BASE_URL=https://open-museum-885a1.firebasestorage.app
 - **With local assets**: Leave `PUBLIC_ASSETS_BASE_URL` empty and place asset files in `public/models/` and `public/images/works/` (these directories are gitignored)
 - **Switching providers**: Just change the URL — file paths are resolved at build time via [`src/utils/assets.ts`](src/utils/assets.ts)
 
+## Gallery Thumbnails (Build-Time Optimization)
+Work-page gallery images now use generated `.webp` thumbnails for initial render and only load the full-size photo when the user opens the lightbox.
+
+- Generator script: `pnpm thumbs:generate`
+- Script source: `scripts/generate-work-photo-thumbnails.mjs`
+- Auto-run before build: `prebuild` runs the generator automatically
+- Output directory: `public/images/thumbnails/works/`
+
+The generator reads all `photos` arrays from `src/content/works/*.json` (gallery photos only), then:
+
+- fetches originals from `PUBLIC_ASSETS_BASE_URL` when set (Firebase-compatible URL handling), or
+- reads originals from local `public/` when external storage is not configured.
+
+Optional tuning via environment variables:
+
+- `WORK_THUMBNAIL_WIDTH` (default: `900`)
+- `WORK_THUMBNAIL_QUALITY` (default: `72`)
+- `WORK_THUMBNAIL_CONCURRENCY` (default: `4`)
+
 ## CI Asset Health Check
 The deployment workflow includes an automated changed-page asset validation step:
 

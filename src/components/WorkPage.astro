@@ -4,6 +4,7 @@ import ModelViewer from '@/components/ModelViewer.astro';
 import { useTranslations, getCategoryPath, getWorkPath, type Lang } from '@/i18n/ui';
 import { marked } from 'marked';
 import { getAssetUrl } from '@/utils/assets';
+import { getPublicUrl, getWorkPhotoThumbnailPath } from '@/utils/photo-thumbnails';
 
 interface Props {
   work: any;
@@ -26,6 +27,10 @@ const categoryUrl = `${siteUrl}${getCategoryPath(lang, category)}`;
 const licenseUrl = lang === 'de'
   ? 'https://creativecommons.org/licenses/by-nc/4.0/deed.de'
   : 'https://creativecommons.org/licenses/by-nc/4.0/';
+const galleryPhotos = data.photos.map((photo: string) => ({
+  fullUrl: getAssetUrl(photo),
+  thumbUrl: getPublicUrl(getWorkPhotoThumbnailPath(photo)),
+}));
 
 const visualArtworkSchema = {
   '@context': 'https://schema.org',
@@ -122,15 +127,15 @@ const breadcrumbSchema = {
           </div>
         )}
 
-        {data.photos.length > 0 && (
+        {galleryPhotos.length > 0 && (
           <div>
             <h2 class="font-heading text-xl font-bold uppercase tracking-wider mb-4">
               {t('work.photos')}
             </h2>
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-              {data.photos.map((photo: string) => (
+              {galleryPhotos.map((photo) => (
                 <div class="brutal-card overflow-hidden aspect-square">
-                  <img src={getAssetUrl(photo)} alt={data.title[lang]} class="w-full h-full object-cover cursor-pointer photo-gallery-thumb" data-full={getAssetUrl(photo)} loading="lazy" />
+                  <img src={photo.thumbUrl} alt={data.title[lang]} class="w-full h-full object-cover cursor-pointer photo-gallery-thumb" data-full={photo.fullUrl} loading="lazy" decoding="async" onerror="this.onerror=null;this.src=this.dataset.full||'';" />
                 </div>
               ))}
             </div>

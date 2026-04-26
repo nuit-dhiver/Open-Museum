@@ -31,5 +31,6 @@
   "material": {
     "de": "Stein",
     "en": "Stone"
-  }
+  },
+  "downloadAllowed": false
 }

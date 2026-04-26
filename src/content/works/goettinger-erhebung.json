@@ -29,5 +29,6 @@
   },
   "artist": "Andreas Welzenbach (*1965), Hüttlingen",
   "modelCreator": "Alex Emami",
-  "year": "2012"
+  "year": "2012",
+  "downloadAllowed": false
 }

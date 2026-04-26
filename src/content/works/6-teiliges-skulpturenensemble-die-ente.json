@@ -32,5 +32,6 @@
   "material": {
     "de": "Bleiplatten auf Holzkern",
     "en": "Lead plates on wooden core"
-  }
+  },
+  "downloadAllowed": false
 }

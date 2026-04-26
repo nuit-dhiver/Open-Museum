@@ -27,5 +27,6 @@
   "material": {
     "de": "Bronzeplastik in einer gemauerten Steingrotte",
     "en": "Bronze sculpture within a masonry stone grotto"
-  }
+  },
+  "downloadAllowed": false
 }

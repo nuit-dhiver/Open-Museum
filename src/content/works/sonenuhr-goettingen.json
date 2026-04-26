@@ -32,5 +32,6 @@
   "material": {
     "de": "Metall und Stein",
     "en": "Metal and stone"
-  }
+  },
+  "downloadAllowed": false
 }

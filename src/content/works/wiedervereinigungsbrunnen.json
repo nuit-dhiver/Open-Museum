@@ -26,5 +26,6 @@
   "material": {
     "de": "Bronze, Guss- und Bildhauertechnik",
     "en": "Bronze, casting and sculptural technique"
-  }
+  },
+  "downloadAllowed": false
 }

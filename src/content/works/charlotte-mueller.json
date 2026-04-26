@@ -33,5 +33,6 @@
   "material": {
     "de": "Bronzeguss",
     "en": "Bronze casting"
-  }
+  },
+  "downloadAllowed": false
 }

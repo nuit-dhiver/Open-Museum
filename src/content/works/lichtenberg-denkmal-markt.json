@@ -26,5 +26,6 @@
     "lng": 9.934959032645615,
     "address": "Marktplatz, 37073 Göttingen"
   },
-  "modelCreator": "Alex Emami"
+  "modelCreator": "Alex Emami",
+  "downloadAllowed": false
 }

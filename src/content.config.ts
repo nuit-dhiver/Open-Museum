@@ -34,6 +34,7 @@ const works = defineCollection({
       de: z.string(),
       en: z.string(),
     }).optional(),
+    downloadAllowed: z.boolean().default(false),
   }),
 });
 

@@ -32,5 +32,6 @@
   "material": {
     "de": "Bronze",
     "en": "Bronze"
-  }
+  },
+  "downloadAllowed": false
 }

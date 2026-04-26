@@ -30,5 +30,6 @@
     },
     "address": "Hiroshimaplatz 1-4, Neues Rathaus, Vorplatz Amtshaus"
   },
-  "modelCreator": "Alex Emami"
+  "modelCreator": "Alex Emami",
+  "downloadAllowed": false
 }

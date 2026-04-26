@@ -25,5 +25,6 @@
     "lng": 9.94002160844641,
     "address": "Göttingen, Niedersachsen"
   },
-  "modelCreator": "Alex Emami"
+  "modelCreator": "Alex Emami",
+  "downloadAllowed": false
 }

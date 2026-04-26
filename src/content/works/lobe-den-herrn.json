@@ -32,5 +32,6 @@
   "material": {
     "de": "Bronzerelief",
     "en": "bronze relief"
-  }
+  },
+  "downloadAllowed": false
 }

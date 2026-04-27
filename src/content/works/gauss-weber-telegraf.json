@@ -27,9 +27,13 @@
     "lng": 9.931909227257883,
     "address": "Göttingen, Niedersachsen"
   },
-  "artist": "Carl Friedrich Gauß (1777–1855) & Wilhelm Eduard Weber (1804–1891)",
+  "artist": "Carl Ferdinand Hartzer",
   "modelCreator": "Alex Emami",
   "year": "1833",
-  "downloadAllowed": false,
-  "ipStatus": "freedom-of-panorama"
+  "downloadAllowed": true,
+   "material": {
+    "de": "Eisen, Holz, Kupfer",
+    "en": "Iron, wood, copper"
+  },
+  "ipStatus": "public-domain"
 }

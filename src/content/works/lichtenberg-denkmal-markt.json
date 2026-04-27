@@ -10,6 +10,7 @@
   "category": "denkmal",
   "city": "Göttingen",
   "country": "Germany",
+  "artist": "Fuat Dushku",
   "model": {
     "glb": "/models/Lichtenberg-Denkmal-Markt.glb",
     "usdz": "/models/Lichtenberg-Denkmal-Markt.usdz"

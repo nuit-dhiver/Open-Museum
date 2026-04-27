@@ -33,5 +33,6 @@
     "de": "Bronze",
     "en": "Bronze"
   },
-  "downloadAllowed": false
+  "downloadAllowed": false,
+  "ipStatus": "freedom-of-panorama"
 }

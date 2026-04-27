@@ -33,5 +33,6 @@
     "de": "Metall und Naturstein",
     "en": "Metal and natural stone"
   },
-  "downloadAllowed": false
+  "downloadAllowed": false,
+  "ipStatus": "freedom-of-panorama"
 }

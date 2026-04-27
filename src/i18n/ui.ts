@@ -55,7 +55,21 @@ export const ui = {
     'work.licenseNotice': 'Mit dem Herunterladen bestätige ich, dass diese Datei unter der',
     'work.licenseLink': 'Creative Commons Namensnennung – Nicht kommerziell 4.0 (CC BY-NC 4.0)',
     'work.licenseNoticeAfter': 'lizenziert ist und ausschließlich für nicht-kommerzielle Zwecke genutzt werden darf.',
+    'work.licenseAuthorizedNotice': 'Mit dem Herunterladen bestätige ich, dass diese Datei nur im Rahmen einer ausdrücklichen Nutzungserlaubnis des Rechteinhabers bereitgestellt wird. Jede Nutzung außerhalb dieser Erlaubnis kann geistige Eigentumsrechte verletzen.',
     'work.licenseDownloadWith': 'Herunterladen als',
+    'work.ipStatus.label': 'IP-Status',
+    'work.ipStatus.moreInfo': 'Mehr Informationen',
+    'work.ipStatus.publicDomain': 'Public Domain',
+    'work.ipStatus.fop': 'Freedom of Panorama',
+    'work.ipStatus.authorizedUse': 'Autorisierte Nutzung',
+    'work.ipStatus.publicDomain.title': 'Public Domain + CC BY-NC Download',
+    'work.ipStatus.publicDomain.body': 'Dieses Werk wird als Public Domain präsentiert. Die hier bereitgestellte 3D-Datei ist unter CC BY-NC 4.0 für nicht-kommerzielle Nutzung verfügbar. Bitte beachten Sie die Lizenzbedingungen vor einer Weiterverwendung.',
+    'work.ipStatus.fop.title': 'Freedom of Panorama — Nur Ansicht',
+    'work.ipStatus.fop.body': 'Dieses Werk wird im Rahmen der Panoramafreiheit zu Zwecken der kulturellen Dokumentation angezeigt. Da die Rechtslage bei 3D-Rekonstruktionen je nach Kontext unklar sein kann, ist das Modell ausschließlich zur Ansicht verfügbar. Downloads, Vervielfältigung und abgeleitete Werke sind untersagt. Etwaige Rechtsfolgen trägt ausschließlich der Verletzer.',
+    'work.ipStatus.authorizedUse.title': 'Nutzung mit spezieller Erlaubnis',
+    'work.ipStatus.authorizedUse.body': 'Dieses Werk wird auf Grundlage einer spezifischen Nutzungserlaubnis des Urhebers oder Rechteinhabers gezeigt. Die Download-Verfügbarkeit kann je nach erteilter Erlaubnis variieren. Weiterverwendung außerhalb der erlaubten Bedingungen kann Rechte Dritter verletzen.',
+    'work.ipStatus.downloadProhibited': 'Downloads sind für dieses Werk untersagt (nur Ansicht).',
+    'work.ipStatus.takedown': 'Urheberrechts- oder Takedown-Hinweis:',
 
     // Stats section
     'stats.title': 'Zahlen & Fakten',
@@ -78,6 +92,8 @@ export const ui = {
     'footer.social': 'Soziale Medien',
     'footer.rights': '© 2026 Open Museum. Alle Rechte vorbehalten.',
     'footer.project': 'Open Museum ist ein innovatives Projekt mit dem Ziel, weltweites Kulturerbe als detaillierte 3D-Modelle zu erfassen und zu präsentieren.',
+    'footer.disclaimer': 'Die auf dieser Plattform gezeigten Werke können urheberrechtlich geschützt sein und werden ausschließlich zur Kulturerbe-Dokumentation und Bildungszwecken präsentiert. Die Ansicht ist erlaubt. Vervielfältigung, Bearbeitung, abgeleitete Werke oder kommerzielle Nutzung können Rechte der jeweiligen Inhaber verletzen. Open Museum übernimmt keine Haftung für eine missbräuchliche Nutzung durch Dritte.',
+    'footer.takedownPolicy': 'Für Takedown-Anfragen oder urheberrechtliche Hinweise kontaktieren Sie bitte',
 
     // 404
     '404.title': 'Seite nicht gefunden',
@@ -139,7 +155,21 @@ export const ui = {
     'work.licenseNotice': 'By downloading this file, I acknowledge it is released under',
     'work.licenseLink': 'Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)',
     'work.licenseNoticeAfter': 'and may only be used for non-commercial purposes.',
+    'work.licenseAuthorizedNotice': 'By downloading this file, I acknowledge it is made available only under a specific authorization from the rights holder. Any use beyond that authorization may violate intellectual property rights.',
     'work.licenseDownloadWith': 'Download as',
+    'work.ipStatus.label': 'IP Status',
+    'work.ipStatus.moreInfo': 'More Information',
+    'work.ipStatus.publicDomain': 'Public Domain',
+    'work.ipStatus.fop': 'Freedom of Panorama',
+    'work.ipStatus.authorizedUse': 'Authorized Use',
+    'work.ipStatus.publicDomain.title': 'Public Domain + CC BY-NC Download',
+    'work.ipStatus.publicDomain.body': 'This work is presented as public domain. The downloadable 3D file on this page is offered under CC BY-NC 4.0 for non-commercial use. Please review the license terms before reusing the file.',
+    'work.ipStatus.fop.title': 'Freedom of Panorama - View Only',
+    'work.ipStatus.fop.body': 'This work is shown under Freedom of Panorama for cultural heritage documentation. Because legal treatment of 3D reconstructions may vary by context, this model is available for viewing only. Downloading, reproduction, and derivative works are prohibited. Any legal consequences are solely the responsibility of the violator.',
+    'work.ipStatus.authorizedUse.title': 'Specific Authorized Use',
+    'work.ipStatus.authorizedUse.body': 'This work is displayed based on a specific permission from the creator or rights holder. Download availability depends on the granted authorization. Reuse beyond the permitted scope may infringe third-party rights.',
+    'work.ipStatus.downloadProhibited': 'Downloads are prohibited for this work (view-only).',
+    'work.ipStatus.takedown': 'For copyright concerns or takedown requests:',
 
     // Stats section
     'stats.title': 'By the Numbers',
@@ -162,6 +192,8 @@ export const ui = {
     'footer.social': 'Social Media',
     'footer.rights': '© 2026 Open Museum. All rights reserved.',
     'footer.project': 'Open Museum is an innovative project dedicated to capturing and displaying cultural heritage from around the world as detailed 3D models.',
+    'footer.disclaimer': 'Works displayed on this platform may be subject to copyright and are presented solely for cultural heritage preservation and educational purposes. Viewing is permitted. Reproduction, modification, derivative works, or commercial use may violate the intellectual property rights of the respective owners. Open Museum assumes no liability for third-party misuse.',
+    'footer.takedownPolicy': 'For takedown notices or copyright concerns, please contact',
 
     // 404
     '404.title': 'Page not found',

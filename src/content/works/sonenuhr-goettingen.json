@@ -33,5 +33,6 @@
     "de": "Metall und Stein",
     "en": "Metal and stone"
   },
-  "downloadAllowed": false
+  "downloadAllowed": false,
+  "ipStatus": "freedom-of-panorama"
 }

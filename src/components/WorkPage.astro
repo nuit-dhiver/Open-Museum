@@ -15,6 +15,26 @@ const { work, lang } = Astro.props;
 const t = useTranslations(lang);
 const { data } = work;
 const category = data.category as 'brunnen' | 'denkmal' | 'kunstwerk';
+type IpStatus = 'public-domain' | 'freedom-of-panorama' | 'authorized-use';
+const ipStatus = (data.ipStatus ?? 'freedom-of-panorama') as IpStatus;
+const isPublicDomain = ipStatus === 'public-domain';
+const isFoP = ipStatus === 'freedom-of-panorama';
+const canDownload = Boolean(data.downloadAllowed) && !isFoP;
+const ipStatusLabelKey = isPublicDomain
+  ? 'work.ipStatus.publicDomain'
+  : isFoP
+    ? 'work.ipStatus.fop'
+    : 'work.ipStatus.authorizedUse';
+const ipStatusTitleKey = isPublicDomain
+  ? 'work.ipStatus.publicDomain.title'
+  : isFoP
+    ? 'work.ipStatus.fop.title'
+    : 'work.ipStatus.authorizedUse.title';
+const ipStatusBodyKey = isPublicDomain
+  ? 'work.ipStatus.publicDomain.body'
+  : isFoP
+    ? 'work.ipStatus.fop.body'
+    : 'work.ipStatus.authorizedUse.body';
 
 const categoryKey = `category.${category}` as const;
 const descriptionHtml = await marked.parse(data.description[lang]);
@@ -109,11 +129,26 @@ const breadcrumbSchema = {
                 class="h-full"
               />
             </div>
+            <div class="mt-4">
+              <button
+                id="ip-status-btn"
+                class={`ip-status-badge ${isPublicDomain ? 'ip-status-badge--green' : 'ip-status-badge--yellow'}`}
+                type="button"
+              >
+                <span class="ip-status-badge-prefix">{t('work.ipStatus.label')}:</span>
+                <span>{t(ipStatusLabelKey)}</span>
+                <span class="ip-status-badge-info" aria-hidden="true">i</span>
+              </button>
+              <p class="ip-status-meta-text">{t('work.ipStatus.moreInfo')}</p>
+            </div>
             <div class="mt-4 flex flex-col sm:flex-row gap-3 sm:items-stretch" id="social-share" data-share-url={workUrl} data-share-title={data.title[lang]} data-share-description={shareDescription} data-share-copied-message={t('work.shareCopied')}>
-              {data.downloadAllowed && (
+              {canDownload && (
                 <button id="download-btn" class="brutal-btn brutal-btn-black flex-1 justify-center">
                   {t('work.download')}
                 </button>
+              )}
+              {isFoP && (
+                <div class="fop-download-warning">{t('work.ipStatus.downloadProhibited')}</div>
               )}
               <button id="share-btn" class="brutal-btn brutal-btn-black justify-center sm:w-auto" aria-label={t('work.share')}>
                 <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -157,17 +192,21 @@ const breadcrumbSchema = {
         <div class="prose" set:html={descriptionHtml} />
       </div>
 
-      {data.model.glb && (
+      {data.model.glb && canDownload && (
         <div id="license-modal" class="license-modal" aria-hidden="true">
           <div class="license-modal-card">
             <h3>{t('work.licenseTitle')}</h3>
-            <p>
-              {t('work.licenseNotice')}{' '}
-              <a href={licenseUrl} target="_blank" rel="noopener noreferrer">
-                {t('work.licenseLink')}
-              </a>{' '}
-              {t('work.licenseNoticeAfter')}
-            </p>
+            {isPublicDomain ? (
+              <p>
+                {t('work.licenseNotice')}{' '}
+                <a href={licenseUrl} target="_blank" rel="noopener noreferrer">
+                  {t('work.licenseLink')}
+                </a>{' '}
+                {t('work.licenseNoticeAfter')}
+              </p>
+            ) : (
+              <p>{t('work.licenseAuthorizedNotice')}</p>
+            )}
             <p class="license-modal-hint">{t('work.licenseDownloadWith')}</p>
             <div class="mt-2 flex flex-col gap-3">
               <button id="download-glb" class="brutal-btn brutal-btn-black w-full justify-center" data-href={getAssetUrl(data.model.glb)} data-filename={`${work.id}.glb`}>
@@ -179,6 +218,16 @@ const breadcrumbSchema = {
                 </button>
               )}
             </div>
+          </div>
+        </div>
+      )}
+
+      {data.model.glb && (
+        <div id="ip-status-modal" class="license-modal ip-status-modal" aria-hidden="true">
+          <div class="license-modal-card ip-status-modal-card">
+            <h3>{t(ipStatusTitleKey)}</h3>
+            <p>{t(ipStatusBodyKey)}</p>
+            <p class="license-modal-hint">{t('work.ipStatus.takedown')} <a href="mailto:alex@openmuseum.io">alex@openmuseum.io</a></p>
           </div>
         </div>
       )}
@@ -342,6 +391,8 @@ const breadcrumbSchema = {
     const downloadGlb = document.getElementById('download-glb');
     const downloadUsdz = document.getElementById('download-usdz');
     const licenseModal = document.getElementById('license-modal');
+    const ipStatusBtn = document.getElementById('ip-status-btn');
+    const ipStatusModal = document.getElementById('ip-status-modal');
     const shareBtn = document.getElementById('share-btn');
     const shareModal = document.getElementById('share-modal');
     const socialShare = document.getElementById('social-share');
@@ -360,6 +411,16 @@ const breadcrumbSchema = {
       document.body.style.overflow = '';
     }
 
+    function openIpStatusModal() {
+      ipStatusModal?.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeIpStatusModal() {
+      ipStatusModal?.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
     function openShareModal() {
       shareModal?.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
@@ -371,6 +432,7 @@ const breadcrumbSchema = {
     }
 
     downloadBtn?.addEventListener('click', openLicenseModal);
+    ipStatusBtn?.addEventListener('click', openIpStatusModal);
     shareBtn?.addEventListener('click', openShareModal);
 
     licenseModal?.addEventListener('click', (e) => {
@@ -381,12 +443,19 @@ const breadcrumbSchema = {
       if (e.target === shareModal) closeShareModal();
     });
 
+    ipStatusModal?.addEventListener('click', (e) => {
+      if (e.target === ipStatusModal) closeIpStatusModal();
+    });
+
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && licenseModal?.getAttribute('aria-hidden') === 'false') {
         closeLicenseModal();
       }
       if (e.key === 'Escape' && shareModal?.getAttribute('aria-hidden') === 'false') {
         closeShareModal();
+      }
+      if (e.key === 'Escape' && ipStatusModal?.getAttribute('aria-hidden') === 'false') {
+        closeIpStatusModal();
       }
     });
 

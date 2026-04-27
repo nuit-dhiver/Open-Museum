@@ -35,6 +35,7 @@ const works = defineCollection({
       en: z.string(),
     }).optional(),
     downloadAllowed: z.boolean().default(false),
+    ipStatus: z.enum(['public-domain', 'freedom-of-panorama', 'authorized-use']).default('freedom-of-panorama'),
   }),
 });
 

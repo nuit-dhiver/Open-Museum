@@ -264,6 +264,105 @@ model-viewer {
   margin-bottom: 0 !important;
 }
 
+.license-modal-hint a {
+  color: var(--color-brand-blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 700;
+}
+
+.license-modal-hint a:hover {
+  color: var(--color-brand-gold);
+}
+
+/* ═══ IP Status Badge ═══ */
+
+.ip-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 3px solid var(--color-black);
+  box-shadow: var(--shadow-brutal-sm);
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.55rem 0.8rem;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  cursor: pointer;
+}
+
+.ip-status-badge:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: var(--shadow-brutal);
+}
+
+.ip-status-badge:active {
+  transform: translate(1px, 1px);
+  box-shadow: none;
+}
+
+.ip-status-badge-prefix {
+  opacity: 0.75;
+}
+
+.ip-status-badge-info {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.ip-status-badge--green {
+  background: #4ade80;
+  color: #052e16;
+}
+
+.ip-status-badge--yellow {
+  background: #facc15;
+  color: #422006;
+}
+
+.ip-status-meta-text {
+  margin-top: 0.45rem;
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.fop-download-warning {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.75rem 1rem;
+  border: 3px solid #92400e;
+  background: #fef3c7;
+  color: #78350f;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 640px) {
+  .ip-status-badge {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 /* ═══ Prose (Markdown descriptions) ═══ */
 
 .prose {

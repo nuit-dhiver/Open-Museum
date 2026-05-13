@@ -1,171 +1,136 @@
 ---
 interface Props {
-  src: string;
-  iosSrc?: string;
+  modelId: string;
   alt: string;
   poster?: string;
   class?: string;
+  autoRotate?: boolean;
 }
 
-const { src, iosSrc, alt, poster, class: className = '' } = Astro.props;
+const { modelId, alt, poster, class: className = '', autoRotate = true } = Astro.props;
 ---
 
-<div class={`brutal-card overflow-hidden model-viewer-container ${className}`}>
-  <model-viewer
-    src={src}
-    ios-src={iosSrc}
-    alt={alt}
-    poster={poster}
-    camera-controls
-    auto-rotate
-    auto-rotate-delay="1000"
-    shadow-intensity="1"
-    ar
-    ar-modes="webxr scene-viewer quick-look"
-    loading="lazy"
-    style="width: 100%; height: 100%;"
-  >
-    <div class="absolute inset-0 flex items-center justify-center bg-off-white" slot="poster">
-      {poster ? (
-        <img src={poster} alt={alt} class="w-full h-full object-cover" />
-      ) : (
-        <div class="text-center">
-          <div class="animate-spin w-8 h-8 border-4 border-black border-t-brand-gold rounded-full mx-auto mb-2"></div>
-          <p class="font-heading text-sm uppercase tracking-wider">Loading 3D…</p>
-        </div>
-      )}
+<div class={`brutal-card overflow-hidden secure-model-viewer ${className}`} data-model-id={modelId} data-auto-rotate={String(autoRotate)}>
+  <canvas class="secure-model-viewer-canvas" aria-label={alt}></canvas>
+  <div class="secure-model-viewer-overlay" data-role="status">
+    {poster ? <img src={poster} alt={alt} class="w-full h-full object-cover opacity-50" /> : null}
+    <div class="text-center px-4">
+      <div class="animate-spin w-8 h-8 border-4 border-black border-t-brand-gold rounded-full mx-auto mb-2"></div>
+      <p class="font-heading text-sm uppercase tracking-wider" data-role="status-message">Loading 3D…</p>
     </div>
-  </model-viewer>
-
-  <button class="fullscreen-btn" aria-label="Toggle fullscreen" title="Fullscreen">
-    <!-- Expand icon -->
-    <svg class="icon-expand" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="15 3 21 3 21 9"></polyline>
-      <polyline points="9 21 3 21 3 15"></polyline>
-      <line x1="21" y1="3" x2="14" y2="10"></line>
-      <line x1="3" y1="21" x2="10" y2="14"></line>
-    </svg>
-    <!-- Compress icon -->
-    <svg class="icon-compress" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="4 14 10 14 10 20"></polyline>
-      <polyline points="20 10 14 10 14 4"></polyline>
-      <line x1="14" y1="10" x2="21" y2="3"></line>
-      <line x1="3" y1="21" x2="10" y2="14"></line>
-    </svg>
-  </button>
+  </div>
 </div>
 
-<style>
-  .model-viewer-container {
-    position: relative;
-  }
-
-  /* Hide on mobile — native AR/VR views already provide fullscreen */
-  .fullscreen-btn {
-    position: absolute;
-    bottom: 12px;
-    right: 12px;
-    z-index: 10;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background: rgba(0, 0, 0, 0.65);
-    color: #fff;
-    border: 2px solid #000;
-    border-radius: 6px;
-    cursor: pointer;
-    backdrop-filter: blur(4px);
-    transition: background 0.15s ease, transform 0.15s ease;
-  }
-
-  .fullscreen-btn:hover {
-    background: rgba(0, 0, 0, 0.85);
-    transform: translateY(-1px);
-  }
-
-  .fullscreen-btn:active {
-    transform: translateY(1px);
-  }
-
-  /* Show fullscreen button only on non-touch / desktop devices */
-  @media (hover: hover) and (pointer: fine) {
-    .fullscreen-btn {
-      display: flex;
-    }
-  }
-
-  .fullscreen-btn .icon-compress {
-    display: none;
-  }
-
-  /* When the container is fullscreen, swap icons and adjust layout */
-  .model-viewer-container:fullscreen {
-    width: 100vw;
-    height: 100vh;
-    border: none;
-    box-shadow: none;
-    border-radius: 0;
-    background: #000;
-  }
-
-  .model-viewer-container:fullscreen .icon-expand {
-    display: none;
-  }
-
-  .model-viewer-container:fullscreen .icon-compress {
-    display: block;
-  }
-
-  /* Safari */
-  .model-viewer-container:-webkit-full-screen {
-    width: 100vw;
-    height: 100vh;
-    border: none;
-    box-shadow: none;
-    border-radius: 0;
-    background: #000;
-  }
-
-  .model-viewer-container:-webkit-full-screen .icon-expand {
-    display: none;
-  }
-
-  .model-viewer-container:-webkit-full-screen .icon-compress {
-    display: block;
-  }
-</style>
-
 <script>
-  function initFullscreenButtons() {
-    document.querySelectorAll('.model-viewer-container').forEach((container) => {
-      const btn = container.querySelector('.fullscreen-btn');
-      if (!btn || btn.hasAttribute('data-fs-init')) return;
-      btn.setAttribute('data-fs-init', '');
+  import * as THREE from 'three';
+  import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+  import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+  import { fromBase64Url, concatArrayBuffers, decryptAesGcmChunk } from '@/utils/client/secure-model-viewer';
 
-      btn.addEventListener('click', () => {
-        const fsElement = document.fullscreenElement || (document as any).webkitFullscreenElement;
-        if (!fsElement) {
-          if (container.requestFullscreen) {
-            container.requestFullscreen();
-          } else if ((container as any).webkitRequestFullscreen) {
-            (container as any).webkitRequestFullscreen();
-          }
-        } else {
-          if (document.exitFullscreen) {
-            document.exitFullscreen();
-          } else if ((document as any).webkitExitFullscreen) {
-            (document as any).webkitExitFullscreen();
-          }
-        }
-      });
-    });
-  }
+  const viewers = document.querySelectorAll('.secure-model-viewer');
+  viewers.forEach((root) => {
+    const canvas = root.querySelector('.secure-model-viewer-canvas');
+    const overlay = root.querySelector('[data-role="status"]');
+    const statusText = root.querySelector('[data-role="status-message"]');
+    const modelId = root.getAttribute('data-model-id');
+    const autoRotate = root.getAttribute('data-auto-rotate') === 'true';
+    if (!canvas || !overlay || !statusText || !modelId) return;
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initFullscreenButtons);
-  } else {
-    initFullscreenButtons();
-  }
+    let animationId;
+    let renderer;
+    let scene;
+
+    const setStatus = (message) => { statusText.textContent = message; };
+    const hideOverlay = () => { overlay.style.display = 'none'; };
+
+    async function init() {
+      try {
+        const sessionRes = await fetch('/api/secure-model-viewer/session', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ modelId }), cache: 'no-store'
+        });
+        if (!sessionRes.ok) throw new Error('Viewer session request failed');
+        const session = await sessionRes.json();
+
+        const key = await crypto.subtle.importKey('raw', fromBase64Url(session.key), { name: 'AES-GCM' }, false, ['decrypt']);
+        const decryptedChunks = await Promise.all(session.chunks.map(async (chunk) => {
+          const encrypted = await fetch(chunk.url, { cache: 'no-store' });
+          if (!encrypted.ok) throw new Error(`Chunk ${chunk.index} failed`);
+          return decryptAesGcmChunk(await encrypted.arrayBuffer(), key, fromBase64Url(chunk.iv));
+        }));
+
+        const modelBuffer = concatArrayBuffers(decryptedChunks);
+        decryptedChunks.fill(new ArrayBuffer(0));
+
+        scene = new THREE.Scene();
+        scene.background = new THREE.Color(0xf8f8f8);
+        const camera = new THREE.PerspectiveCamera(50, root.clientWidth / root.clientHeight, 0.1, 1000);
+        camera.position.set(0, 1.2, 2.3);
+
+        renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setSize(root.clientWidth, root.clientHeight);
+
+        const ambient = new THREE.AmbientLight(0xffffff, 0.9);
+        const directional = new THREE.DirectionalLight(0xffffff, 1.2);
+        directional.position.set(5, 10, 8);
+        scene.add(ambient, directional);
+
+        const controls = new OrbitControls(camera, canvas);
+        controls.enableDamping = true;
+        controls.autoRotate = autoRotate;
+        controls.autoRotateSpeed = 1;
+
+        const gltf = await new Promise((resolve, reject) => new GLTFLoader().parse(modelBuffer, '', resolve, reject));
+        const model = gltf.scene;
+        scene.add(model);
+
+        const box = new THREE.Box3().setFromObject(model);
+        const size = box.getSize(new THREE.Vector3()).length();
+        const center = box.getCenter(new THREE.Vector3());
+        controls.target.copy(center);
+        camera.near = size / 100;
+        camera.far = size * 100;
+        camera.position.copy(center).add(new THREE.Vector3(size / 2, size / 4, size / 2));
+        camera.updateProjectionMatrix();
+
+        const onResize = () => {
+          camera.aspect = root.clientWidth / root.clientHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(root.clientWidth, root.clientHeight);
+        };
+        window.addEventListener('resize', onResize);
+        canvas.addEventListener('contextmenu', (e) => e.preventDefault());
+
+        const tick = () => {
+          controls.update();
+          renderer.render(scene, camera);
+          animationId = requestAnimationFrame(tick);
+        };
+        hideOverlay();
+        tick();
+
+        const cleanup = () => {
+          cancelAnimationFrame(animationId);
+          window.removeEventListener('resize', onResize);
+          scene.traverse((obj) => {
+            if (obj.geometry) obj.geometry.dispose();
+            if (obj.material) {
+              const materials = Array.isArray(obj.material) ? obj.material : [obj.material];
+              materials.forEach((m) => {
+                Object.values(m).forEach((v) => v?.isTexture && v.dispose?.());
+                m.dispose();
+              });
+            }
+          });
+          renderer.dispose();
+        };
+        window.addEventListener('pagehide', cleanup, { once: true });
+      } catch (err) {
+        setStatus('3D view unavailable (session expired or decryption failed).');
+        console.error(err);
+      }
+    }
+
+    init();
+  });
 </script>

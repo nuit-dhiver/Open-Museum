@@ -35,8 +35,7 @@ const descriptionHtml = featured
         <!-- 3D Viewer -->
         <div class="aspect-square">
           <ModelViewer
-            src={getAssetUrl(featured.data.model.glb!)}
-            iosSrc={featured.data.model.usdz ? getAssetUrl(featured.data.model.usdz) : undefined}
+            modelId={featured.id}
             alt={featured.data.title[lang]}
             poster={featured.data.poster ? getAssetUrl(featured.data.poster) : undefined}
             class="h-full"

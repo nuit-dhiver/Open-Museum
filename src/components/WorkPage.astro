@@ -122,8 +122,7 @@ const breadcrumbSchema = {
             </h2>
             <div class="aspect-square">
               <ModelViewer
-                src={getAssetUrl(data.model.glb)}
-                iosSrc={data.model.usdz ? getAssetUrl(data.model.usdz) : undefined}
+                modelId={work.id}
                 alt={data.title[lang]}
                 poster={data.poster ? getAssetUrl(data.poster) : undefined}
                 class="h-full"

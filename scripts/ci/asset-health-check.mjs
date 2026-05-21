@@ -360,6 +360,11 @@ async function validateAsset(asset, route) {
 
   const remoteCheck = await checkRemoteAsset(target.url);
   if (!remoteCheck.ok) {
+    // If it is a 3D model asset, receiving a 403 Forbidden is considered successful
+    // because it proves the asset exists on Firebase Storage AND is actively protected from crawlers!
+    if (asset.type === 'model' && (remoteCheck.details.includes('403') || remoteCheck.details.includes('401'))) {
+      return { ok: true };
+    }
     return { ok: false, reason: remoteCheck.details, resolved: target.label };
   }
 

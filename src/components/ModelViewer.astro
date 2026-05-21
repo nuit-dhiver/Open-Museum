@@ -11,9 +11,10 @@ const { src, iosSrc, alt, poster, class: className = '' } = Astro.props;
 ---
 
 <div class={`brutal-card overflow-hidden model-viewer-container ${className}`}>
+  <!-- Use data-attributes instead of direct src/ios-src to prevent unauthenticated direct loads -->
   <model-viewer
-    src={src}
-    ios-src={iosSrc}
+    data-src={src}
+    data-ios-src={iosSrc}
     alt={alt}
     poster={poster}
     camera-controls
@@ -36,6 +37,16 @@ const { src, iosSrc, alt, poster, class: className = '' } = Astro.props;
       )}
     </div>
   </model-viewer>
+
+  <!-- Secure 3D loading indicator -->
+  <div
+    id="secure-loader-badge"
+    class="absolute top-4 left-4 z-20 brutal-card bg-brand-gold font-heading text-xs uppercase tracking-wider px-3 py-1.5 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex items-center gap-2 transition-all duration-300 pointer-events-none font-bold"
+    style="display: none;"
+  >
+    <span class="animate-spin w-3.5 h-3.5 border-2 border-black border-t-transparent rounded-full inline-block"></span>
+    <span id="secure-loader-text">Connecting…</span>
+  </div>
 
   <button class="fullscreen-btn" aria-label="Toggle fullscreen" title="Fullscreen">
     <!-- Expand icon -->
@@ -163,9 +174,77 @@ const { src, iosSrc, alt, poster, class: className = '' } = Astro.props;
     });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initFullscreenButtons);
-  } else {
-    initFullscreenButtons();
+  async function initSecureModelViewer() {
+    const containers = document.querySelectorAll('.model-viewer-container');
+    
+    for (const container of containers) {
+      const viewer = container.querySelector('model-viewer');
+      if (!viewer || viewer.hasAttribute('data-initialized')) continue;
+      viewer.setAttribute('data-initialized', 'true');
+
+      const src = viewer.getAttribute('data-src');
+      const iosSrc = viewer.getAttribute('data-ios-src');
+      
+      const badge = container.querySelector('#secure-loader-badge') as HTMLElement;
+      const loaderText = container.querySelector('#secure-loader-text') as HTMLElement;
+      
+      if (!src) continue;
+
+      try {
+        // Dynamically import the client-side Firebase logic to keep initial page load fast
+        const { isFirebaseConfigured, fetchSecureModel } = await import('@/utils/firebase-client');
+        
+        if (isFirebaseConfigured) {
+          if (badge) badge.style.display = 'flex';
+          if (loaderText) loaderText.textContent = 'Securing Session…';
+
+          // Securely load the GLB model file using credentials
+          const secureSrc = await fetchSecureModel(src);
+          viewer.setAttribute('src', secureSrc);
+          
+          // Save the resolved blob URL on the DOM element so other scripts (like download buttons) can access it
+          viewer.setAttribute('data-resolved-blob-url', secureSrc);
+
+          // Securely load the USDZ file if present
+          if (iosSrc) {
+            if (loaderText) loaderText.textContent = 'Securing AR View…';
+            const secureIosSrc = await fetchSecureModel(iosSrc);
+            viewer.setAttribute('ios-src', secureIosSrc);
+            viewer.setAttribute('data-resolved-ios-blob-url', secureIosSrc);
+          }
+
+          // Smoothly remove the loading badge
+          if (badge) {
+            badge.style.transform = 'scale(0.9)';
+            badge.style.opacity = '0';
+            setTimeout(() => badge.remove(), 300);
+          }
+        } else {
+          // Fallback to direct loading when Firebase config is missing (local dev)
+          viewer.setAttribute('src', src);
+          if (iosSrc) viewer.setAttribute('ios-src', iosSrc);
+        }
+      } catch (error) {
+        console.error('Secure 3D model rendering failed, falling back to direct URL:', error);
+        // Graceful fail-safe fallback
+        viewer.setAttribute('src', src);
+        if (iosSrc) viewer.setAttribute('ios-src', iosSrc);
+        if (badge) badge.remove();
+      }
+    }
   }
+
+  function setup() {
+    initFullscreenButtons();
+    initSecureModelViewer();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setup);
+  } else {
+    setup();
+  }
+
+  // Support Astro view transitions or dynamic route loads if needed
+  document.addEventListener('astro:page-load', setup);
 </script>

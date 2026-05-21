@@ -470,18 +470,58 @@ const breadcrumbSchema = {
       document.body.removeChild(link);
     }
 
+    async function getSecureDownloadHref(btnElement: HTMLElement, isIos = false): Promise<string | null> {
+      const rawHref = btnElement.dataset.href;
+      if (!rawHref) return null;
+
+      // Check if the <model-viewer> has already downloaded and resolved the secure Blob URL
+      const viewer = document.querySelector('model-viewer');
+      if (viewer) {
+        const attrName = isIos ? 'data-resolved-ios-blob-url' : 'data-resolved-blob-url';
+        const resolvedBlobUrl = viewer.getAttribute(attrName);
+        if (resolvedBlobUrl) {
+          return resolvedBlobUrl;
+        }
+      }
+
+      try {
+        const { isFirebaseConfigured, fetchSecureModel } = await import('@/utils/firebase-client');
+        if (isFirebaseConfigured) {
+          const originalText = btnElement.textContent;
+          btnElement.style.pointerEvents = 'none';
+          btnElement.textContent = 'Securing…';
+
+          const secureUrl = await fetchSecureModel(rawHref);
+
+          btnElement.style.pointerEvents = '';
+          if (originalText) btnElement.textContent = originalText;
+          return secureUrl;
+        }
+      } catch (error) {
+        console.error('Failed to resolve secure download URL:', error);
+      }
+
+      return rawHref;
+    }
+
     if (downloadGlb) {
-      downloadGlb.addEventListener('click', () => {
+      downloadGlb.addEventListener('click', async () => {
         if (downloadGlb.dataset.href && downloadGlb.dataset.filename) {
-          createDownloadLink(downloadGlb.dataset.href, downloadGlb.dataset.filename);
+          const downloadHref = await getSecureDownloadHref(downloadGlb, false);
+          if (downloadHref) {
+            createDownloadLink(downloadHref, downloadGlb.dataset.filename);
+          }
         }
       });
     }
 
     if (downloadUsdz) {
-      downloadUsdz.addEventListener('click', () => {
+      downloadUsdz.addEventListener('click', async () => {
         if (downloadUsdz.dataset.href && downloadUsdz.dataset.filename) {
-          createDownloadLink(downloadUsdz.dataset.href, downloadUsdz.dataset.filename);
+          const downloadHref = await getSecureDownloadHref(downloadUsdz, true);
+          if (downloadHref) {
+            createDownloadLink(downloadHref, downloadUsdz.dataset.filename);
+          }
         }
       });
     }

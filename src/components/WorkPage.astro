@@ -474,16 +474,6 @@ const breadcrumbSchema = {
       const rawHref = btnElement.dataset.href;
       if (!rawHref) return null;
 
-      // Check if the <model-viewer> has already downloaded and resolved the secure Blob URL
-      const viewer = document.querySelector('model-viewer');
-      if (viewer) {
-        const attrName = isIos ? 'data-resolved-ios-blob-url' : 'data-resolved-blob-url';
-        const resolvedBlobUrl = viewer.getAttribute(attrName);
-        if (resolvedBlobUrl) {
-          return resolvedBlobUrl;
-        }
-      }
-
       try {
         const { isFirebaseConfigured, fetchSecureModel } = await import('@/utils/firebase-client');
         if (isFirebaseConfigured) {
@@ -491,10 +481,23 @@ const breadcrumbSchema = {
           btnElement.style.pointerEvents = 'none';
           btnElement.textContent = 'Securing…';
 
+          // Fetch a fresh session-secured model URL just for this download request
           const secureUrl = await fetchSecureModel(rawHref);
 
           btnElement.style.pointerEvents = '';
           if (originalText) btnElement.textContent = originalText;
+
+          // Schedule instant revocation of this temporary download Blob URL after 1.5 seconds
+          // This gives the browser plenty of time to resolve the link and begin downloading,
+          // without leaving active Object URLs lying around in the tab memory!
+          setTimeout(() => {
+            try {
+              URL.revokeObjectURL(secureUrl);
+            } catch (e) {
+              console.warn('Temporary download URL revocation failed:', e);
+            }
+          }, 1500);
+
           return secureUrl;
         }
       } catch (error) {

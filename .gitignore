@@ -27,3 +27,4 @@ public/images/thumbnails/works/
 # Lockfiles
 # Using pnpm in this repo — ignore npm's lockfile
 package-lock.json
+asset-health-report.md

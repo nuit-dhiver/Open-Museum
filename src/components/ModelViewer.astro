@@ -200,10 +200,15 @@ const { src, iosSrc, alt, poster, class: className = '' } = Astro.props;
       const viewer = container.querySelector('model-viewer');
       if (!viewer) continue;
 
-      // If the page was restored from Astro's history cache, data-initialized is present
-      // but the active src was removed on load. Reset it to trigger a fresh secure load!
-      if (viewer.hasAttribute('data-initialized') && !viewer.hasAttribute('src')) {
-        viewer.removeAttribute('data-initialized');
+      // If the viewer has been initialized but the src is a revoked blob URL,
+      // reset it to allow a fresh authenticated fetch on re-entry (e.g., from bfcache).
+      if (viewer.hasAttribute('data-initialized')) {
+        const currentSrc = viewer.getAttribute('src');
+        if (currentSrc && currentSrc.startsWith('blob:')) {
+          viewer.removeAttribute('data-initialized');
+          viewer.removeAttribute('src');
+          viewer.removeAttribute('ios-src');
+        }
       }
 
       if (viewer.hasAttribute('data-initialized')) continue;
@@ -249,11 +254,7 @@ const { src, iosSrc, alt, poster, class: className = '' } = Astro.props;
                 console.warn('Object URL revocation failed or was already revoked:', e);
               }
             });
-
-            // Strip the active secure blob URL strings from the DOM to leave no copyable links
-            viewer.removeAttribute('src');
-            viewer.removeAttribute('ios-src');
-          });
+          }, { once: true });
 
           // Smoothly remove the loading badge
           if (badge) {
@@ -290,4 +291,28 @@ const { src, iosSrc, alt, poster, class: className = '' } = Astro.props;
 
   // Support Astro view transitions or dynamic route loads if needed
   document.addEventListener('astro:page-load', setup);
+
+  // Clean up DOM attributes before Astro swaps page contents (View Transitions support)
+  document.addEventListener('astro:before-swap', () => {
+    document.querySelectorAll('model-viewer').forEach((viewer) => {
+      viewer.removeAttribute('data-initialized');
+      viewer.removeAttribute('src');
+      viewer.removeAttribute('ios-src');
+    });
+  });
+
+  // Handle browser back/forward cache (bfcache) restores
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted) {
+      document.querySelectorAll('.model-viewer-container').forEach((container) => {
+        const viewer = container.querySelector('model-viewer');
+        if (viewer) {
+          viewer.removeAttribute('data-initialized');
+          viewer.removeAttribute('src');
+          viewer.removeAttribute('ios-src');
+        }
+      });
+      setup();
+    }
+  });
 </script>

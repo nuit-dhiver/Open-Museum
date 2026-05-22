@@ -198,7 +198,15 @@ const { src, iosSrc, alt, poster, class: className = '' } = Astro.props;
     
     for (const container of containers) {
       const viewer = container.querySelector('model-viewer');
-      if (!viewer || viewer.hasAttribute('data-initialized')) continue;
+      if (!viewer) continue;
+
+      // If the page was restored from Astro's history cache, data-initialized is present
+      // but the active src was removed on load. Reset it to trigger a fresh secure load!
+      if (viewer.hasAttribute('data-initialized') && !viewer.hasAttribute('src')) {
+        viewer.removeAttribute('data-initialized');
+      }
+
+      if (viewer.hasAttribute('data-initialized')) continue;
       viewer.setAttribute('data-initialized', 'true');
 
       const src = viewer.getAttribute('data-src');
@@ -242,11 +250,9 @@ const { src, iosSrc, alt, poster, class: className = '' } = Astro.props;
               }
             });
 
-            // Strip the secure blob URL string values entirely from the DOM to leave no copyable strings
+            // Strip the active secure blob URL strings from the DOM to leave no copyable links
             viewer.removeAttribute('src');
             viewer.removeAttribute('ios-src');
-            viewer.removeAttribute('data-src');
-            viewer.removeAttribute('data-ios-src');
           });
 
           // Smoothly remove the loading badge

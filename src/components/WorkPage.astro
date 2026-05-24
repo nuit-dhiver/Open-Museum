@@ -47,7 +47,11 @@ const categoryUrl = `${siteUrl}${getCategoryPath(lang, category)}`;
 const licenseUrl = lang === 'de'
   ? 'https://creativecommons.org/licenses/by-nc/4.0/deed.de'
   : 'https://creativecommons.org/licenses/by-nc/4.0/';
-const galleryPhotos = data.photos.map((photo: string) => ({
+type GalleryPhoto = {
+  fullUrl: string;
+  thumbUrl: string;
+};
+const galleryPhotos: GalleryPhoto[] = data.photos.map((photo: string) => ({
   fullUrl: getAssetUrl(photo),
   thumbUrl: getPublicUrl(getWorkPhotoThumbnailPath(photo)),
 }));

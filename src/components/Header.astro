@@ -1,6 +1,6 @@
 ---
 import LanguageSwitcher from './LanguageSwitcher.astro';
-import { useTranslations, getCategoryPath, getCityPath, cityNameToSlug, type Lang } from '@/i18n/ui';
+import { useTranslations, getAboutPath, getCategoryPath, getCityPath, cityNameToSlug, type Lang } from '@/i18n/ui';
 import { getCollection } from 'astro:content';
 
 interface Props {
@@ -28,26 +28,32 @@ const cityNames = [...new Set(allWorks.map((w) => w.data.city).filter(Boolean))]
       <div class="hidden md:flex items-center gap-1">
         <a
           href={getCategoryPath(lang, 'brunnen')}
-          class="px-4 py-2 font-heading text-sm font-semibold uppercase tracking-wider hover:bg-brand-gold hover:text-black transition-colors"
+          class="px-3 lg:px-4 py-2 font-heading text-sm font-semibold uppercase tracking-wider hover:bg-brand-gold hover:text-black transition-colors"
         >
           {t('nav.brunnen')}
         </a>
         <a
           href={getCategoryPath(lang, 'denkmal')}
-          class="px-4 py-2 font-heading text-sm font-semibold uppercase tracking-wider hover:bg-brand-gold hover:text-black transition-colors"
+          class="px-3 lg:px-4 py-2 font-heading text-sm font-semibold uppercase tracking-wider hover:bg-brand-gold hover:text-black transition-colors"
         >
           {t('nav.denkmale')}
         </a>
         <a
           href={getCategoryPath(lang, 'kunstwerk')}
-          class="px-4 py-2 font-heading text-sm font-semibold uppercase tracking-wider hover:bg-brand-gold hover:text-black transition-colors"
+          class="px-3 lg:px-4 py-2 font-heading text-sm font-semibold uppercase tracking-wider hover:bg-brand-gold hover:text-black transition-colors"
         >
           {t('nav.kunstwerke')}
+        </a>
+        <a
+          href={getAboutPath(lang)}
+          class="px-3 lg:px-4 py-2 font-heading text-sm font-semibold uppercase tracking-wider hover:bg-brand-gold hover:text-black transition-colors"
+        >
+          {t('nav.about')}
         </a>
 
         <!-- Cities dropdown -->
         <div class="relative group">
-          <button class="px-4 py-2 font-heading text-sm font-semibold uppercase tracking-wider hover:bg-brand-gold hover:text-black transition-colors flex items-center gap-1">
+          <button class="px-3 lg:px-4 py-2 font-heading text-sm font-semibold uppercase tracking-wider hover:bg-brand-gold hover:text-black transition-colors flex items-center gap-1">
             {t('nav.cities')}
             <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -102,6 +108,12 @@ const cityNames = [...new Set(allWorks.map((w) => w.data.city).filter(Boolean))]
           class="px-4 py-2 font-heading text-sm font-semibold uppercase tracking-wider hover:bg-brand-gold hover:text-black transition-colors"
         >
           {t('nav.kunstwerke')}
+        </a>
+        <a
+          href={getAboutPath(lang)}
+          class="px-4 py-2 font-heading text-sm font-semibold uppercase tracking-wider hover:bg-brand-gold hover:text-black transition-colors"
+        >
+          {t('nav.about')}
         </a>
         <div class="pl-4 border-l border-white/30">
           <p class="px-4 py-1 font-heading text-xs font-semibold uppercase tracking-wider text-white/50">

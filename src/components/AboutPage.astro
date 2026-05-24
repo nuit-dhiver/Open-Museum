@@ -1,0 +1,176 @@
+---
+import Base from '@/layouts/Base.astro';
+import { getAboutPath, useTranslations, type Lang } from '@/i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const base = import.meta.env.BASE_URL;
+const homePath = `${base}${lang}/`;
+
+const content = {
+  de: {
+    title: 'Über Open Museum',
+    description:
+      'Informationen über Open Museum, seine nicht-kommerzielle Aufgabe und Hinweise zum Schutz geistigen Eigentums bei 3D-Modellen.',
+    eyebrow: 'Projektinformation',
+    heading: 'Open Museum',
+    intro:
+      'Open Museum dokumentiert kulturelles Erbe, Denkmäler, Brunnen und Kunstwerke im öffentlichen Raum durch interaktive 3D-Präsentationen.',
+    sections: [
+      {
+        label: 'Zweck',
+        title: 'Bewahren, was uns umgibt',
+        body: [
+          'Open Museum entsteht aus der Überzeugung, dass die Dinge, an denen wir jeden Tag vorbeigehen, Aufmerksamkeit verdienen. Ein Brunnen auf einem Platz, eine Skulptur vor einem Theater oder ein Denkmal an einer Straßenecke können Teil unseres gemeinsamen Gedächtnisses sein.',
+          'Indem wir diese Werke in 3D erfahrbar machen, möchten wir Neugier wecken, Wertschätzung fördern und zeigen, wie viel Kultur bereits in unserer direkten Umgebung lebt.',
+        ],
+      },
+      {
+        label: 'Nicht kommerziell',
+        title: 'Kein Verkauf und keine Gewinnerzielung',
+        body: [
+          'Open Museum verkauft keine 3D-Modelle, keine Reproduktionen und keine Dienstleistungen zur Nachbildung der gezeigten Werke. Das Projekt wird nicht mit dem Ziel betrieben, Gewinn zu erzielen.',
+          'Etwaige Unterstützung, Spenden oder Sponsorings dienen ausschließlich dazu, Kosten für Hosting, technische Entwicklung, Wartung und 3D-Digitalisierung zu decken.',
+        ],
+      },
+      {
+        label: 'IP-Hinweis',
+        title: 'Rechte, Zugang und technische Schutzmaßnahmen',
+        body: [
+          'Die auf dieser Website gezeigten Werke, Abbildungen, 3D-Modelle, Namen und sonstigen Inhalte können urheberrechtlich, designrechtlich, markenrechtlich, persönlichkeitsrechtlich, eigentumsrechtlich, durch Urheberpersönlichkeitsrechte oder durch sonstige Rechte geistigen Eigentums geschützt sein.',
+          'Die 3D-Modelle sind, soweit nicht ausdrücklich anders angegeben, ausschließlich zur Online-Ansicht und zur kulturellen Dokumentation bestimmt. Ein Download oder eine Weiterverwendung wird nur bereitgestellt, wenn das zugrundeliegende Werk gemeinfrei ist oder eine ausdrückliche Erlaubnis des jeweiligen Rechteinhabers vorliegt.',
+          'Die verfügbaren Modelle sind keine hochpolygonalen Produktionsdaten. Sie besitzen leere oder hohle Innenräume und sind nicht für 3D-Druck, Fertigung, Restaurierung, Guss, technische Analyse, Nachbau oder sonstige reale Rekonstruktionen geeignet.',
+          'Zur Einschränkung und Abschreckung unbefugter Downloads werden technische Schutzmaßnahmen eingesetzt, darunter, soweit konfiguriert, authentifiziertes Laden von Modelldaten sowie temporäre browserlokale Objekt-URLs. Diese Maßnahmen gewähren keine Download-Erlaubnis und heben bestehende Rechte Dritter nicht auf.',
+          'Durch den Zugriff auf diese Website werden keine Rechte eingeräumt, die über die ausdrücklich angezeigte Nutzung hinausgehen. Jede Vervielfältigung, Extraktion, Umgehung technischer Schutzmaßnahmen, Bearbeitung, Weitergabe, kommerzielle Nutzung oder Herstellung abgeleiteter Werke ohne entsprechende Berechtigung erfolgt auf alleinige Verantwortung der jeweiligen Nutzerin oder des jeweiligen Nutzers.',
+        ],
+      },
+    ],
+    contactLabel: 'Urheberrechts-, Rechte- oder Takedown-Hinweise',
+    contactText:
+      'Wenn Sie Rechteinhaberin, Rechteinhaber oder bevollmächtigte Vertretung sind und eine Entfernung, Korrektur oder Rechteklärung wünschen, kontaktieren Sie bitte:',
+  },
+  en: {
+    title: 'About Open Museum',
+    description:
+      'Information about Open Museum, its non-commercial purpose, and intellectual property protections for 3D models.',
+    eyebrow: 'Project Information',
+    heading: 'Open Museum',
+    intro:
+      'Open Museum documents cultural heritage, monuments, fountains, and public artworks through interactive 3D presentation.',
+    sections: [
+      {
+        label: 'Purpose',
+        title: 'Preserving What Surrounds Us',
+        body: [
+          'Open Museum starts from a simple belief: the things we pass every day deserve to be noticed. A fountain in a square, a sculpture outside a theater, or a monument on a street corner can hold part of our shared memory.',
+          'By bringing these works into 3D, we want to spark curiosity, encourage appreciation, and help people see how much culture is already present in the ordinary places around them.',
+        ],
+      },
+      {
+        label: 'Non-Commercial',
+        title: 'No Sales and No Profit Operation',
+        body: [
+          'Open Museum does not sell 3D models, does not sell reproductions, and does not provide services for recreating the displayed works. The project is not operated for profit.',
+          'Any support, donations, or sponsorships are used only to cover costs such as hosting, technical development, maintenance, and 3D digitization.',
+        ],
+      },
+      {
+        label: 'IP Notice',
+        title: 'Rights, Access, and Technical Protective Measures',
+        body: [
+          'Works, images, 3D models, names, and other materials displayed on this website may be protected by copyright, design rights, trademark rights, moral rights, property rights, rights of personality, or other intellectual property rights.',
+          'Unless expressly stated otherwise, the 3D models are made available only for online viewing and cultural documentation. Download or reuse is provided only where the underlying work is public domain or where explicit permission has been granted by the relevant rights holder.',
+          'The available models are not high-poly production assets. They have empty or hollow interiors and are not suitable for 3D printing, manufacturing, restoration, casting, engineering analysis, physical reproduction, or any real-world recreation.',
+          'Technical protective measures are applied to restrict and discourage unauthorized downloading, including, where configured, authenticated model loading and temporary browser-local object URLs. These measures do not grant download permission and do not waive any third-party rights.',
+          'Access to this website grants no rights beyond the expressly displayed use. Any reproduction, extraction, circumvention of technical protective measures, modification, redistribution, commercial use, or creation of derivative works without proper authorization is solely the responsibility of the user.',
+        ],
+      },
+    ],
+    contactLabel: 'Copyright, Rights, or Takedown Notices',
+    contactText:
+      'If you are a rights holder or authorized representative and would like to request removal, correction, or rights clarification, please contact:',
+  },
+} as const;
+
+const page = content[lang];
+const siteUrl = Astro.site?.href.replace(/\/$/, '') ?? '';
+
+const aboutSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: page.title,
+  description: page.description,
+  url: `${siteUrl}${getAboutPath(lang)}`,
+  isPartOf: {
+    '@type': 'WebSite',
+    name: 'Open Museum',
+    url: siteUrl || 'https://openmuseum.io',
+  },
+};
+---
+
+<Base title={`${page.title} — Open Museum`} description={page.description}>
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(aboutSchema)} />
+
+  <div class="bg-off-white border-b-brutal border-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <nav class="flex items-center gap-2 text-sm font-heading uppercase tracking-wider">
+        <a href={homePath} class="hover:text-brand-gold transition-colors">{t('nav.home')}</a>
+        <span class="text-black/30">→</span>
+        <span class="text-black/50">{t('nav.about')}</span>
+      </nav>
+    </div>
+  </div>
+
+  <section class="bg-black text-white py-16 sm:py-24 border-b-brutal border-brand-gold">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="font-heading text-sm font-bold uppercase tracking-wider text-brand-gold mb-4">
+        {page.eyebrow}
+      </p>
+      <h1 class="font-heading text-4xl sm:text-6xl font-bold uppercase tracking-wider">
+        {page.heading}
+      </h1>
+      <p class="mt-6 max-w-3xl text-lg sm:text-xl text-white/70 leading-relaxed">
+        {page.intro}
+      </p>
+    </div>
+  </section>
+
+  <section class="py-12 sm:py-16 bg-off-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="space-y-6">
+        {page.sections.map((section) => (
+          <article class="brutal-card p-6 lg:p-7 flex flex-col">
+            <p class="font-heading text-xs font-bold uppercase tracking-wider text-brand-gold mb-3">
+              {section.label}
+            </p>
+            <h2 class="font-heading text-xl sm:text-2xl font-bold uppercase tracking-wider mb-5">
+              {section.title}
+            </h2>
+            <div class="space-y-4 text-sm sm:text-base text-black/75 leading-relaxed">
+              {section.body.map((paragraph) => (
+                <p>{paragraph}</p>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="mt-8 border-brutal border-black shadow-brutal p-6 sm:p-8 bg-black text-white">
+        <p class="font-heading text-sm font-bold uppercase tracking-wider text-brand-gold mb-3">
+          {page.contactLabel}
+        </p>
+        <p class="text-white/70 leading-relaxed">
+          {page.contactText}{' '}
+          <a href="mailto:alex@openmuseum.io" class="font-semibold text-brand-gold underline underline-offset-4 hover:text-white transition-colors">
+            alex@openmuseum.io
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>

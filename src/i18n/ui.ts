@@ -15,6 +15,7 @@ export const ui = {
     'nav.denkmale': 'Denkmäler',
     'nav.kunstwerke': 'Kunstwerke',
     'nav.cities': 'Städte',
+    'nav.about': 'Über',
 
     // Homepage
     'home.title': 'Open Museum',
@@ -90,6 +91,7 @@ export const ui = {
     'footer.address': 'Adresse',
     'footer.email': 'E-Mail',
     'footer.social': 'Soziale Medien',
+    'footer.about': 'Über Open Museum',
     'footer.rights': '© 2026 Open Museum. Alle Rechte vorbehalten.',
     'footer.project': 'Open Museum ist ein innovatives Projekt mit dem Ziel, weltweites Kulturerbe als detaillierte 3D-Modelle zu erfassen und zu präsentieren.',
     'footer.disclaimer': 'Die auf dieser Plattform gezeigten Werke können urheberrechtlich geschützt sein und werden ausschließlich zur Kulturerbe-Dokumentation und Bildungszwecken präsentiert. Die Ansicht ist erlaubt. Vervielfältigung, Bearbeitung, abgeleitete Werke oder kommerzielle Nutzung können Rechte der jeweiligen Inhaber verletzen. Open Museum übernimmt keine Haftung für eine missbräuchliche Nutzung durch Dritte.',
@@ -115,6 +117,7 @@ export const ui = {
     'nav.denkmale': 'Monuments',
     'nav.kunstwerke': 'Artworks',
     'nav.cities': 'Cities',
+    'nav.about': 'About',
 
     // Homepage
     'home.title': 'Open Museum',
@@ -190,6 +193,7 @@ export const ui = {
     'footer.address': 'Address',
     'footer.email': 'Email',
     'footer.social': 'Social Media',
+    'footer.about': 'About Open Museum',
     'footer.rights': '© 2026 Open Museum. All rights reserved.',
     'footer.project': 'Open Museum is an innovative project dedicated to capturing and displaying cultural heritage from around the world as detailed 3D models.',
     'footer.disclaimer': 'Works displayed on this platform may be subject to copyright and are presented solely for cultural heritage preservation and educational purposes. Viewing is permitted. Reproduction, modification, derivative works, or commercial use may violate the intellectual property rights of the respective owners. Open Museum assumes no liability for third-party misuse.',
@@ -265,6 +269,14 @@ export function getCategoryPath(lang: Lang, category: 'brunnen' | 'denkmal' | 'k
     kunstwerk: 'artworks',
   };
   return `${base}${lang}/${categorySlugs[category]}/`;
+}
+
+/**
+ * Get the localized path for the About page.
+ */
+export function getAboutPath(lang: Lang): string {
+  const base = import.meta.env.BASE_URL;
+  return `${base}${lang}/about/`;
 }
 
 /**

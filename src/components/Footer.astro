@@ -1,5 +1,5 @@
 ---
-import { useTranslations, type Lang } from '@/i18n/ui';
+import { getAboutPath, useTranslations, type Lang } from '@/i18n/ui';
 
 interface Props {
   lang: Lang;
@@ -20,6 +20,12 @@ const t = useTranslations(lang);
         <p class="text-white/70 text-sm leading-relaxed">
           {t('footer.project')}
         </p>
+        <a
+          href={getAboutPath(lang)}
+          class="inline-block mt-4 text-sm font-heading font-semibold uppercase tracking-wider text-brand-gold hover:text-white transition-colors"
+        >
+          {t('footer.about')}
+        </a>
       </div>
 
       <!-- Contact -->

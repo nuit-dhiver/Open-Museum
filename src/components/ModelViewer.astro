@@ -1,4 +1,6 @@
 ---
+import { useTranslations, type Lang } from '@/i18n/ui';
+
 interface Props {
   src: string;
   iosSrc?: string;
@@ -10,6 +12,7 @@ interface Props {
 }
 
 const { src, iosSrc, alt, poster, class: className = '', tour, lang = 'en' } = Astro.props;
+const t = useTranslations(lang as Lang);
 ---
 
 <div 
@@ -70,6 +73,15 @@ const { src, iosSrc, alt, poster, class: className = '', tour, lang = 'en' } = A
       <line x1="3" y1="21" x2="10" y2="14"></line>
     </svg>
   </button>
+
+  {tour && tour.length > 0 && (
+    <button class="tour-play-btn brutal-btn brutal-btn-gold absolute bottom-4 left-4 z-10" aria-label={t('tour.play')}>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+      </svg>
+      <span>{t('tour.play')}</span>
+    </button>
+  )}
 </div>
 
 <style>

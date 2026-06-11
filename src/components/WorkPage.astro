@@ -135,14 +135,6 @@ const breadcrumbSchema = {
                 tour={data.tour}
                 lang={lang}
               />
-              {data.tour && data.tour.length > 0 && (
-                <button class="tour-play-btn brutal-btn brutal-btn-gold absolute bottom-4 left-4 z-10" aria-label={t('tour.play')}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                  </svg>
-                  <span>{t('tour.play')}</span>
-                </button>
-              )}
             </div>
             <div class="mt-4">
               <button

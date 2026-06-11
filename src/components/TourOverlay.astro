@@ -1,0 +1,39 @@
+---
+import { useTranslations, type Lang } from '@/i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<div id="tour-overlay" class="tour-overlay-backdrop" aria-hidden="true">
+  <button id="tour-exit-btn" class="tour-exit-btn brutal-btn brutal-btn-black" aria-label={t('tour.exit')}>
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+    <span>{t('tour.exit')}</span>
+  </button>
+
+  <div id="tour-panel" class="tour-panel">
+    <div class="tour-panel-inner">
+      <p id="tour-text" class="tour-text"></p>
+      
+      <div class="tour-controls">
+        <div id="tour-progress-dots" class="tour-progress-dots">
+          <!-- Dots injected via JS -->
+        </div>
+        <div id="tour-step-indicator" class="tour-step-indicator font-heading text-sm font-bold uppercase tracking-wider">
+          <!-- e.g. 1 / 5 -->
+        </div>
+      </div>
+      
+      <div class="tour-progress-track">
+        <div id="tour-progress-bar" class="tour-progress-bar"></div>
+      </div>
+    </div>
+  </div>
+</div>

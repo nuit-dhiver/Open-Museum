@@ -31,5 +31,35 @@
   "modelCreator": "Alex Emami",
   "year": "2012",
   "downloadAllowed": false,
-  "ipStatus": "freedom-of-panorama"
+  "ipStatus": "freedom-of-panorama",
+  "tour": [
+    {
+      "cameraOrbit": "-45.0deg 75.0deg 6.000m",
+      "cameraTarget": "0.000m 1.500m 0.000m",
+      "fieldOfView": "45.0deg",
+      "text": {
+        "de": "Dies ist die Göttinger Erhebung von Andreas Welzenbach.",
+        "en": "This is the Göttingen Elevation by Andreas Welzenbach."
+      },
+      "durationMs": 4000
+    },
+    {
+      "cameraOrbit": "45.0deg 85.0deg 4.000m",
+      "cameraTarget": "0.500m 1.000m 0.000m",
+      "text": {
+        "de": "Zur linken Seite sehen Sie die leere Säule.",
+        "en": "To the left you can see the empty column."
+      },
+      "durationMs": 4000
+    },
+    {
+      "cameraOrbit": "-15.0deg 60.0deg 3.500m",
+      "cameraTarget": "-0.500m 1.800m 0.000m",
+      "text": {
+        "de": "Auf der rechten Seite steht der Revolutionär Rauschenplatt.",
+        "en": "On the right side stands the revolutionary Rauschenplatt."
+      },
+      "durationMs": 5000
+    }
+  ]
 }

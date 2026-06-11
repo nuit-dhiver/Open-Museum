@@ -1,6 +1,21 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
+const tourStep = z.object({
+  cameraOrbit: z.string(),
+  cameraTarget: z.string().optional(),
+  fieldOfView: z.string().optional(),
+  text: z.object({
+    de: z.string(),
+    en: z.string(),
+  }),
+  audio: z.object({
+    de: z.string(),
+    en: z.string(),
+  }).optional(),
+  durationMs: z.number().optional(),
+});
+
 const works = defineCollection({
   loader: glob({ pattern: '**/*.json', base: './src/content/works' }),
   schema: z.object({
@@ -36,6 +51,7 @@ const works = defineCollection({
     }).optional(),
     downloadAllowed: z.boolean().default(false),
     ipStatus: z.enum(['public-domain', 'freedom-of-panorama', 'authorized-use']).default('freedom-of-panorama'),
+    tour: z.array(tourStep).optional(),
   }),
 });
 

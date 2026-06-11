@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open Museum — Tour Editor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="editor.css">
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+</head>
+<body>
+  <header class="editor-header">
+    <h1>OPEN MUSEUM — TOUR EDITOR</h1>
+    <div class="header-actions">
+      <button id="btn-import-json" class="btn btn-outline">📂 Import JSON</button>
+      <button id="btn-copy-json" class="btn btn-gold">📋 Copy JSON</button>
+    </div>
+  </header>
+
+  <main class="editor-layout">
+    <!-- Left Column: 3D Viewer & Capture -->
+    <section class="viewer-section">
+      <div class="model-loader-panel">
+        <input type="text" id="model-url-input" placeholder="Enter GLB URL (e.g. /models/file.glb)" class="input-field">
+        <button id="btn-load-url" class="btn btn-outline">Load URL</button>
+        <span class="or-text">OR</span>
+        <div id="drop-zone" class="drop-zone">
+          <p>Drag & Drop local .glb file here</p>
+        </div>
+      </div>
+
+      <div class="viewer-container brutal-card">
+        <model-viewer 
+          id="editor-viewer"
+          camera-controls 
+          auto-rotate
+          shadow-intensity="1"
+          style="width: 100%; height: 100%; background: #222;"
+        >
+          <div id="viewer-placeholder" class="viewer-placeholder">
+            <p>No model loaded</p>
+          </div>
+        </model-viewer>
+        
+        <!-- Preview Overlay -->
+        <div id="preview-overlay" class="preview-overlay hidden">
+          <div class="preview-panel">
+            <p id="preview-text" class="preview-text"></p>
+            <div class="preview-progress">
+              <div id="preview-progress-bar" class="preview-progress-bar"></div>
+            </div>
+            <button id="btn-stop-preview" class="btn btn-red btn-sm">Stop Preview</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="capture-actions">
+        <button id="btn-capture" class="btn btn-gold btn-large w-full" disabled>
+          📸 Capture Current Viewpoint
+        </button>
+      </div>
+    </section>
+
+    <!-- Right Column: Step List & Editor -->
+    <section class="sidebar-section">
+      <div class="sidebar-header">
+        <h2>TOUR STEPS</h2>
+        <button id="btn-preview-tour" class="btn btn-outline btn-sm" disabled>▶ Preview</button>
+      </div>
+
+      <div id="steps-list" class="steps-list">
+        <!-- Step cards injected here by JS -->
+        <div class="empty-state">No steps captured yet.<br>Load a model and capture a viewpoint.</div>
+      </div>
+
+      <div id="step-editor" class="step-editor brutal-card hidden">
+        <h3>Edit Step <span id="edit-step-index"></span></h3>
+        
+        <div class="form-group">
+          <label>Camera Orbit</label>
+          <input type="text" id="edit-orbit" class="input-field font-mono text-sm" readonly>
+        </div>
+        
+        <div class="form-group-row">
+          <div class="form-group">
+            <label>Camera Target (Optional)</label>
+            <input type="text" id="edit-target" class="input-field font-mono text-sm">
+          </div>
+          <div class="form-group">
+            <label>FOV (Optional)</label>
+            <input type="text" id="edit-fov" class="input-field font-mono text-sm">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Text (DE)</label>
+          <textarea id="edit-text-de" class="input-field" rows="2"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Text (EN)</label>
+          <textarea id="edit-text-en" class="input-field" rows="2"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Audio URL (DE) - Optional</label>
+          <input type="text" id="edit-audio-de" class="input-field" placeholder="/audio/...">
+        </div>
+
+        <div class="form-group">
+          <label>Audio URL (EN) - Optional</label>
+          <input type="text" id="edit-audio-en" class="input-field" placeholder="/audio/...">
+        </div>
+
+        <div class="form-group">
+          <label>Duration (ms) - Fallback if no audio</label>
+          <input type="number" id="edit-duration" class="input-field" value="5000">
+        </div>
+
+        <div class="editor-actions">
+          <button id="btn-save-step" class="btn btn-gold w-full">Update Step</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Import Modal -->
+  <dialog id="import-modal" class="modal brutal-card">
+    <h2>Import Tour JSON</h2>
+    <p class="text-sm mb-4">Paste an existing tour JSON array below to continue editing.</p>
+    <textarea id="import-json-text" class="input-field font-mono text-sm" rows="10"></textarea>
+    <div class="modal-actions">
+      <button id="btn-cancel-import" class="btn btn-outline">Cancel</button>
+      <button id="btn-confirm-import" class="btn btn-gold">Import</button>
+    </div>
+  </dialog>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="editor.js"></script>
+</body>
+</html>

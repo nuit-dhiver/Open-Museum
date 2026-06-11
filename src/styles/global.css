@@ -433,3 +433,181 @@ model-viewer {
   color: rgba(0, 0, 0, 0.6);
   font-style: italic;
 }
+
+/* ==========================================================================
+   Tour Overlay Styles (Player)
+   ========================================================================== */
+
+/* Active tour state promotes the model-viewer to fullscreen */
+.model-viewer-container.tour-active {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 101;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+/* Hide other controls when in tour mode */
+.model-viewer-container.tour-active .fullscreen-btn,
+.model-viewer-container.tour-active .tour-play-btn {
+  display: none !important;
+}
+
+/* Backdrop behind the promoted model-viewer */
+.tour-overlay-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.tour-overlay-backdrop.tour-overlay--active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Exit button */
+.tour-exit-btn {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 103;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.5s ease;
+  pointer-events: none;
+}
+
+.tour-overlay--active .tour-exit-btn {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Bottom text panel */
+.tour-panel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 102;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.tour-panel-inner {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(12px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-bottom: none;
+  border-radius: 16px 16px 0 0;
+  padding: 2rem;
+  width: 100%;
+  max-width: 800px;
+  color: white;
+  transform: translateY(100%);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: auto;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.tour-overlay--active .tour-panel-inner {
+  transform: translateY(0);
+}
+
+/* Text animation */
+.tour-text {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  min-height: 4.8rem; /* Reserves space for 3 lines */
+  margin-bottom: 2rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.6s ease;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.tour-text.tour-text--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Progress controls */
+.tour-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.tour-progress-dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tour-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: background 0.3s ease;
+}
+
+.tour-dot--done {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.tour-dot--active {
+  background: var(--color-brand-gold);
+  box-shadow: 0 0 8px var(--color-brand-gold);
+}
+
+.tour-step-indicator {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Continuous progress bar */
+.tour-progress-track {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.tour-progress-bar {
+  height: 100%;
+  background: var(--color-brand-gold);
+  width: 0%;
+  border-radius: 2px;
+  /* Transition is handled via JS for exact timing */
+}
+
+@media (max-width: 640px) {
+  .tour-panel {
+    padding: 0;
+  }
+  .tour-panel-inner {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    padding: 1.5rem;
+  }
+  .tour-text {
+    font-size: 1.1rem;
+    min-height: 6.6rem; /* 4 lines */
+  }
+}

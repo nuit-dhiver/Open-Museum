@@ -5,12 +5,18 @@ interface Props {
   alt: string;
   poster?: string;
   class?: string;
+  tour?: any[];
+  lang?: string;
 }
 
-const { src, iosSrc, alt, poster, class: className = '' } = Astro.props;
+const { src, iosSrc, alt, poster, class: className = '', tour, lang = 'en' } = Astro.props;
 ---
 
-<div class={`brutal-card overflow-hidden model-viewer-container ${className}`}>
+<div 
+  class={`brutal-card overflow-hidden model-viewer-container ${className}`}
+  data-tour={tour ? JSON.stringify(tour) : undefined}
+  data-tour-lang={lang}
+>
   <!-- Use data-attributes instead of direct src/ios-src to prevent unauthenticated direct loads -->
   <model-viewer
     data-src={src}
@@ -277,10 +283,13 @@ const { src, iosSrc, alt, poster, class: className = '' } = Astro.props;
     }
   }
 
+  import { initTourController } from '@/utils/tour-controller';
+
   function setup() {
     initFullscreenButtons();
     initUIBlockers();
     initSecureModelViewer();
+    initTourController();
   }
 
   if (document.readyState === 'loading') {

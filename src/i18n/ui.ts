@@ -105,6 +105,13 @@ export const ui = {
     // City page
     'city.description': (city: string, count: number) => `Entdecken Sie ${count} Denkmäler, Brunnen und Kunstwerke in ${city} — interaktiv in 3D auf Open Museum.`,
 
+    // Tour
+    'tour.play': 'Tour starten',
+    'tour.exit': 'Tour beenden',
+    'tour.step': 'Schritt',
+    'tour.of': 'von',
+    'tour.loading': 'Tour wird geladen…',
+
     // Misc
     'loading': 'Wird geladen…',
     'noworks': 'Noch keine Werke in dieser Kategorie.',
@@ -206,6 +213,13 @@ export const ui = {
 
     // City page
     'city.description': (city: string, count: number) => `Explore ${count} monuments, fountains, and artworks in ${city} — interactive in 3D on Open Museum.`,
+
+    // Tour
+    'tour.play': 'Play Tour',
+    'tour.exit': 'Exit Tour',
+    'tour.step': 'Step',
+    'tour.of': 'of',
+    'tour.loading': 'Loading tour…',
 
     // Misc
     'loading': 'Loading…',

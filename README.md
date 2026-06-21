@@ -1,36 +1,89 @@
 # Open Museum
 
-Open Museum is a project dedicated to capturing and maintaining 3D models of monuments and public art using 3D reconstruction.
+Open Museum is a bilingual (English/German) static website for exploring 3D reconstructions of monuments, fountains, and public art. The project documents cultural heritage through interactive 3D presentation at [openmuseum.io](https://openmuseum.io).
 
 ## Project Goals
-The primary aim of this project is to document and preserve 3D models of world's cultural and artistic heritage. By leveraging modern photogrammetry techniques, we hope to make high-quality 3D models of monuments and public art widely accessible.
 
-## Explore & Download the Models
-All 3D models are available on the website. You can browse and interact with them directly:
+The primary aim is to document and preserve 3D models of cultural and artistic heritage in public spaces. By leveraging modern photogrammetry and 3D reconstruction, we make these works accessible for online viewing and cultural documentation.
 
-- **Browse & download models**: Visit [openmuseum.io](https://openmuseum.io)
-- Models are available in .GLB and .USDZ for different Web, Apple Ecosystem and Android
+## Explore the Models
+
+All works are available on the website for interactive viewing in the browser:
+
+- **Browse models**: Visit [openmuseum.io](https://openmuseum.io)
+- Models are served as `.glb` (web) and `.usdz` (Apple AR) where available
+- Most works are **view-only** on the website; downloads are offered only for selected works where rights allow (see [License](#license))
+
+Each work page shows its IP status (public domain, freedom of panorama, or authorized use) and whether downloads are available.
+
+## Tech Stack
+
+| Layer | Choice |
+|---|---|
+| Framework | [Astro](https://astro.build/) v6 (static output) |
+| Styling | Tailwind CSS v4 |
+| 3D viewer | [`<model-viewer>`](https://modelviewer.dev/) v4 |
+| Content | JSON content collection (`src/content/works/`) |
+| i18n | Astro built-in routing — English at `/`, German under `/de/` |
+| Deployment | GitHub Pages via GitHub Actions |
+
+## Local Development
+
+```bash
+pnpm install
+pnpm dev
+```
+
+Create a `.env` file in the project root for optional configuration (see [Asset Storage](#asset-storage)).
 
 ## Asset Storage
+
 Large files (3D models and images) are hosted on external storage to keep the repository lightweight.
 
 The storage URL is configured via the `PUBLIC_ASSETS_BASE_URL` environment variable:
 
 ```bash
-# Copy the example env file
-cp .env.example .env
-
-# Set the storage URL (current: Firebase Storage)
+# .env
 PUBLIC_ASSETS_BASE_URL=https://open-museum-885a1.firebasestorage.app
 ```
 
-### Local Development
-- **With remote assets**: Set `PUBLIC_ASSETS_BASE_URL` in `.env` and assets load from Firebase
+Asset paths in content JSON are resolved at build/runtime via [`src/utils/assets.ts`](src/utils/assets.ts).
+
+### Modes
+
+- **With remote assets**: Set `PUBLIC_ASSETS_BASE_URL` in `.env` and assets load from Firebase (or another compatible host)
 - **With local assets**: Leave `PUBLIC_ASSETS_BASE_URL` empty and place asset files in `public/models/` and `public/images/works/` (these directories are gitignored)
-- **Switching providers**: Just change the URL — file paths are resolved at build time via [`src/utils/assets.ts`](src/utils/assets.ts)
+- **Switching providers**: Change the base URL — path resolution is handled centrally in `getAssetUrl()`
+
+### Firebase (authenticated model loading)
+
+When Firebase is configured, model files can be loaded through authenticated requests. Set these in `.env` (or as GitHub Actions variables for deployment):
+
+- `PUBLIC_FIREBASE_API_KEY`
+- `PUBLIC_FIREBASE_AUTH_DOMAIN`
+- `PUBLIC_FIREBASE_PROJECT_ID`
+- `PUBLIC_FIREBASE_STORAGE_BUCKET`
+- `PUBLIC_FIREBASE_APP_ID`
+
+## Content
+
+Each work is defined in `src/content/works/{slug}.json`. Key fields include:
+
+- `title`, `description` — bilingual (`de` / `en`)
+- `category` — `brunnen`, `denkmal`, or `kunstwerk`
+- `model.glb`, `model.usdz` — asset paths
+- `photos`, `poster` — gallery and preview images
+- `location` — coordinates, address, optional Google My Maps embed URL
+- `city`, `country`, `artist`, `modelCreator`, `year`, `material` — metadata
+- `ipStatus` — `public-domain`, `freedom-of-panorama`, or `authorized-use`
+- `downloadAllowed` — whether GLB/USDZ download is offered on the work page
+- `tour` — optional guided camera tour steps
+
+See [`src/content.config.ts`](src/content.config.ts) for the full schema.
 
 ## Gallery Thumbnails (Build-Time Optimization)
-Work-page gallery images now use generated `.webp` thumbnails for initial render and only load the full-size photo when the user opens the lightbox.
+
+Work-page gallery images use generated `.webp` thumbnails for initial render and load the full-size photo only when the user opens the lightbox.
 
 - Generator script: `pnpm thumbs:generate`
 - Script source: `scripts/generate-work-photo-thumbnails.mjs`
@@ -49,15 +102,16 @@ Optional tuning via environment variables:
 - `WORK_THUMBNAIL_CONCURRENCY` (default: `4`)
 
 ## CI Asset Health Check
+
 The deployment workflow includes an automated changed-page asset validation step:
 
 - Command: `pnpm test:assets:changed`
 - Script: `scripts/ci/asset-health-check.mjs`
 - Scope: validates only pages affected by changed content/routes in the current deployment diff
 - Checks:
-	- poster assets (e.g. `<model-viewer poster>` and `og:image`)
-	- photo assets (`<img src>`)
-	- 3D model sources (`<model-viewer src>` and `ios-src`)
+  - poster assets (e.g. `<model-viewer poster>` and `og:image`)
+  - photo assets (`<img src>`)
+  - 3D model sources (`<model-viewer src>` and `ios-src`)
 
 If validation fails, the workflow:
 
@@ -67,25 +121,32 @@ If validation fails, the workflow:
 - writes the same report to the workflow step summary for quick triage.
 
 ## How to Contribute
-Feel free to contribute to this project in any way you can. Whether it's capturing new models, improving existing ones, or sharing feedback, your help is greatly appreciated!
 
-If you have any questions or suggestions, don’t hesitate to contact me.
+Feel free to contribute in any way you can — capturing new models, improving existing ones, or sharing feedback.
+
+If you have questions or suggestions, don't hesitate to get in touch.
 
 ## Support Us
-Your support means a lot! Here’s how you can help:
-- Make a donation.
-- Star this repository ⭐
-- Make a donation.
+
+Your support means a lot:
+
+- Make a donation
+- Star this repository
 - Share the project with others
-- Make a donation.
 
 ## License
 
 ### Code (website / software)
-All source code (Astro/TypeScript/CSS/JavaScript) in this repository is licensed under the MIT License. See `LICENSE`.
+
+All source code (Astro/TypeScript/CSS/JavaScript) in this repository is licensed under the MIT License. See [`LICENSE`](LICENSE).
 
 ### 3D models and media
-All 3D models, scans, textures, and other non-code assets in this project are licensed under **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)**.
 
+**Not all assets share the same license.** Rights vary by work:
+
+- **View-only works** — Most 3D models, scans, textures, and photos on the website are shown for online viewing and cultural documentation only. They remain subject to the copyright of their artists, creators, or rights holders. Downloading, reproducing, or creating derivative works is not permitted unless explicitly stated on the individual work page.
+- **Downloadable works** — A subset of works is offered for download where the underlying subject is public domain or explicit permission has been granted. Those downloads are released under [Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/) for non-commercial use, as indicated on each work page.
+
+Check the IP status badge and download controls on each work page at [openmuseum.io](https://openmuseum.io) before reusing any asset. For rights questions or takedown requests, see the [About page](https://openmuseum.io/en/about) or contact alex@openmuseum.io.
 
 Thank you for your interest in Open Museum!

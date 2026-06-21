@@ -1,5 +1,7 @@
 ## Plan: Göttingen Denkmale Website
 
+> **Note:** This document is the original implementation plan from early development. The live project is now **Open Museum** ([openmuseum.io](https://openmuseum.io)). For current setup, licensing, and contribution info, see [`README.md`](../../README.md). Key changes since this plan was written: English is the default locale (`/` with German at `/de/`), assets are hosted on Firebase Storage, most 3D models are view-only (not all assets are CC BY-NC 4.0), and works support per-item `ipStatus` / `downloadAllowed` fields, guided tours, and city index pages.
+
 **TL;DR** — Build a bilingual (DE/EN) static website with **Astro** + **Tailwind CSS**, using JSON content collections for monument data, `<model-viewer>` for 3D, and Google My Maps iframes for location embeds. Neo-brutalist design with white/black/gold/red/blue palette. No backend server — fully static, deployable to GitHub Pages or Netlify.
 
 ### Tech Stack Rationale

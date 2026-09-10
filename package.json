@@ -21,7 +21,7 @@
     "@astrojs/sitemap": "^3.3.0",
     "@google-cloud/firestore": "^8.7.0",
     "@google/model-viewer": "^4.0.0",
-    "astro": "^7.1.0",
+    "astro": "^7.2.8",
     "firebase": "^12.13.0",
     "marked": "^17.0.2"
   },

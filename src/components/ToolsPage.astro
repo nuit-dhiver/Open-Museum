@@ -1,0 +1,133 @@
+---
+import Base from '@/layouts/Base.astro';
+import { getToolsPath, useTranslations, type Lang } from '@/i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const base = import.meta.env.BASE_URL;
+const homePath = `${base}${lang}/`;
+
+const content = {
+  de: {
+    title: 'Werkzeuge',
+    description:
+      'Open-Source-Werkzeuge aus dem Open-Museum-Projekt für die Digitalisierung und 3D-Rekonstruktion von Kulturerbe.',
+    eyebrow: 'Projektwerkzeuge',
+    heading: 'Werkzeuge',
+    intro:
+      'Hinter Open Museum stehen eigene Open-Source-Werkzeuge, mit denen wir Werke im öffentlichen Raum erfassen und in 3D rekonstruieren. Sie stehen allen frei zur Verfügung.',
+    repoCta: 'Auf GitHub ansehen',
+  },
+  en: {
+    title: 'Tools',
+    description:
+      'Open-source tools from the Open Museum project for digitizing cultural heritage and reconstructing it in 3D.',
+    eyebrow: 'Project Tools',
+    heading: 'Tools',
+    intro:
+      'Open Museum is built on its own open-source tools for capturing public works and reconstructing them in 3D. They are free for anyone to use.',
+    repoCta: 'View on GitHub',
+  },
+} as const;
+
+const tools = [
+  {
+    name: 'Reality Pulse',
+    platform: 'macOS',
+    repo: 'https://github.com/nuit-dhiver/reality-pulse',
+    description: {
+      de: 'Eine macOS-App, die die 3D-Rekonstruktion aus Fotos automatisiert. Sie verarbeitet mehrere Fotosets mit unterschiedlichen Qualitätseinstellungen zeitgesteuert zu Meshes und Splats.',
+      en: 'A macOS app that automates 3D model reconstruction from photos. Process multiple photo sets with various quality settings into meshes and splats on a schedule.',
+    },
+  },
+];
+
+const page = content[lang];
+const siteUrl = Astro.site?.href.replace(/\/$/, '') ?? '';
+
+const toolsSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: `${page.title} — Open Museum`,
+  description: page.description,
+  url: `${siteUrl}${getToolsPath(lang)}`,
+  isPartOf: {
+    '@type': 'WebSite',
+    name: 'Open Museum',
+    url: siteUrl || 'https://openmuseum.io',
+  },
+  hasPart: tools.map((tool) => ({
+    '@type': 'SoftwareApplication',
+    name: tool.name,
+    description: tool.description[lang],
+    operatingSystem: tool.platform,
+    applicationCategory: 'MultimediaApplication',
+    url: tool.repo,
+  })),
+};
+---
+
+<Base title={`${page.title} — Open Museum`} description={page.description}>
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(toolsSchema)} />
+
+  <div class="bg-off-white border-b-brutal border-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <nav class="flex items-center gap-2 text-sm font-heading uppercase tracking-wider">
+        <a href={homePath} class="hover:text-brand-gold transition-colors">{t('nav.home')}</a>
+        <span class="text-black/30">→</span>
+        <span class="text-black/50">{t('nav.tools')}</span>
+      </nav>
+    </div>
+  </div>
+
+  <section class="bg-black text-white py-16 sm:py-24 border-b-brutal border-brand-gold">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="font-heading text-sm font-bold uppercase tracking-wider text-brand-gold mb-4">
+        {page.eyebrow}
+      </p>
+      <h1 class="font-heading text-4xl sm:text-6xl font-bold uppercase tracking-wider">
+        {page.heading}
+      </h1>
+      <p class="mt-6 max-w-3xl text-lg sm:text-xl text-white/70 leading-relaxed">
+        {page.intro}
+      </p>
+    </div>
+  </section>
+
+  <section class="py-12 sm:py-16 bg-off-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {tools.map((tool) => (
+          <article class="brutal-card p-6 lg:p-7 flex flex-col">
+            <p class="font-heading text-xs font-bold uppercase tracking-wider text-brand-gold mb-3">
+              {tool.platform}
+            </p>
+            <h2 class="font-heading text-xl sm:text-2xl font-bold uppercase tracking-wider mb-5">
+              {tool.name}
+            </h2>
+            <p class="flex-1 text-sm sm:text-base text-black/75 leading-relaxed">
+              {tool.description[lang]}
+            </p>
+            <div class="mt-6">
+              <a
+                href={tool.repo}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 brutal-btn brutal-btn-gold text-sm px-4 py-2"
+              >
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+                {page.repoCta}
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

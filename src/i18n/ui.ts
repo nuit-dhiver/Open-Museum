@@ -16,6 +16,7 @@ export const ui = {
     'nav.kunstwerke': 'Kunstwerke',
     'nav.cities': 'Städte',
     'nav.about': 'Über',
+    'nav.tools': 'Werkzeuge',
 
     // Homepage
     'home.title': 'Open Museum',
@@ -125,6 +126,7 @@ export const ui = {
     'nav.kunstwerke': 'Artworks',
     'nav.cities': 'Cities',
     'nav.about': 'About',
+    'nav.tools': 'Tools',
 
     // Homepage
     'home.title': 'Open Museum',
@@ -291,6 +293,14 @@ export function getCategoryPath(lang: Lang, category: 'brunnen' | 'denkmal' | 'k
 export function getAboutPath(lang: Lang): string {
   const base = import.meta.env.BASE_URL;
   return `${base}${lang}/about/`;
+}
+
+/**
+ * Get the localized path for the Tools page.
+ */
+export function getToolsPath(lang: Lang): string {
+  const base = import.meta.env.BASE_URL;
+  return `${base}${lang}/tools/`;
 }
 
 /**

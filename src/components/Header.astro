@@ -41,7 +41,7 @@ const cityNames = [
       </a>
 
       <!-- Desktop nav links -->
-      <div class="hidden md:flex items-center gap-1">
+      <div class="hidden lg:flex items-center gap-1">
         <a
           href={getCategoryPath(lang, 'brunnen')}
           class="px-3 lg:px-4 py-2 font-heading text-sm font-semibold uppercase tracking-wider hover:bg-brand-gold hover:text-black transition-colors"
@@ -103,7 +103,7 @@ const cityNames = [
       <!-- Mobile menu button -->
       <button
         id="mobile-menu-btn"
-        class="md:hidden p-2 hover:bg-brand-gold hover:text-black transition-colors"
+        class="lg:hidden p-2 hover:bg-brand-gold hover:text-black transition-colors"
         aria-label="Menu"
       >
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -113,7 +113,7 @@ const cityNames = [
     </div>
 
     <!-- Mobile menu -->
-    <div id="mobile-menu" class="hidden md:hidden pb-4 border-t border-white/20 mt-2 pt-4">
+    <div id="mobile-menu" class="hidden lg:hidden pb-4 border-t border-white/20 mt-2 pt-4">
       <div class="flex flex-col gap-2">
         <a
           href={getCategoryPath(lang, 'brunnen')}

@@ -51,7 +51,7 @@ Asset paths are **bucket-relative with a leading slash** (`/models/slug.glb`),
 resolved at build time by `getAssetUrl()` in `src/utils/assets.ts`.
 
 Slugs are lowercase-dashed and must avoid the reserved set that collides with
-static routes: `about`, `artworks`, `cities`, `fountains`, `monuments`.
+static routes: `about`, `artworks`, `cities`, `fountains`, `monuments`, `tools`.
 
 ### Three places define the shape — keep them in sync
 

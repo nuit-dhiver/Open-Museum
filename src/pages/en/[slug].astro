@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 import { hasLocale } from '@/utils/locales';
 
 export async function getStaticPaths() {
-  const reservedEnSlugs = new Set(['about', 'artworks', 'cities', 'fountains', 'monuments']);
+  const reservedEnSlugs = new Set(['about', 'artworks', 'cities', 'fountains', 'monuments', 'tools']);
   const works = await getCollection('works');
   return works
     .filter((work) => !reservedEnSlugs.has(work.id))

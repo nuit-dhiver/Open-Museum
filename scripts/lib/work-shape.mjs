@@ -18,7 +18,7 @@ export const IP_STATUSES = ['public-domain', 'freedom-of-panorama', 'authorized-
  * Slugs that collide with static routes and would be silently dropped by
  * `src/pages/{de,en}/[slug].astro`.
  */
-export const RESERVED_SLUGS = ['about', 'artworks', 'cities', 'fountains', 'monuments'];
+export const RESERVED_SLUGS = ['about', 'artworks', 'cities', 'fountains', 'monuments', 'tools'];
 
 export const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 

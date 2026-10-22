@@ -156,5 +156,10 @@ Do not "fix" these by accident, and do not be alarmed when they appear:
   `work-schema.ts`. `astro:content` exports `z` as a value, not a namespace.
   The build is unaffected. Avoid adding new `z.infer` uses.
 - `/404.html` links to `/de/404/`, which does not exist.
-- The Dependabot run for `nanoid` fails inside Dependabot's own updater,
-  probably tangling with the `pnpm.overrides` block in `package.json`.
+- Dependabot's PRs fail CI at `pnpm install` with
+  `ERR_PNPM_LOCKFILE_CONFIG_MISMATCH`: its updater rewrites `pnpm-lock.yaml`
+  without the `overrides:` block (and re-resolves pinned packages, e.g. `yaml`),
+  so the frozen install sees a lockfile that disagrees with `package.json`.
+  Don't merge them. Fix the advisory by bumping `pnpm.overrides` and relocking
+  with **pnpm 9** (CI's version) in a directory without `node_modules` —
+  `pnpm update <pkg>` cannot bump a transitive dependency.

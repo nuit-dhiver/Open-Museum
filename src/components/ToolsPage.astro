@@ -21,6 +21,7 @@ const content = {
     intro:
       'Hinter Open Museum stehen eigene Open-Source-Werkzeuge, mit denen wir Werke im öffentlichen Raum erfassen und in 3D rekonstruieren. Sie stehen allen frei zur Verfügung.',
     repoCta: 'Auf GitHub ansehen',
+    appStoreLabel: 'Laden im Mac App Store',
   },
   en: {
     title: 'Tools',
@@ -31,6 +32,7 @@ const content = {
     intro:
       'Open Museum is built on its own open-source tools for capturing public works and reconstructing them in 3D. They are free for anyone to use.',
     repoCta: 'View on GitHub',
+    appStoreLabel: 'Download on the Mac App Store',
   },
 } as const;
 
@@ -39,6 +41,10 @@ const tools = [
     name: 'Reality Pulse',
     platform: 'macOS',
     repo: 'https://github.com/nuit-dhiver/reality-pulse',
+    appStore: {
+      de: 'https://apps.apple.com/de/app/reality-pulse/id6820209812?l=de&mt=12',
+      en: 'https://apps.apple.com/de/app/reality-pulse/id6820209812?l=en-GB&mt=12',
+    },
     description: {
       de: 'Eine macOS-App, die die 3D-Rekonstruktion aus Fotos automatisiert. Sie verarbeitet mehrere Fotosets mit unterschiedlichen Qualitätseinstellungen zeitgesteuert zu Meshes und Splats.',
       en: 'A macOS app that automates 3D model reconstruction from photos. Process multiple photo sets with various quality settings into meshes and splats on a schedule.',
@@ -112,7 +118,22 @@ const toolsSchema = {
             <p class="flex-1 text-sm sm:text-base text-black/75 leading-relaxed">
               {tool.description[lang]}
             </p>
-            <div class="mt-6">
+            <div class="mt-6 flex flex-wrap items-center gap-3">
+              {tool.appStore && (
+                <a
+                  href={tool.appStore[lang]}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-block hover:opacity-80 transition-opacity"
+                >
+                  <img
+                    src={`${base}images/badges/mac-app-store-${lang}.svg`}
+                    alt={`${page.appStoreLabel}: ${tool.name}`}
+                    height="40"
+                    class="h-10 w-auto"
+                  />
+                </a>
+              )}
               <a
                 href={tool.repo}
                 target="_blank"

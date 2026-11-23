@@ -18,8 +18,8 @@
     "test:assets:changed": "node scripts/ci/asset-health-check.mjs"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.3.0",
-    "@google-cloud/firestore": "^8.7.0",
+    "@astrojs/sitemap": "^3.7.6",
+    "@google-cloud/firestore": "^9.4.1",
     "@google/model-viewer": "^4.0.0",
     "astro": "^7.4.7",
     "firebase": "^12.13.0",
